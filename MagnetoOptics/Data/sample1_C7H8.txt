@@ -1,0 +1,15 @@
+# APL - WS18/19
+# Magneto-Optic effects
+# 2018-11-23
+# Faraday solenoid current (If) is measured for different values of current
+# in the big solenoid (Is) where the sample 1 (Toluene) is placed.
+# precision Is = 0.2 mA
+# precision If = 0.05 mA (unless specified otherwise)
+#
+# Is (mA)  If (mT)
+4   -3.3
+7   -13.1
+10  -26.4
+13  -35.8
+11  -34.4
+9   -28.5

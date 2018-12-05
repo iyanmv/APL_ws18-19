@@ -1,0 +1,18 @@
+# APL - WS18/19
+# Magneto-Optic effects
+# 2018-11-15
+# Angles are measured when minimum is reached in the detector (due to Faraday effect)
+# for different values of current circulating in a fix direction.
+# 2 resistors are used in the circuit.
+# Precision angles = 5'', precision intensity = 0.05 mA
+#
+# I (mA)  Angle (º  '   '')
+0.0     232 34  30
+-9.9    232 36  00
+-20.1   232 36  50
+-30.1   232 38  00
+-40.1   232 39  10
+-30.0   232 37  50
+-20.0   232 36  50
+-9.9    232 36  00
+0.0     232 34  30   

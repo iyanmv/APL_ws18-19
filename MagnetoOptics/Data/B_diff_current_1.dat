@@ -1,0 +1,29 @@
+# APL - WS18/19
+# Magneto-Optic effects
+# 2018-11-15
+# Magnetic field is measured in the center of the solenoid (fixed position)
+# for different values of current for the circulation in position 1.
+# Offset B = 0 mT, precision = 0.5 mT (2000 mT scale)
+#
+# I (mA)  B (mT)
+0   3
+1   111
+2   206
+3   300
+4   404
+5   496
+6   587
+7   678
+8   767
+9   853
+10  930
+11  1003
+12  1064
+13  1112
+14  1153
+15  1192
+16  1224
+17  1255
+18  1284
+19  1308
+20  1326

@@ -1,0 +1,32 @@
+# APL - WS18/19
+# Magneto-Optic effects
+# 2018-11-15
+# Magnetic field is measured for a fix current of 1 mA in steps of 5 mm.
+# Current is circulating given by the position 2 of the switch.
+# Offset B = 1.8 mT, precision = 0.05 mT (20 mT scale)
+#
+# Position (mm)  B (mT)
+0   -60.8
+5   -75.2
+10  -84.8
+15  -89.7
+20  -90.8
+25  -91.2
+30  -91.3
+35  -91.3
+40  -91.4
+45  -91.4
+50  -91.4
+55  -91.3
+60  -91.3
+65  -91.3
+70  -91.3
+75  -91.3
+80  -91.2
+85  -91.0
+90  -90.1
+95  -87.7
+100 -76.4
+105 -61.9
+110 -44.2
+115 -33.7
