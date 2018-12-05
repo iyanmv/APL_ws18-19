@@ -1,0 +1,62 @@
+\documentclass[•]{article}
+
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\title{Measurement of Cotton-Mouton effect} 
+\author{Iyan Mendez Veiga, Michele Masini}
+
+
+\begin{document}
+\maketitle
+	\section*{Abstract}
+	In the following report, we will describe the procedure for the measurement of the Cotton-Mouton effect in three materials: carbon disulfide, mesitylene and toluene. Firstly, we measured the proportionality with the current and the uniformity of the magnetic field used to realize the Cotton-Mouton effect. Secondly, we checked the linearity of the Faraday effect used to rotate the polarization of light in our experiment. Finally, we measured the Cotton-Mouton effect minimizing the intensity of the beam of a laser by means of the Faraday effect.
+	\section{Introduction}
+	With magneto-optic effects, one means those effects that change properties of light when it passes through a material in presence of a magnetic field applied.	There are two well-known magneto-optic effects: the Faraday effect and Cotton-Mouton effect.
+	
+	The former occurs when we apply a magnetic field to a material in the same direction of the propagation of light. We will have a rotation ($\theta_F$) of the plane of vibration of the electromagnetic wave. Let $\phi$ be the angle between $\vec{B}$ and the propagation of light, $l$ the thickness of the sample, $B$ the absolute value of the magnetic field, then
+	\begin{equation}
+	\theta_F=lBVcos\phi
+\end{equation}	 where $V$ is called Verdet constant.
+
+Besides this first order effect, it is possible to measure also a second order one: the Cotton-Mouton effect. This is the one that we will measure in our experiment. It stimulates a birefringence in the material where the magnetic field is applied, i.e. refractive indices which depend on the polarization of light. Usually, we refer to birefringence as the difference between the maximum and the minimum refractive index in the material: $\Delta n=n_{max}-n_{min}$.
+
+Thanks to the latter effect, the electromagnetic wave will have a phase difference $\delta=\frac{2\pi \Delta n L}{\lambda}$ where $L$ is the optical path. It is possible to express the phase difference in dependence of the magnetic field:
+\begin{equation}
+\delta=C2\pi L B^2
+\end{equation}
+where $C=C(\lambda,T)$ is the \emph{Cotton-Mouton constant}.
+	
+	In our experiment, we had the following steps:
+	\begin{itemize}
+	\item[1.] the beam of a laser passes through a polarizer in order to obtain linear polarization;
+	\item[2.] by means of Faraday effect (the magnetic field is produced with a solenoid) the direction of the polarization is rotated;
+	\item[3.] a quarter wave-plate set in the same direction of the polarizer produces elliptical polarization if the magnetic effect in the previous step rotates the polarization;
+	\item[4.] we stimulate a birefringence using the Cotton-Mouton effect. A magnetic field is applied to a sample;
+	\item[5.] the beam passes through an analyzer;
+	\item[6.] we measure the intensity of the beam by means of a photodiode and a lock-in amplifier.
+\end{itemize}	
+
+Firstly, we minimized the intensity of light skipping step 2. and 4., hence without magnetic fields.  The quarter wave-plate does not provide an elliptical polarization because it has the same direction of the polarizer in the first step; setting the analyzer we look for the angle that minimizes the gain of the photodiode. After this first step, the angles of the analyzer, polarizer and quarter wave-plate are left invariant for all the experiment.
+
+Secondly, we insert the sample of step 4. and we apply a magnetic field through it. The Cotton-Mouton effect will produce a retard in the circular polarization. 
+
+Finally, we look for the value of the intensity applied to the solenoid in step 3. that minimizes the gain of the photodiode. 
+
+Let us now calculate the effect of the path using Jones matrices. bla bla bla calculation of the matrix bla bla bla
+\section{Materials and methods}
+In the first part of the experiment, we measured the proportionality of the magnetic field used to produce the Cotton-Mouton effect in step 4. with a Hall probe. The magnetic field was produced by means of a Helmholtz coil in order to make it as much uniform as possible. According to the Ampère law, the magnetic field can be expressed as:
+\begin{equation}
+B(I)=\frac{LI}{A}
+\end{equation}
+where $L$ is the inductance of the coil, $A$ is the surface and $I$ is the current flowing in the coil. In this part, we looked for the region of linearity of the magnetic field in function of the current $I$. The probe was positioned in the middle of the coils; we took a measurement of the magnetic field by changing the current at steps of $1mA$ from $-20mA$ to $+20mA$.
+
+Secondly, we checked the uniformity of the magnetic field inside the coils in order to position the sample in the region where $\vec{B}$ is uniform. We took the measurements for 3 different values of the current flowing in the coil; the Helmholtz probe was moved at steps of $5mm$.
+
+Thirdly, we verified the linearity of the Faraday effect. The beam of the laser passed respectively through the polarizer, the solenoid of step 2., the analyzer and finished in the photodiode. The solenoid was set in such a way that the magnetic field was parallel to the direction of the laser. Varying the intensity of the current applied to the solenoid we looked for the angle of the analyzer such that the gain of the photodiode was minimized. .... 2 resistors + precision... 1 resistor + current...
+\end{document}
