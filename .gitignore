@@ -260,3 +260,13 @@ TSWLatexianTemp*
 
 # Plasma KDE directory files
 .directory
+
+# Jupyter notebooks
+*.py[co]
+__pycache__
+*.egg-info
+*~
+*.bak
+.ipynb_checkpoints
+.tox
+.DS_Store
