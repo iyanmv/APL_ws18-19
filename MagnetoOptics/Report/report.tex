@@ -37,16 +37,15 @@ In the following report, we will describe the procedure for the measurement of t
 
 \section{Introduction}
 
-{\color{red}What? and Why? not theory here}
-
 \vspace{.5cm}
+In the following report, we will describe the procedure for the measurement of the Cotton-Mouton magneto-optic effect in three materials: carbon disulfide, mesitylene and toluene.
 
 With magneto-optic effects, one means those effects that change properties of light when it passes through a material in presence of a magnetic field applied.	There are two well-known magneto-optic effects: the Faraday effect and Cotton-Mouton effect.
 	
 The former occurs when we apply a magnetic field to a material in the same direction of the propagation of light. We will have a rotation ($\theta_F$) of the plane of vibration of the electromagnetic wave. Let $\phi$ be the angle between $\vec{B}$ and the propagation of light, $l$ the thickness of the sample, $B$ the absolute value of the magnetic field, then
 
 \begin{equation}
-\theta_F=lBVcos\phi
+\theta_F=lBVcos\phi\label{verd}
 \end{equation}
 where $V$ is called Verdet constant \cite{cappelli2003cotton}. 
 
@@ -57,7 +56,7 @@ Thanks to the latter effect, the electromagnetic wave will have a phase differen
 \begin{equation}
 \delta=C2\pi L B^2
 \end{equation}
-where $C=C(\lambda,T)$ is the \emph{Cotton-Mouton constant} \cite{wilson1997simple}.
+where $C=C(\lambda,T)$ is the \emph{Cotton-Mouton constant} \cite{wilson1997simple}. In the following we will suppose a constant temperature corresponding to the room temperature (~$300K$) and a constant wavelenght since we are using a laser beam.
 	
 In our experiment, we had the following steps:
 
@@ -82,9 +81,12 @@ Let us now calculate the effect of the path using Jones matrices. bla bla bla ca
 In the first part of the experiment, we measured the proportionality of the magnetic field used to produce the Cotton-Mouton effect in step 4. with a Hall probe. The magnetic field was produced by means of a Helmholtz coil in order to make it as much uniform as possible. According to the Ampère law, the magnetic field can be expressed as:
 
 \begin{equation}
-B(I)=\frac{LI}{A}
+B(I)=\frac{LI}{A}\label{amp}
 \end{equation}
-where $L$ is the inductance of the coil, $A$ is the surface and $I$ is the current flowing in the coil. In this part, we looked for the region of linearity of the magnetic field in function of the current $I$. The probe was positioned in the middle of the coils; we took a measurement of the magnetic field by changing the current at steps of $1mA$ from $-20mA$ to $+20mA$.
+where $L$ is the inductance of the coil, $A$ is the surface and $I$ is the current flowing in the coil. In this part, we looked for the region of linearity of the magnetic field in function of the current $I$. The probe was positioned in the middle of the coils; the magnetic field had direction parallel to the propagation of light (hence $cos\phi=1$ in \ref{verd}) we took a measurement of the magnetic field by changing the current at steps of $1mA$ from $-20mA$ to $+20mA$. Merging (~\ref{verd}) with (~\ref{amp}), we get the following formula:
+\begin{equation}
+\theta_F=\frac{lVL}{A}I\equiv V'I\label{modverd}
+\end{equation} where $V'$ is our \emph{modified Verdet constant}.
 
 Secondly, we checked the uniformity of the magnetic field inside the coils in order to position the sample in the region where $\vec{B}$ is uniform. We took the measurements for 3 different values of the current flowing in the coil; the Helmholtz probe was moved at steps of $5mm$.
 
@@ -131,7 +133,7 @@ Two more precise measurements due to a change of scale in the measuring device f
 
 We turned on the laser in order to measure the Faraday effect. For different values of current in the Faraday compensator (fig {\color{red}Add reference when photo is placed}), i.e. different values of the magnetic field in the direction of the propagation of the light, the angle of the analyser for which we minimised the signal at the detector was recorded. We repeated the measurements for both possible directions of the current and with one and two resistors.
 
-Angles were measured in degrees, minutes and seconds using an optical device. These angles were processed into radians, the offset was subtracted and finally a linear regression was found using the method of least-squares (Figure \ref{fig:FaradayAngle}). The slope is precisely the modified Verdet constant of the Faraday compensator, which tells us how much the polarisation plane is rotated by the Faraday effect when applying a current of \SI{1}{mA}.
+Angles were measured in degrees, minutes and seconds using an optical device. These angles were processed into radians, the offset was subtracted and finally a linear regression was found using the method of least-squares (Figure \ref{fig:FaradayAngle}). The slope is precisely the modified Verdet constant of the Faraday compensator described in (\ref{modverd}), which tells us how much the polarisation plane is rotated by the Faraday effect when applying a current of \SI{1}{mA}.
 
 The following table summarises the values obtained for the Verded constant.
 
