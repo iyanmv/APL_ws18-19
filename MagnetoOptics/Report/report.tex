@@ -11,7 +11,7 @@
 \usepackage[plainpages=false,pdfpagelabels,hypertexnames=false,hidelinks]{hyperref}
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{mathtools}
-\usepackage{siunitx}
+\usepackage[separate-uncertainty=true]{siunitx}
 \usepackage{booktabs}
 %\usepackage{amsmath}
 %\usepackage{amssymb}
@@ -152,6 +152,12 @@ Measurement & $V$ (\si{10^{-5}.\radian/\mA}) & $\delta V$ (\si{10^{-5}.\radian/\
 \end{table}
 
 Uncertainties $\delta V$ were calculated by computing the square root of the covariances obtained from the least-squares fit.
+
+For computing the Cotton-Mouton constants in the following section, we use the modified Verdet constant obtained using two resistors and the current circulating in the second position.
+
+\begin{equation}
+V'=\SI{-3.39\pm0.03}{\num{e-5}.\radian/\mA}
+\end{equation}
 
 \begin{figure}[H]
 \centering
