@@ -31,7 +31,7 @@ Iyán Méndez Veiga\\ \small\texttt{\href{mailto:iyan.mendez-veiga@uni-ulm.de}{i
 \maketitle
 
 \begin{abstract}
-In the following report, we will describe the procedure for the measurement of the Cotton-Mouton effect in three materials: carbon disulfide, mesitylene and toluene. Firstly, we measured the proportionality with the current and the uniformity of the magnetic field used to realize the Cotton-Mouton effect. Secondly, we checked the linearity of the Faraday effect used to rotate the polarization of light in our experiment. Finally, we measured the Cotton-Mouton effect minimizing the intensity of the beam of a laser by means of the Faraday effect.
+In this report we determine the Cotton-Mouton constants for three different materials: carbon disulfide, mesitylene and toluene. Birefringence is induced with a magnetic field using a solenoid and a Faraday compensator is used to determine the retardation produced by this materials.
 \end{abstract}
 
 \vspace{1.5cm}
@@ -62,9 +62,19 @@ where $L$ is the optical path. It is possible to express the phase difference in
 \delta=C2\pi L B_{CM}^2
 \end{equation}
 where $C=C(\lambda,T)$ is the \emph{Cotton-Mouton constant} \cite{wilson1997simple}. With (\ref{eq:optical_phase}) and (\ref{eq:CME}) we can express the refractive index difference as a function of the magnetic field:
+
 \begin{equation}\label{eq:Delta_n}
 \Delta n=C\lambda B^2
-\end{equation} In the following we will suppose a constant temperature corresponding to the room temperature (~$300K$) and a constant wavelenght since we are using a laser beam.
+\end{equation}
+
+Moreover, we can define the molar Cotton-Mouton constant by this relationship:
+
+\begin{equation}\label{eq:molar_CM}
+C_m(\lambda, T)=4\pi\varepsilon_0\,\frac{2\lambda nm}{3d(n^2+2)^2}\,C(\lambda,T)\;,
+\end{equation}
+where $n$ is the refractive index of the liquid in the absence of magnetic field, $m$ is the molar mass, $d$ its the density and $\varepsilon_0$ the vacuum permittivity.
+
+In the following we will suppose a constant temperature corresponding to the room temperature (~$300K$) and a constant wavelenght since we are using a laser beam.
 
 \begin{figure}[H]
 \centering
@@ -299,7 +309,7 @@ Experimentally, we measured the current intensity in the Faraday compensator at 
 \label{fig:CME}
 \end{figure}
 
-The Cotton-Mouton constants for the three samples can be obtained by plotting $\Delta n$ against the square of the magnetic field applied to the sample. First can be obtained from the measured current in the Faraday compensator using (\ref{eq:optical_phase}) and (\ref{eq:rel_optical_phase_angle}), and the square of the magnetic field from the current measured in the solenoid and the interpolation done in (fig \ref{fig:BvsI}) during the characterising of the field.
+The Cotton-Mouton constants for the three samples can be obtained by plotting $\Delta n$ against the square of the magnetic field applied to the sample, and doing a linear regression to find the slope, which will be $C\lambda$ as shown in (\ref{eq:Delta_n}). $\Delta n$ can be obtained from the measured current in the Faraday compensator using (\ref{eq:optical_phase}) and (\ref{eq:rel_optical_phase_angle}), and the square of the magnetic field from the current measured in the solenoid and the interpolation done in (fig \ref{fig:BvsI}) during the characterising of the field.
 
 Explicitly, we get the following equation for $\Delta n$ as a function of the measured $I_F$:
 
@@ -339,13 +349,17 @@ Carbon disulfide & -3.48 & 0.04 \\
 \label{fig:CM_const}
 \end{figure}
 
+
 \section{Conclusions}
-As expected the Cotton-Mouton constant is negative for the carbon disulfide and positive for the other samples. This fact is clearly shown in Figure~\ref{fig:CM_const}, where the fit of $CS_2$ has a decreasing slope. 
+As expected, the Cotton-Mouton constant is negative for the carbon disulfide and positive for the other samples. This fact is clearly shown in Figure \ref{fig:CM_const}, where the fit of CS$_2$ has a negative slope.
 
-We can observe that for Toluene the effect is not perfectly according with the theory, as we can notice from the $\chi^2$. For the other molecules the proportionality of $\Delta n$ with $B^2$ is verified as far as the magnetic field is between the considered interval.
+Toluene sample was the most difficult sample to measure because it is the less active sample and also due to some variance in the signal generator for the lock-in amplifier during the measurement, which led to a measurement an order of magnitude worse than the other two samples by checking $\delta C/C$.
 
-{\color{white}\cite{wilson1997simple}\cite{note19923}\cite{montarou2004two}\cite{freiser1968survey}}
+
+
+
 \newpage
+{\color{white}\cite{wilson1997simple}\cite{note19923}\cite{montarou2004two}\cite{freiser1968survey}}
 \bibliographystyle{unsrt}
 \bibliography{references}
 
