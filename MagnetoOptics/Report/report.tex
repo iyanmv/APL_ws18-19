@@ -43,10 +43,10 @@ In the following report, we will describe the procedure for the measurement of t
 
 With magneto-optic effects, one means those effects that change properties of light when it passes through a material in presence of a magnetic field applied. There are two well-known magneto-optic effects: the Faraday effect and Cotton-Mouton effect.
 	
-The former occurs when we apply a magnetic field to a material in the same direction of the propagation of light. We will have a rotation ($\theta_F$) of the plane of vibration of the electromagnetic wave. Let $\phi$ be the angle between $\vec{B}$ and the propagation of light, $l$ the thickness of the sample, $B$ the absolute value of the magnetic field, then
+The former occurs when we apply a magnetic field to a material in the same direction of the propagation of light. We will have a rotation ($\theta_F$) of the plane of vibration of the electromagnetic wave. Let $\phi$ be the angle between $\vec{B_F}$ and the propagation of light, $l$ the thickness of the sample, $B$ the absolute value of the magnetic field, then
 
 \begin{equation}\label{verd}
-\theta_F=lBVcos\phi
+\theta_F=lB_F Vcos\phi
 \end{equation}
 where $V$ is called Verdet constant \cite{cappelli2003cotton}. 
 
@@ -59,7 +59,7 @@ Thanks to the latter effect, the electromagnetic wave will have a phase differen
 where $L$ is the optical path. It is possible to express the phase difference in dependence of the magnetic field:
 
 \begin{equation}\label{eq:CME}
-\delta=C2\pi L B^2
+\delta=C2\pi L B_{CM}^2
 \end{equation}
 where $C=C(\lambda,T)$ is the \emph{Cotton-Mouton constant} \cite{wilson1997simple}. In the following we will suppose a constant temperature corresponding to the room temperature (~$300K$) and a constant wavelenght since we are using a laser beam.
 
@@ -136,9 +136,9 @@ W_{\lambda/4}(\varphi)=e^{-i\frac{\pi}{4}}
 Later, we have the sample, that due to the external magnetic field acts as an arbitrary phase retarder given by the following Jones matrix:
 
 \begin{equation}\label{eq:birefringent}
-W_{CM}(\theta_{CM})=e^{-i\frac{\Delta n}{2}}
+W_{CM}(\theta_{CM})=
 \begin{pmatrix}
-1 & 0 \\
+e^{-i\frac{\delta}{2}} & 0 \\
 0 & 1
 \end{pmatrix}
 \end{equation}
@@ -153,14 +153,28 @@ A=\frac{1}{2}
 \end{pmatrix}
 \end{equation}
 
-If $\theta_F=0$ and $\Delta n$ we see that:
+In the first part we set $\theta_F=0$ (i.e. no Faraday magnetic field), $\varphi=\frac{\pi}{4}$ (i.e. the quarter wave plate let the beam unmodified) and $\delta=0$ (i.e. we don't put the sample). In these conditions the final intensity of the beam is zero, we obtain the following equation:
 
 \begin{equation*}
-J_f=A\,W_{CM}(0)\,W_{\lambda/4}(\varphi=45^\circ)\,J_0=
+J_f=A\,W_{CM}(0)\,W_{\lambda/4}(\varphi=\frac{\pi}{4})\,J_0=
 \begin{pmatrix}
 0\\0
 \end{pmatrix}
 \end{equation*}
+In the same way, when we place the sample and we swich on the magnetic fields, we will set $B_F$ such that the intensity of the light is still zero. In this way we can use the following equality:
+\begin{equation*}
+J_f=A\,W_{CM}(\delta)\,W_{\lambda/4}(\varphi=\frac{\pi}{4})\, R_F(\theta_F)\,J_0=
+\begin{pmatrix}
+0\\0
+\end{pmatrix}
+\end{equation*}
+\begin{equation*}
+\Rightarrow\qquad \frac{(1+i)e^{\frac{i\delta}{2}}sin\left( \frac{\delta}{2}-\theta_F\right) }{\sqrt{2}}=0
+\end{equation*}
+Solving the equation we get $\delta$ as a function of $\theta_F$:
+\begin{equation}
+\Rightarrow \qquad \delta=2\theta_F
+\end{equation}
 
 \section{Materials and methods}\label{mm}
 In the first part of the experiment, we measured the magnetic field used to produce the Cotton-Mouton effect in step 4. with a Hall probe. The magnetic field was produced by means of a Helmholtz coil in order to make it as much uniform as possible. According to the Ampère law, the magnetic field can be expressed as:
