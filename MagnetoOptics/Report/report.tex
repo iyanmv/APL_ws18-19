@@ -45,15 +45,15 @@ With magneto-optic effects, one means those effects that change properties of li
 	
 The former occurs when we apply a magnetic field to a material in the same direction of the propagation of light. We will have a rotation ($\theta_F$) of the plane of vibration of the electromagnetic wave. Let $\phi$ be the angle between $\vec{B}$ and the propagation of light, $l$ the thickness of the sample, $B$ the absolute value of the magnetic field, then
 
-\begin{equation}
-\theta_F=lBVcos\phi\label{verd}
+\begin{equation}\label{verd}
+\theta_F=lBVcos\phi
 \end{equation}
 where $V$ is called Verdet constant \cite{cappelli2003cotton}. 
 
 Besides this first order effect, it is possible to measure also a second order one: the Cotton-Mouton effect. {\color{red}This is the one that we will measure in our experiment}. It stimulates a birefringence in the material where the magnetic field is applied, i.e. refractive indices which depend on the polarization of light. Usually, we refer to birefringence as the difference between the maximum and the minimum refractive index in the material: $\Delta n=n_{max}-n_{min}$.
 
 Thanks to the latter effect, the electromagnetic wave will have a phase difference
-\begin{equation} 
+\begin{equation}\label{eq:optical_phase}
 \delta=\frac{2\pi \Delta n L}{\lambda}
 \end{equation}
 where $L$ is the optical path. It is possible to express the phase difference in dependence of the magnetic field:
@@ -106,6 +106,61 @@ Secondly, we insert the sample of step 4. and we apply a magnetic field through 
 Finally, we look for the value of the intensity applied to the solenoid in step 3. that minimizes the gain of the photodiode. 
 
 Let us now calculate the effect of the different optical elements using Jones matrices.
+
+The light produced by the laser after the first polariser can be represented by the Jones vector:
+
+\begin{equation}\label{eq:initial_jones}
+J_0=\frac{1}{\sqrt{2}}\left(\frac{1}{1}\right)
+\end{equation}
+
+Faraday compensator produces a rotation of the polarisation plane an angle $\theta_F$ given (\ref{verd}) that we can express with the rotation matrix:
+
+\begin{equation}\label{eq:rotation_matrix}
+R_F(\theta_F)=
+\begin{pmatrix}
+\cos\theta_F & -\sin\theta_F \\
+\sin\theta_F & \cos\theta_F
+\end{pmatrix}
+\end{equation}
+
+A quarter-wave plate with its fast axis at an angle $\varphi$ with respect to the horizontal axis produces as phase retardation given by the following Jones Matrix:
+
+\begin{equation}\label{eq:quarter_wave}
+W_{\lambda/4}(\varphi)=e^{-i\frac{\pi}{4}}
+\begin{pmatrix}
+\cos^2\varphi+i\sin^2\varphi & (1-i)\sin\varphi\cos\varphi \\
+(1-i)\sin\varphi\cos\varphi & \sin^2\varphi+i\cos^2\varphi
+\end{pmatrix}
+\end{equation}
+
+Later, we have the sample, that due to the external magnetic field acts as an arbitrary phase retarder given by the following Jones matrix:
+
+\begin{equation}\label{eq:birefringent}
+W_{CM}(\theta_{CM})=e^{-i\frac{\Delta n}{2}}
+\begin{pmatrix}
+1 & 0 \\
+0 & 1
+\end{pmatrix}
+\end{equation}
+
+And finally, the analyser which has with its transmission axis perpendicular to the first polariser is given by:
+
+\begin{equation}\label{eq:analyser}
+A=\frac{1}{2}
+\begin{pmatrix}
+\phantom{-}1 & -1 \\
+-1 & \phantom{-}1
+\end{pmatrix}
+\end{equation}
+
+If $\theta_F=0$ and $\Delta n$ we see that:
+
+\begin{equation*}
+J_f=A\,W_{CM}(0)\,W_{\lambda/4}(\varphi=45^\circ)\,J_0=
+\begin{pmatrix}
+0\\0
+\end{pmatrix}
+\end{equation*}
 
 \section{Materials and methods}\label{mm}
 In the first part of the experiment, we measured the magnetic field used to produce the Cotton-Mouton effect in step 4. with a Hall probe. The magnetic field was produced by means of a Helmholtz coil in order to make it as much uniform as possible. According to the Ampère law, the magnetic field can be expressed as:
@@ -227,7 +282,7 @@ Experimentally, we measured the current intensity in the Faraday compensator at 
 \label{fig:CME}
 \end{figure}
 
-The Cotton-Mouton constants for the three samples can be obtained by plotting $\Delta n$ against the square of the magnetic field applied to the sample. First can be obtained from the measured current in the Faraday compensator using {\color{red}(I need the formulas to ref them)} and the square of the magnetic field from the current measured in the solenoid and the interpolation done in (fig \ref{fig:BvsI}) during the characterising of the field.
+The Cotton-Mouton constants for the three samples can be obtained by plotting $\Delta n$ against the square of the magnetic field applied to the sample. First can be obtained from the measured current in the Faraday compensator using (\ref{eq:optical_phase}) and the square of the magnetic field from the current measured in the solenoid and the interpolation done in (fig \ref{fig:BvsI}) during the characterising of the field.
 
 For the uncertainties {\color{red}TODO}
 
