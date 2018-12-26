@@ -86,14 +86,48 @@ Similarly to the static mode, we can directly measure the force gradient or use 
 
 
 \section{Results and discussion}
-
+In this section we will describe the analysis of the 3 different samples using both static and tapping mode.
 \subsection{Static mode}
 
-\subsubsection{Callibration}
+\subsubsection{Calibration}
+Firstly we used a \emph{calibration sample} with a known surface in order to test the tip and the software used to obtain our data. This sample had 6 different surfaces. We fixed the sample in the centre of the AFM and used the camera instaled inside our instrument to individuate the different surfaces.
 
+Once we had individuated the surface we wanted to analyse, we put the tip as close as possible to the sample without making them contact by using the software. Then, using the \emph{approach mode}, we brought the tip in contact with the surface; this mode used to approach the tip to the sample very slowly in order to not break the tip.
+
+In the following pictures, it is possible to see 3 different shapes captured from our calibration sample:
+\begin{figure}[H]
+\centering
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{sm_points}
+\caption{Points surface}
+\label{fig:sm_points}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{sm_raws}
+\caption{Raws surface}
+\label{fig:sm_raws}
+\end{subfigure}\\\vspace{.2cm}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{sm_squares}
+\caption{Squares surface}
+\label{fig:sm_squares}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{sm_border}
+\caption{Border between more surfaces}
+\label{fig:sm_border}
+\end{subfigure}
+\caption{Some pictures of the calibration sample}
+\end{figure}
+
+The previous pictures have been perfectioned using Gwyddion software. First of all we used some masks to eliminate automatically some imperfections. Secondly, we decided the $V$ range in which the shade of colors had to variate. Finally, we chosed 4 different colour scales in order to better distinguish the 4 pictures.
+
+We can notice that the pictures showing the 3 surfaces are $25\mu m \times 25 \mu m$, while the last picture has a larger area $50\mu m \times 50 \mu m$ in order to let us see a piece of all the 4 surfaces. We can also observe that the range of the z-axis has been chosen a bit larger in the last picture ($\Delta V=189V+27V=216V$) because we are describing more surfaces in only one image.
+\subsubsection{Samples}
+The first sample was {\color{Red} I don't remember the materials}. 
 \subsection{Tapping mode}
 
-\subsubsection{Callibration}
+\subsubsection{Calibration}
 
 
 \section{Conclusions}
