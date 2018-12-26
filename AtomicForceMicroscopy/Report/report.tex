@@ -90,9 +90,9 @@ In this section we will describe the analysis of the 3 different samples using b
 \subsection{Static mode}
 
 \subsubsection{Calibration}
-Firstly we used a \emph{calibration sample} with a known surface in order to test the tip and the software used to obtain our data. This sample had 6 different surfaces. We fixed the sample in the centre of the AFM and used the camera instaled inside our instrument to individuate the different surfaces.
+Firstly we used a \emph{calibration sample} with a known surface in order to test the tip and the software used to obtain our data. This sample had 6 different surfaces. We fixed the sample in the centre of the AFM and used the camera installed inside our Nanosurf NaioAFM equipment to individuate the different surfaces.
 
-Once we had individuated the surface we wanted to analyse, we put the tip as close as possible to the sample without making them contact by using the software. Then, using the \emph{approach mode}, we brought the tip in contact with the surface; this mode used to approach the tip to the sample very slowly in order to not break the tip.
+Once we had individuated the surface which we wanted to analyse, we put the tip as close as possible to the sample without making them contact by using the software. Then, using the \emph{approach mode}, we brought the tip in contact with the surface; this mode used to approach the tip to the sample very slowly in order to not break the tip.
 
 In the following pictures, it is possible to see 3 different shapes captured from our calibration sample:
 \begin{figure}[H]
@@ -120,11 +120,78 @@ In the following pictures, it is possible to see 3 different shapes captured fro
 \caption{Some pictures of the calibration sample}
 \end{figure}
 
-The previous pictures have been perfectioned using Gwyddion software. First of all we used some masks to eliminate automatically some imperfections. Secondly, we decided the $V$ range in which the shade of colors had to variate. Finally, we chosed 4 different colour scales in order to better distinguish the 4 pictures.
+The previous pictures have been perfectioned using Gwyddion software. First of all we used some masks to eliminate automatically some imperfections, as for instance orizontal tears caused by abrupt movements of the tip. Secondly, we adjusted the high scale in which the shade of colors had to variate. Finally, we chosed 4 different colour scales in order to better distinguish the 4 pictures.
 
-We can notice that the pictures showing the 3 surfaces are $25\mu m \times 25 \mu m$, while the last picture has a larger area $50\mu m \times 50 \mu m$ in order to let us see a piece of all the 4 surfaces. We can also observe that the range of the z-axis has been chosen a bit larger in the last picture ($\Delta V=189V+27V=216V$) because we are describing more surfaces in only one image.
-\subsubsection{Samples}
-The first sample was {\color{Red} I don't remember the materials}. 
+We can notice that the pictures showing the 3 surfaces are $25\mu m \times 25 \mu m$, while the last picture has a larger area $50\mu m \times 50 \mu m$ in order to let us see part of the all 4 surfaces. We can also observe that the range of the z-axis has been chosen a bit larger in the last picture ($\Delta V=189V+27V=216V$) because we are describing more surfaces in only one image.
+
+Finally we report the 3D image got from the data taken in the border:
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[scale=0.47]{sm_border_3D}
+\end{center}
+\end{figure}
+\subsubsection{Sample 1}
+The first sample was {\color{Red} I don't remember the materials}. We took the measurements moving the tip in 2 different directions that were oriented by $\pi /4$ between them. We can observe this fact in the following pictures:
+\begin{figure}[H]
+\centering
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{sm_sample1}
+\caption{Sample 1: first direction}
+\label{fig:}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{sm_sample1_dir2}
+\caption{Sample 1: second direction}
+\label{fig:}
+\end{subfigure}\\\vspace{.2cm}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{sm_sample1_3D}
+\caption{Sample 1: first direction, 3D plot}
+\label{fig:}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{sm_sample1_dir2_3D}
+\caption{Sample 1: second direction, 3D plot}
+\label{fig:}
+\end{subfigure}
+\caption{Sample 1}
+\end{figure}
+We can see from the pictures that the 2 directions give us a exagonal beehive plot. The second direction makes the exagons more stratched.%, but the highness is approximatively the same ($\Delta V_{dir1} \simeq \Delta V_{dir2}$).
+\subsubsection{Sample 2}
+The second sample is BOH. We can see from Figure~\ref{fig:sample2_set} that the surface of this material was scratched and full of imperfections.
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[scale=0.4]{sm_sample2_set.JPG}
+\caption{Picture of sample 2 from the cmera installed in Nanosurf NaioAFM}\label{fig:sample2_set}
+\end{center}
+\end{figure}
+We have have notice that the only part of the material which has a plot is the light green part (Figure~\ref{fig:sample2_set}). Therefore we have decided to take measurments inside the plot and in the border (the position of the tip is shown in Figure~\ref{fig:sample2_set}).
+\begin{figure}[H]
+\centering
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{sm_sample2}
+\caption{Sample 2: inside the plot}
+\label{fig:}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{sm_sample2_border}
+\caption{Sample 2: border}
+\label{fig:}
+\end{subfigure}\\\vspace{.2cm}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{sm_sample2_3D}
+\caption{Sample 2: inside the plot, 3D plot}
+\label{fig:}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{sm_sample2_border_3D}
+\caption{Sample 1: border, 3D plot}
+\label{fig:}
+\end{subfigure}
+\caption{Sample 2}
+\end{figure}
+
+We can observe that the plot reminds a set of Stars of David. Moreover, we can see that the surface outside this plot is flat compared to the edges of the star.
 \subsection{Tapping mode}
 
 \subsubsection{Calibration}
