@@ -83,6 +83,17 @@ Similarly to the static mode, we can directly measure the force gradient or use 
 \subsection{NaioAFM}
 
 \subsection{Gwyddion}
+NaioAFM saves the data obtained by the samples in ".nid" files. These files contain 3-dimensional data of the sample: to every point in the (x,y) plane it is associated an highness. The highness is shown in 2-dimensional pictures by means of a variable the gray scale. The more is light the gray, the more the z point is high.
+
+Thanks to the Gwyddion software, it is possible to partially correct the noisy parts of the pictures manually or by means of some automatic tools. Moreover, the software allow us to model the colour scale by selecting the highnesses range (Figure~\ref{fig:scale_selection}).
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[scale=0.4]{scale_selection}
+\caption{Selection of the highnesses interval}\label{fig:scale_selection}
+\end{center}
+\end{figure}
+
+Finally, Gwyddion allows us to improve the aesthetics of the images, making them more intuitive. First of all, we can select the colour scale which labels the highnesses of the picture. Secondly, the software is able to generate a 3-dimensional pictures of the sample, as we will see in the following section.
 
 
 \section{Results and discussion}
