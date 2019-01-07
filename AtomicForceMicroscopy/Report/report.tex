@@ -50,7 +50,7 @@ By ultrasmall forces we mean forces of less than \SI{1}{\nano\N}. How this force
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.7\textwidth]{AFM_modes}
-\caption{Force that the tip experiments against the distance with respect to the surface of the sample \cite{jfb8010007}. In the contact mode forces are repulsive while in the non conntact mode are attractive. In the dynamic or tapping mode we are in between but typically in closer to the repulsive barrier.}
+\caption{Force that the tip experiments against the distance with respect to the surface of the sample \cite{jfb8010007}. In the contact mode forces are repulsive while in the non conntact mode are attractive. In the dynamic or tapping mode we are in between but typically closer to the repulsive barrier.}
 \label{fig:AFM_modes}
 \end{figure}
 
@@ -78,12 +78,34 @@ When we are on the right of the equilibrium (see Figure \ref{fig:AFM_modes}), th
 \label{fig:Deflection_measurement}
 \end{figure}
 
-Similarly to the static mode, we can directly measure the force gradient or use this as a signal for a feedback mechanism that acts on the distance $r$ to keep constant the resonant frequency. An schematic draw is shown in Figure 
+Similarly to the static mode, we can directly measure the force gradient or use this as a signal for a feedback mechanism that acts on the distance $r$ to keep constant the resonant frequency. An schematic draw is shown in Figure \ref{fig:Deflection_measurement}.
+
+\subsection{Feedback mechanism}
+We have mentioned in the previous section that the AFM can be used with or without a feedback mechanism, but since in the experiment we used it both for static and tapping modes, we will describe this technique very briefly.
+
+Feedback mechanisms and feedback parameters are ubiquitous in our life \cite{nanosurf}. For example, when we use a thermostat, the temperature is the feedback parameter, which is set to a a desired one (\emph{setpoint}) and as the temperature in the room changes, it is compared with the temperature setpoint so that a feedback mechanism (e.g. an air conditioner) can act to keep the temperature at the desired value. Mathematically, all these mechanisms are applications of the control theory developed during the 19th century.
+
+\begin{figure}[hbt]
+\centering
+\includegraphics[width=0.8\textwidth]{afm-modes-feedback}
+\caption{Feedback input and output signals for different values of PID gains \cite{nanosurf}.}
+\label{fig:feedback}
+\end{figure}
+
+In our AFM experiment, the feedback parameter that serves as the setpoint in contact mode is the the cantilever deflection. In the tapping mode, it is the cantilever oscillation amplitude. The NaioAFM continuously tries to keep this feedback parameter constant at its setpoint by adjusting the z-piezo to move the cantilever probe up and down. And the resulting z-piezo movements provide the hegight information to create the surface topography.
+
+The feedback loop is controlled through the proportion-integral-derivative control, also referred as the PID gains. These different gains refer to differences in how the feedback loop adjusts to deviations from the setpoint value, i.e. the error signal. In this experiment, the integral gain is the most important one and can have a dramatic effect on the image quality. The proportional gain might provide slight improvement only after the integral gain has been optimized. And the derivative gain is mainly for samples with tall edges.
+
+If gains are set too low, the PID loop is not able to keep the setpoint accurately. Contrary, if gains are chosen too high, the result will be electrical noise in the image interference from the feedback (see Figure \ref{fig:feedback}). This is due to the fact that compensation for a deviation from the setpoint is larger than the error itself.
+
+Nevertheless, gains are not the only parameters that affect the feedback mechanism. The scan rate and, of course, the setpoint value are very important, too. If the scan rate is too fast, the PID loop will not have sufficient time to adjust the feedback parameter to its setpoint value and the height calculated from the z-piezo movement will deviate from the true topography at slopes and near edges. Very slow rates do not affect the quality of the obtained topography since they are not an issue for the PID loop, but they lead to long acquisition times.
+
+Optimization of both scan rate and PID gains are necessary in order to optimize the feedback loop.
 
 \subsection{NaioAFM}
 
 \subsection{Gwyddion}
-NaioAFM saves the data obtained by the samples in ".nid" files. These files contain 3-dimensional data of the sample: to every point in the (x,y) plane it is associated an highness. The highness is shown in 2-dimensional pictures by means of a variable the gray scale. The more is light the gray, the more the z point is high.
+NaioAFM saves the data obtained by the samples in \texttt{.nid} files. These files contain 3-dimensional data of the sample: to every point in the (x,y) plane it is associated an highness. The highness is shown in 2-dimensional pictures by means of a variable the gray scale. The more is light the gray, the more the z point is high.
 
 Thanks to the Gwyddion software, it is possible to partially correct the noisy parts of the pictures manually or by means of some automatic tools. Moreover, the software allow us to model the colour scale by selecting the highnesses range (Figure~\ref{fig:scale_selection}).
 \begin{figure}[ht]
