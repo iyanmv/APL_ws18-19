@@ -50,7 +50,7 @@ By ultrasmall forces we mean forces of less than \SI{1}{\nano\N}. How this force
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.7\textwidth]{AFM_modes}
-\caption{Force that the tip experiments against the distance with respect to the surface of the sample \cite{jfb8010007}. In the contact mode forces are repulsive while in the non conntact mode are attractive. In the dynamic or tapping mode we are in between but typically in closer to the repulsive barrier.}
+\caption{Force that the tip experiments against the distance with respect to the surface of the sample \cite{jfb8010007}. In the contact mode forces are repulsive while in the non conntact mode are attractive. In the dynamic or tapping mode we are in between but typically closer to the repulsive barrier.}
 \label{fig:AFM_modes}
 \end{figure}
 
@@ -78,40 +78,83 @@ When we are on the right of the equilibrium (see Figure \ref{fig:AFM_modes}), th
 \label{fig:Deflection_measurement}
 \end{figure}
 
-Similarly to the static mode, we can directly measure the force gradient or use this as a signal for a feedback mechanism that acts on the distance $r$ to keep constant the resonant frequency. An schematic draw is shown in Figure 
+Similarly to the static mode, we can directly measure the force gradient or use this as a signal for a feedback mechanism that acts on the distance $r$ to keep constant the resonant frequency. An schematic draw is shown in Figure \ref{fig:Deflection_measurement}.
+
+\subsection{Feedback mechanism}
+We have mentioned in the previous section that the AFM can be used with or without a feedback mechanism, but since in the experiment we used it both for static and tapping modes, we will describe this technique very briefly.
+
+Feedback mechanisms and feedback parameters are ubiquitous in our life \cite{nanosurf}. For example, when we use a thermostat, the temperature is the feedback parameter, which is set to a a desired one (\emph{setpoint}) and as the temperature in the room changes, it is compared with the temperature setpoint so that a feedback mechanism (e.g. an air conditioner) can act to keep the temperature at the desired value. Mathematically, all these mechanisms are applications of the control theory developed during the 19th century.
+
+\begin{figure}[hbt]
+\centering
+\includegraphics[width=0.8\textwidth]{afm-modes-feedback}
+\caption{Feedback input and output signals for different values of PID gains \cite{nanosurf}.}
+\label{fig:feedback}
+\end{figure}
+
+In our AFM experiment, the feedback parameter that serves as the setpoint in contact mode is the the cantilever deflection. In the tapping mode, it is the cantilever oscillation amplitude. The NaioAFM continuously tries to keep this feedback parameter constant at its setpoint by adjusting the z-piezo to move the cantilever probe up and down. And the resulting z-piezo movements provide the hegight information to create the surface topography.
+
+The feedback loop is controlled through the proportion-integral-derivative control, also referred as the PID gains. These different gains refer to differences in how the feedback loop adjusts to deviations from the setpoint value, i.e. the error signal. In this experiment, the integral gain is the most important one and can have a dramatic effect on the image quality. The proportional gain might provide slight improvement only after the integral gain has been optimized. And the derivative gain is mainly for samples with tall edges.
+
+If gains are set too low, the PID loop is not able to keep the setpoint accurately. Contrary, if gains are chosen too high, the result will be electrical noise in the image interference from the feedback (see Figure \ref{fig:feedback}). This is due to the fact that compensation for a deviation from the setpoint is larger than the error itself.
+
+Nevertheless, gains are not the only parameters that affect the feedback mechanism. The scan rate and, of course, the setpoint value are very important, too. If the scan rate is too fast, the PID loop will not have sufficient time to adjust the feedback parameter to its setpoint value and the height calculated from the z-piezo movement will deviate from the true topography at slopes and near edges. Very slow rates do not affect the quality of the obtained topography since they are not an issue for the PID loop, but they lead to long acquisition times.
+
+Optimization of both scan rate and PID gains are necessary in order to optimize the feedback loop.
 
 \subsection{NaioAFM}
 
-\subsection{Gwyddion}
-NaioAFM saves the data obtained by the samples in ".nid" files. These files contain 3-dimensional data of the sample: to every point in the (x,y) plane it is associated an highness. The highness is shown in 2-dimensional pictures by means of a variable the gray scale. The more is light the gray, the more the z point is high.
+The NaioAFM by Nanosurf \cite{NaioAFM} is the AFM used in this experiment. As the successor of the Easyscan 2, the NaioAFM is a compact AFM designed for new and inexperienced AFM users. It has a closed scanner compartment that helps with acoustic and air current isolation, stage positioners to adjust your sample. The different parts of the scan head including the spot for the cantilever are shown in the Figure \ref{fig:naioafm}. The NaioAFM was placed on an isolation platform to avoid vibration disturbances.
 
-Thanks to the Gwyddion software, it is possible to partially correct the noisy parts of the pictures manually or by means of some automatic tools. Moreover, the software allow us to model the colour scale by selecting the highnesses range (Figure~\ref{fig:scale_selection}).
-\begin{figure}[ht]
-\begin{center}
-\includegraphics[scale=0.4]{scale_selection}
-\caption{Selection of the highnesses interval}\label{fig:scale_selection}
-\end{center}
+\begin{figure}[hbt]
+\centering
+\includegraphics[width=0.9\textwidth]{naioafm2}
+\caption{Different parts of the scan head of the NaioAFM instrument \cite{NaioAFM}.}
+\label{fig:naioafm}
 \end{figure}
 
-Finally, Gwyddion allows us to improve the aesthetics of the images, making them more intuitive. First of all, we can select the colour scale which labels the highnesses of the picture. Secondly, the software is able to generate a 3-dimensional pictures of the sample, as we will see in the following section.
+\subsection{Gwyddion}
 
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.4\textwidth]{scale_selection}
+\caption{Selection of the highnesses interval}
+\label{fig:scale_selection}
+\end{figure}
+
+NaioAFM saves the data obtained by the samples in \texttt{.nid} files. These files contain 3-dimensional data of the sample: to every point in the (x,y) plane it is associated a height. The height is shown in 2-dimensional pictures {\color{red}by means of a variable the gray scale}. The lighter the gray is, the higher the z point is.
+
+Thanks to the Gwyddion software, it is possible to partially correct the noisy parts of the pictures manually or by means of some automatic tools. Moreover, the software allow us to model the colour scale by selecting the height range (Figure~\ref{fig:scale_selection}).
+
+Finally, Gwyddion allows us to improve the aesthetics of the images, making them more intuitive. First of all, we can select the colour scale which labels the height of the picture. Secondly, the software is able to generate a 3-dimensional pictures of the sample, as we will see in the following section.
 
 \section{Results and discussion}
 In this section we will describe the analysis of the 3 different samples using both static and tapping mode.
-\subsection{Static mode}
 
+\subsection{Static mode}
 \subsubsection{Calibration}
-Firstly we used a \emph{calibration sample} with a known surface in order to test the tip and the software used to obtain our data. This sample had 6 different surfaces. We fixed the sample in the centre of the AFM and used the camera installed inside our Nanosurf NaioAFM equipment to individuate the different surfaces (shown in Figure~\ref{fig:cal_sam}).
-\begin{figure}[ht]
-\begin{center}
-\includegraphics[scale=0.4]{calibration_sample.JPG}
-\caption{Calibration sample view from the camera installed in Nanosurf NaioAFM}\label{fig:cal_sam}
-\end{center}
+First, we used a \emph{calibration sample} with a known surface in order to test the tip and the software used to obtain our data. This sample was the Calibration Standard \texttt{HS-100MG} and it had 6 different surfaces (see Figure \ref{fig:HS-100MG}).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.3\textwidth]{HS-100MG}
+\caption{Dimensions of the calibration sample HS-100MG.}
+\label{fig:HS-100MG}
 \end{figure}
 
-Once we had individuated the surface which we wanted to analyse, we put the tip as close as possible to the sample without making them contact by using the software. Then, using the \emph{approach mode}, we brought the tip in contact with the surface; this mode used to approach the tip to the sample very slowly in order to not break the tip.
+We fixed the sample in the centre of the AFM and used the camera installed inside our Nanosurf NaioAFM equipment to place the tip in the different surfaces (shown in Figure~\ref{fig:cal_sam}).
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.4]{calibration_sample.JPG}
+\caption{Calibration sample view from the camera installed in Nanosurf NaioAFM}
+\label{fig:cal_sam}
+\end{figure}
+
+Once we had chosen the surface which we wanted to analyse, we put the tip as close as possible to the sample without making them contact by using the software. Then, using the \emph{approach mode}, we brought the tip in contact with the surface. This mode uses the setpoint and the feedback mechanism to very slowly put the tip in contact minimizing the risk of breaking the tip.
 
 In the following pictures, it is possible to see 3 different shapes captured from our calibration sample:
+
 \begin{figure}[H]
 \centering
 \begin{subfigure}[b]{0.45\textwidth}
@@ -142,14 +185,17 @@ The previous pictures have been perfectioned using Gwyddion software. First of a
 We can notice that the pictures showing the 3 surfaces are $25\mu m \times 25 \mu m$, while the last picture has a larger area $50\mu m \times 50 \mu m$ in order to let us see part of the all 4 surfaces. We can also observe that the range of the z-axis has been chosen a bit larger in the last picture ($\Delta V=189V+27V=216V$) because we are describing more surfaces in only one image.
 
 Finally we report the 3D image got from the data taken in the border:
+
 \begin{figure}[ht]
-\begin{center}
+\centering
 \includegraphics[scale=0.47]{sm_border_3D}
-\caption{3D plot of the calibration sample's border}\label{fig: cal sam border}
-\end{center}
+\caption{3D plot of the calibration sample's border}
+\label{fig: cal sam border}
 \end{figure}
+
 \subsubsection{Sample 1}
 The first sample was {\color{Red} I don't remember the materials}. We took the measurements moving the tip in 2 different directions that were oriented by $\pi /4$ between them. We can observe this fact in the following pictures:
+
 \begin{figure}[H]
 \centering
 \begin{subfigure}[b]{0.45\textwidth}
@@ -174,16 +220,21 @@ The first sample was {\color{Red} I don't remember the materials}. We took the m
 \end{subfigure}
 \caption{Sample 1}
 \end{figure}
+
 We can see from the pictures that the 2 directions give us a exagonal beehive plot. The second direction makes the exagons more stratched.%, but the highness is approximatively the same ($\Delta V_{dir1} \simeq \Delta V_{dir2}$).
+
 \subsubsection{Sample 2}
 The second sample is BOH. We can see from Figure~\ref{fig:sample2_set} that the surface of this material was scratched and full of imperfections.
+
 \begin{figure}[ht]
-\begin{center}
+\centering
 \includegraphics[scale=0.4]{sm_sample2_set.JPG}
-\caption{Picture of sample 2 from the camera installed in Nanosurf NaioAFM}\label{fig:sample2_set}
-\end{center}
+\caption{Picture of sample 2 from the camera installed in Nanosurf NaioAFM}
+\label{fig:sample2_set}
 \end{figure}
+
 We have have notice that the only part of the material which has a plot is the light green part (Figure~\ref{fig:sample2_set}). Therefore we have decided to take measurments inside the plot and in the border (the position of the tip is shown in Figure~\ref{fig:sample2_set}).
+
 \begin{figure}[H]
 \centering
 \begin{subfigure}[b]{0.45\textwidth}
@@ -210,16 +261,19 @@ We have have notice that the only part of the material which has a plot is the l
 \end{figure}
 
 We can observe that the plot reminds a set of stars. Moreover, we can see that the surface outside this plot is flat compared to the edges of the star.
+
 \subsubsection{Sample 3}
 As we can notice from the following picture (Figure~\ref{fig:sample3_set}), even the third sample was characterized by scratches and imperfections.
+
 \begin{figure}[ht]
-\begin{center}
+\centering
 \includegraphics[scale=0.4]{sm_sample3_set}
-\caption{Picture of sample 3 from the camera installed in Nanosurf NaioAFM}\label{fig:sample3_set}
-\end{center}
+\caption{Picture of sample 3 from the camera installed in Nanosurf NaioAFM}
+\label{fig:sample3_set}
 \end{figure}
 
 This time we took only one measurement in the center of the light green part as shown below:
+
 \begin{figure}[H]
 \centering
 \begin{subfigure}[b]{0.45\textwidth}
@@ -234,9 +288,10 @@ This time we took only one measurement in the center of the light green part as 
 \end{subfigure}
 \caption{Sample 3}
 \end{figure}
-In this last sample we can notice a hilly surface. In order to observe this plot, the precision in the highness had to be improved, indeed we can see that the $V$ scale is of the order of $mV$ instead of $V$ as before.
-\subsection{Tapping mode}
 
+In this last sample we can notice a hilly surface. In order to observe this plot, the precision in the highness had to be improved, indeed we can see that the $V$ scale is of the order of $mV$ instead of $V$ as before.
+
+\subsection{Tapping mode}
 \subsubsection{Calibration}
 Even in this case, the first step was the measurement of the calibration sample.
 
@@ -274,8 +329,11 @@ Even in this case, the first step was the measurement of the calibration sample.
 \end{subfigure}
 \caption{Some pictures of the calibration sample}
 \end{figure}
+
 Looking at the 3 dimensional plots, we can see that in this case the measurements are far more precise. In fact observing the border between two different highnesses, we notice that in the static mode we had large peaks (Figure~\ref{fig: cal sam border}), while in the tapping mode the border is far more clean.
+
 \subsubsection{Sample 1}
+
 \begin{figure}[H]
 \centering
 \begin{subfigure}[b]{0.45\textwidth}
@@ -303,7 +361,9 @@ Looking at the 3 dimensional plots, we can see that in this case the measurement
 \label{fig:}
 \end{subfigure}
 \end{figure}
+
 \subsubsection{Sample 3}
+
 \begin{figure}[H]
 \centering
 \begin{subfigure}[b]{0.45\textwidth}
@@ -317,6 +377,7 @@ Looking at the 3 dimensional plots, we can see that in this case the measurement
 \label{fig:}
 \end{subfigure}
 \end{figure}
+
 \section{Conclusions}
 
 
@@ -324,6 +385,4 @@ Looking at the 3 dimensional plots, we can see that in this case the measurement
 \newpage
 \bibliographystyle{unsrt}
 \bibliography{references}
-
-
 \end{document}
