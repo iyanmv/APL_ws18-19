@@ -128,6 +128,106 @@ Thanks to the Gwyddion software, it is possible to partially correct the noisy p
 
 Finally, Gwyddion allows us to improve the aesthetics of the images, making them more intuitive. First of all, we can select the colour scale which labels the height of the picture. Secondly, the software is able to generate a 3-dimensional pictures of the sample, as we will see in the following section.
 
+\subsection{AFM artifacts}
+When using an AFM, as well as in many other experiments, we may find features which appear in the obtained images that are not present in the observed sample. These are called artifacts \cite{artifacts} and there are four primary sources of artifacts in images measured with AFMs: probes, scanners, image processing and vibrations.
+
+Images measured with an AFM are always a convolution of the probe geometry and the shape of the features being imaged. In order to avoid probe-generated artifacts, the tip should be much smaller than the features being measured. When this condition is not satisfied or if the tip is damaged, features on the sample may appear larger, smaller or with strangely shaped patterns as shown in Figure \ref{fig:artifacts_probe}.
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{artifacts_probe_1}
+\caption{Feature appears too large}
+\label{fig:artifacts_probe_1}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{artifacts_probe_2}
+\caption{Feature appears too small}
+\label{fig:artifacts_probe_2}
+\end{subfigure}\\\vspace{.2cm}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{artifacts_probe_3}
+\caption{Distorsion caused by a chipped tip}
+\label{fig:artifacts_probe_3}
+\end{subfigure}
+\caption{Some examples of probe-generated artifacts \cite{artifacts}.}
+\label{fig:artifacts_probe}
+\end{figure}
+
+Artifacts may also arise due to the motion of the scanner in the X, Y and Z directions. Piezoelectric materials move in a nonlinear motion when a linear voltage ramp is applied. If they are not well calibrated, sizes and forms my appear severely distorted (see Figure \ref{fig:artifacts_scanner_1}). Besides, the geometry of the scanner and the positioning of it relative to the sample can also create artifacts (see Figure \ref{fig:artifacts_scanner_2}).
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{artifacts_scanner_1}
+\caption{A test pattern with squares (left) distorted in the AFM (right) due to nonlinearity of the piezo materials}
+\label{fig:artifacts_scanner_1}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{artifacts_scanner_2}
+\caption{Artifact due to the probe sample angle}
+\label{fig:artifacts_scanner_2}
+\end{subfigure}\\\vspace{.2cm}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{artifacts_scanner_3}
+\caption{Artifact due to overshoot at the leading and trailing edge}
+\label{fig:artifacts_scanner_3}
+\end{subfigure}
+\caption{Some examples of scanner-generated artifacts \cite{artifacts}.}
+\label{fig:artifacts_scanner}
+\end{figure}
+
+Processing images is a must when dealing with AFM, but additional artifacts can be introduced if the processing software is not properly used. For example, bands that do not correspond to a real structure may appear when subtracting the background (see Figure \ref{fig:artifacts_processing}).
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}[b]{0.3\textwidth}
+\includegraphics[width=\textwidth]{artifacts_processing_1}
+\caption{Image obtained from AFM before any processing}
+\label{fig:artifacts_processing_1}
+\end{subfigure}
+\begin{subfigure}[b]{0.3\textwidth}
+\includegraphics[width=\textwidth]{artifacts_processing_2}
+\caption{After a line-by-line leveling with a background correction}
+\label{fig:artifacts_processing_2}
+\end{subfigure}
+\begin{subfigure}[b]{0.3\textwidth}
+\includegraphics[width=\textwidth]{artifacts_processing_3}
+\caption{Particles excluded from the background subtraction}
+\label{fig:artifacts_processing_3}
+\end{subfigure}\\\vspace{.2cm}
+\begin{subfigure}[b]{0.6\textwidth}
+\includegraphics[width=\textwidth]{artifacts_processing_4}
+\caption{Artifact due to overshoot at the leading and trailing edge}
+\label{fig:artifacts_processing_4}
+\end{subfigure}
+\caption{Some examples of processing-generated artifacts \cite{artifacts}.}
+\label{fig:artifacts_processing}
+\end{figure}
+
+Vibrations caused by sound waves can also cause artifacts. Even though the NaioAFM has an isolated compartment do avoid that, even noise derived from a person talking in the same room as the AFM can be observed (see Figure \ref{fig:artifacts_vibrations}). Additionally, surface contamination on the sample (see Figure \ref{fig:artifacts_contamination})or electronic noise (see Figure \ref{fig:artifacts_electronics}) among others can also cause artefacts.
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{artifacts_vibrations}
+\caption{Without noise (left) and with noise (right)}
+\label{fig:artifacts_vibrations}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{artifacts_contamination}
+\caption{Sample contamination shown in a SEM image (left) and in an AFM one (right)}
+\label{fig:artifacts_contamination}
+\end{subfigure}\\\vspace{.2cm}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{artifacts_electronics}
+\caption{Electronic noise}
+\label{fig:artifacts_electronics}
+\end{subfigure}
+\caption{Some examples of artifacts caused by sound noise, contamination and electronic noise \cite{artifacts}.}
+\label{fig:artifacts_others}
+\end{figure}
+
 \section{Results and discussion}
 In this section we will describe the analysis of the 3 different samples using both static and tapping mode.
 
@@ -180,11 +280,9 @@ In the following pictures, it is possible to see 3 different shapes captured fro
 \caption{Some pictures of the calibration sample}
 \end{figure}
 
-The previous pictures have been perfectioned using Gwyddion software. First of all we used some masks to eliminate automatically some imperfections, as for instance orizontal tears caused by abrupt movements of the tip. Secondly, we adjusted the high scale in which the shade of colors had to variate. Finally, we chosed 4 different colour scales in order to better distinguish the 4 pictures.
+The previous pictures have been processed using Gwyddion software. First of all we used some masks to eliminate automatically some imperfections, as for instance orizontal tears caused by abrupt movements of the tip. Secondly, we adjusted the high scale in which the shade of colors had to variate. Finally, we chosed 4 different colour scales in order to better distinguish the 4 pictures.
 
-We can notice that the pictures showing the 3 surfaces are $25\mu m \times 25 \mu m$, while the last picture has a larger area $50\mu m \times 50 \mu m$ in order to let us see part of the all 4 surfaces. We can also observe that the range of the z-axis has been chosen a bit larger in the last picture ($\Delta V=189V+27V=216V$) because we are describing more surfaces in only one image.
-
-Finally we report the 3D image got from the data taken in the border:
+We can notice that the pictures showing the 3 surfaces are $\SI{25}{\micro m} \times \SI{25}{\micro m}$, while the last picture has a larger area $\SI{50}{\micro m} \times \SI{50}{\micro m}$ in order to let us see part of the all 4 surfaces. We can also observe that the range of the z-axis has been chosen a bit larger in the last picture ($\Delta V=189V+27V=216V$) {\color{red}because we are describing more surfaces in only one image.} Finally we report the 3D image got from the data taken in the border:
 
 \begin{figure}[ht]
 \centering
