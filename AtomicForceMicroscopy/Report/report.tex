@@ -54,7 +54,7 @@ By ultrasmall forces we mean forces of less than \SI{1}{\nano\N}. How this force
 \label{fig:AFM_modes}
 \end{figure}
 
-{\color{red}Basically, we can say that AFM can be used in three modes or regimes} (see Figure \ref{fig:AFM_modes}): static, repulsive or contact mode; dynamic or tapping mode; and non-contact mode. In this report we will talk about the first two.
+Basically, we can say that AFM can be used in two main modes or regimes (see Figure \ref{fig:AFM_modes}): static, repulsive or contact mode, and dynamic or tapping mode.
 
 In the static mode, a sharp tip is brought into contact with the surface of the sample. The tip is placed at the end of a flexible (only in the normal direction) cantilever, which can deflect depending on the force that the tip ``feels''. The repulsive forces are due to electronic orbital overlap between the atoms of the tip and those in the surface of the sample. By measuring the deflection of the cantilever using tunneling, capacitive or optical detectors (see Figure \ref{fig:Deflection_measurement}), we can get a measure of the force if the cantilever spring constant is known.
 
@@ -94,7 +94,14 @@ Feedback mechanisms and feedback parameters are ubiquitous in our life \cite{nan
 
 In our AFM experiment, the feedback parameter that serves as the setpoint in contact mode is the the cantilever deflection. In the tapping mode, it is the cantilever oscillation amplitude. The NaioAFM continuously tries to keep this feedback parameter constant at its setpoint by adjusting the z-piezo to move the cantilever probe up and down. And the resulting z-piezo movements provide the hegight information to create the surface topography.
 
-The feedback loop is controlled through the proportion-integral-derivative control, also referred as the PID gains. These different gains refer to differences in how the feedback loop adjusts to deviations from the setpoint value, i.e. the error signal. In this experiment, the integral gain is the most important one and can have a dramatic effect on the image quality. The proportional gain might provide slight improvement only after the integral gain has been optimized. And the derivative gain is mainly for samples with tall edges.
+The feedback loop is controlled through the proportion-integral-derivative control, also referred as the PID gains. These different gains refer to differences in how the feedback loop adjusts to deviations from the setpoint value, i.e. the error signal. In this experiment, the integral gain is the most important one and can have a dramatic effect on the image quality. The proportional gain might provide slight improvement only after the integral gain has been optimized. And the derivative gain is mainly for samples with tall edges. A diagram of the feedback mechanism of the Z-controller can be seen in Figure .
+
+\begin{figure}[hbt]
+\centering
+\includegraphics[width=0.8\textwidth]{Feedback_NaioAFM}
+\caption{Diagram of the Z-controller of the NaioAFM from the instrument's manual.}
+\label{fig:feedback_z-controller}
+\end{figure}
 
 If gains are set too low, the PID loop is not able to keep the setpoint accurately. Contrary, if gains are chosen too high, the result will be electrical noise in the image interference from the feedback (see Figure \ref{fig:feedback}). This is due to the fact that compensation for a deviation from the setpoint is larger than the error itself.
 
@@ -115,25 +122,33 @@ The NaioAFM by Nanosurf \cite{NaioAFM} is the AFM used in this experiment. As th
 
 \subsection{Gwyddion}
 
-\begin{figure}[ht]
-\centering
-\includegraphics[width=0.4\textwidth]{scale_selection}
-\caption{Selection of the highnesses interval}
-\label{fig:scale_selection}
-\end{figure}
-
-NaioAFM saves the data obtained by the samples in \texttt{.nid} files. These files contain 3-dimensional data of the sample: to every point in the (x,y) plane it is associated a height. The height is shown in 2-dimensional pictures {\color{red}by means of a variable the gray scale}. The lighter the gray is, the higher the z point is.
+NaioAFM saves the data obtained by the samples in \texttt{.nid} files. These files contain 3-dimensional data of the sample: to every point in the (x,y) plane there is an associated height. The height is shown in 2-dimensional heatmaps using a gray colormap. The lighter the gray, the higher the z point is (see Figure \ref{fig:heatmap_rawdata}.)
 
 Thanks to the Gwyddion software, it is possible to partially correct the noisy parts of the pictures manually or by means of some automatic tools. Moreover, the software allow us to model the colour scale by selecting the height range (Figure~\ref{fig:scale_selection}).
+
+\begin{figure}[ht]
+\centering
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{heatmap_rawdata}
+\caption{Raw heatmap shown in Gwyddion after importing raw data from NaioAFM without any processing.}
+\label{fig:heatmap_rawdata}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+\centering
+\includegraphics[width=0.7\textwidth]{scale_selection}
+\caption{Selection of the highnesses interval}
+\label{fig:scale_selection}
+\end{subfigure}
+\caption{Some screenshots of Gwyddion.}
+\label{fig:gwyddion}
+\end{figure}
 
 Finally, Gwyddion allows us to improve the aesthetics of the images, making them more intuitive. First of all, we can select the colour scale which labels the height of the picture. Secondly, the software is able to generate a 3-dimensional pictures of the sample, as we will see in the following section.
 
 \subsection{AFM artifacts}
 When using an AFM, as well as in many other experiments, we may find features which appear in the obtained images that are not present in the observed sample. These are called artifacts \cite{artifacts} and there are four primary sources of artifacts in images measured with AFMs: probes, scanners, image processing and vibrations.
 
-Images measured with an AFM are always a convolution of the probe geometry and the shape of the features being imaged. In order to avoid probe-generated artifacts, the tip should be much smaller than the features being measured. When this condition is not satisfied or if the tip is damaged, features on the sample may appear larger, smaller or with strangely shaped patterns as shown in Figure \ref{fig:artifacts_probe}.
-
-\begin{figure}[H]
+\begin{figure}[ht]
 \centering
 \begin{subfigure}[b]{0.45\textwidth}
 \includegraphics[width=\textwidth]{artifacts_probe_1}
@@ -153,6 +168,8 @@ Images measured with an AFM are always a convolution of the probe geometry and t
 \caption{Some examples of probe-generated artifacts \cite{artifacts}.}
 \label{fig:artifacts_probe}
 \end{figure}
+
+Images measured with an AFM are always a convolution of the probe geometry and the shape of the features being imaged. In order to avoid probe-generated artifacts, the tip should be much smaller than the features being measured. When this condition is not satisfied or if the tip is damaged, features on the sample may appear larger, smaller or with strangely shaped patterns as shown in Figure \ref{fig:artifacts_probe}.
 
 Artifacts may also arise due to the motion of the scanner in the X, Y and Z directions. Piezoelectric materials move in a nonlinear motion when a linear voltage ramp is applied. If they are not well calibrated, sizes and forms my appear severely distorted (see Figure \ref{fig:artifacts_scanner_1}). Besides, the geometry of the scanner and the positioning of it relative to the sample can also create artifacts (see Figure \ref{fig:artifacts_scanner_2}).
 
@@ -228,8 +245,9 @@ Vibrations caused by sound waves can also cause artifacts. Even though the NaioA
 \label{fig:artifacts_others}
 \end{figure}
 
+\newpage
 \section{Results and discussion}
-In this section we will describe the analysis of the 3 different samples using both static and tapping mode.
+In this section we will describe the analysis of the 3 different samples using both static and tapping mode. We use two different types of tips, both made of Silicon nitride (Si$_3$N$_4$): \texttt{PPP-CONTR-20} for the static mode and \texttt{Tap190Al-G} for tapping mode.
 
 \subsection{Static mode}
 \subsubsection{Calibration}
@@ -246,12 +264,14 @@ We fixed the sample in the centre of the AFM and used the camera installed insid
 
 \begin{figure}[ht]
 \centering
-\includegraphics[scale=0.4]{calibration_sample.JPG}
+\includegraphics[scale=0.4]{calibration_sample}
 \caption{Calibration sample view from the camera installed in Nanosurf NaioAFM}
 \label{fig:cal_sam}
 \end{figure}
 
 Once we had chosen the surface which we wanted to analyse, we put the tip as close as possible to the sample without making them contact by using the software. Then, using the \emph{approach mode}, we brought the tip in contact with the surface. This mode uses the setpoint and the feedback mechanism to very slowly put the tip in contact minimizing the risk of breaking the tip.
+
+The key parameter we tried to optimize was the setpoint. In the static mode, the deflection of the cantilever is used as the error signal for the Z-controller feedback mechanism. In the software, the setpoint is express in \si{\nano N} and it is calculated by multiplying the deflection with the spring constant of the selected cantilever, which we had to choose before doing anything. A setpoint too high may damage the tip. We did 8 measurements with setpoints from \SI{2}{\nano N} to \SI{20}{\nano N}. We did not have time to optimize the PID values so we used the default and suggested ones: $\text{I-Gain}=1000$ and $\text{P-Gain}=1000$.
 
 In the following pictures, it is possible to see 3 different shapes captured from our calibration sample:
 
@@ -280,10 +300,6 @@ In the following pictures, it is possible to see 3 different shapes captured fro
 \caption{Some pictures of the calibration sample}
 \end{figure}
 
-The previous pictures have been processed using Gwyddion software. First of all we used some masks to eliminate automatically some imperfections, as for instance orizontal tears caused by abrupt movements of the tip. Secondly, we adjusted the high scale in which the shade of colors had to variate. Finally, we chosed 4 different colour scales in order to better distinguish the 4 pictures.
-
-We can notice that the pictures showing the 3 surfaces are $\SI{25}{\micro m} \times \SI{25}{\micro m}$, while the last picture has a larger area $\SI{50}{\micro m} \times \SI{50}{\micro m}$ in order to let us see part of the all 4 surfaces. We can also observe that the range of the z-axis has been chosen a bit larger in the last picture ($\Delta V=189V+27V=216V$) {\color{red}because we are describing more surfaces in only one image.} Finally we report the 3D image got from the data taken in the border:
-
 \begin{figure}[ht]
 \centering
 \includegraphics[scale=0.47]{sm_border_3D}
@@ -291,8 +307,12 @@ We can notice that the pictures showing the 3 surfaces are $\SI{25}{\micro m} \t
 \label{fig: cal sam border}
 \end{figure}
 
+The previous pictures have been processed using Gwyddion software. First of all we used some masks to eliminate automatically some imperfections, as for instance orizontal tears caused by abrupt movements of the tip. Secondly, we adjusted the high scale in which the shade of colors had to variate. Finally, we chose 4 different colour scales in order to better distinguish the 4 pictures.
+
+We can notice that the pictures showing the 3 surfaces are $\SI{25}{\micro m} \times \SI{25}{\micro m}$, while the last picture has a larger area $\SI{50}{\micro m} \times \SI{50}{\micro m}$ in order to let us see part of the all 4 surfaces. Additionally, a 3D image from the data taken in the border can be seen in Figure \ref{fig: cal sam border}.
+
 \subsubsection{Sample 1}
-The first sample was {\color{Red} I don't remember the materials}. We took the measurements moving the tip in 2 different directions that were oriented by $\pi /4$ between them. We can observe this fact in the following pictures:
+The first sample was labelled as \texttt{Cr \SI{2}{\nano m}, Al \SI{20}{\nano m}}. {\color{red}We took the measurements moving the tip in 2 different directions that were oriented by $\pi /4$ between them}. We can observe this fact in the following pictures:
 
 \begin{figure}[H]
 \centering
@@ -390,8 +410,13 @@ This time we took only one measurement in the center of the light green part as 
 In this last sample we can notice a hilly surface. In order to observe this plot, the precision in the highness had to be improved, indeed we can see that the $V$ scale is of the order of $mV$ instead of $V$ as before.
 
 \subsection{Tapping mode}
+After changing the tip, from the \texttt{PPP-CONTR-20} to the \texttt{Tap190Al-G}, the first thing we had to do was find the frequency of the cantilever. This was done automatically by the NaioAFM software with the \emph{Frequency Sweep} procedure.
+
 \subsubsection{Calibration}
-Even in this case, the first step was the measurement of the calibration sample.
+Once again, the first step was the measurement of the calibration sample. For the default gain values ($\text{P-Gain}=1000$ and $\text{I-Gain}=1000$), we did several measurements with different values of the setpoint. In this case, it is not a force (in \si{\nano N}) anymore like in the static mode, but a percentage that represents the threshold in the reduction of the oscillation's amplitude. For example, a setpoint of 60\% means that the Z-controller will move the tip closer to the sample until the vibration amplitude has decreased to 60\% of the vibration amplitude when it is far away from the sample.
+
+With the calibration grid we tried setpoints of 45\%, 50\%, 65\% and 75\%. We fixed the setpoint at 45\% and then we tried to optimize the PID values. We only noticed differences by varying the I-Gain value.
+
 
 \begin{figure}[H]
 \centering
@@ -480,6 +505,7 @@ Looking at the 3 dimensional plots, we can see that in this case the measurement
 We have studied and understand the working principle of AFM, as well as the two most common operation modes: static or contact mode, and tapping or dynamic mode. We have read about and recognize the most common artifacts in AFM images. Finally, we have used the compact NaioAFM both in static and tapping mode to measure three different samples, after optimizing the PID values using a calibration sample. Better results were obtained in the tapping mode, probably due to the fact that we had some issues with the contact mode tip. The Naiosurf software provided with the AFM was used to captured the raw data, and the open source software Gwyddion was utilized to process the images (filtering, background correction, coloring...) and obtain the final ones presented in the report.
 
 \nocite{*}
+\vfill
 \bibliographystyle{unsrt}
 \bibliography{references}
 \end{document}
