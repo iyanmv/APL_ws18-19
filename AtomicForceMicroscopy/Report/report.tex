@@ -247,7 +247,7 @@ Vibrations caused by sound waves can also cause artifacts. Even though the NaioA
 
 \newpage
 \section{Results and discussion}
-In this section we will describe the analysis of the 3 different samples using both static and tapping mode. We use two different types of tips, both made of Silicon nitride (Si$_3$N$_4$): \texttt{PPP-CONTR-20} for the static mode and \texttt{Tap190Al-G} for tapping mode.
+In this section we will describe the analysis of the 3 samples using static and tapping mode. We use two different types of tips, both made of Silicon nitride (Si$_3$N$_4$): \texttt{PPP-CONTR-20} for the static mode and \texttt{Tap190Al-G} for tapping mode.
 
 \subsection{Static mode}
 \subsubsection{Calibration}
@@ -273,7 +273,7 @@ Once we had chosen the surface which we wanted to analyse, by using the software
 
 The key parameter we tried to optimize was the setpoint. In the static mode, the deflection of the cantilever is used as the error signal for the Z-controller feedback mechanism. In the software, the setpoint is express in \si{\nano N} and it is calculated by multiplying the deflection with the spring constant of the selected cantilever, which we had to choose before doing anything. A setpoint too high may damage the tip. We did 8 measurements with setpoints from \SI{2}{\nano N} to \SI{20}{\nano N}. We did not have time to optimize the PID values so we used the default and suggested ones: $\text{I-Gain}=1000$ and $\text{P-Gain}=1000$.
 
-In the following pictures, it is possible to see 3 different shapes captured from our calibration sample:
+In the following pictures, it is possible to see three different shapes captured from our calibration sample. The obtained height of the patterns was between \SI{107}{\nano m} and \SI{110}{\nano n} after some processing using the read value tool for some random positions of the pictures (see screenshot \ref{fig:read_tool}).
 
 \begin{figure}[H]
 \centering
@@ -300,65 +300,78 @@ In the following pictures, it is possible to see 3 different shapes captured fro
 \caption{Some pictures of the calibration sample}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
+\begin{subfigure}[b]{0.45\textwidth}
 \includegraphics[scale=0.47]{sm_border_3D}
 \caption{3D plot of the calibration sample's border}
 \label{fig: cal sam border}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+\centering
+\includegraphics[width=0.6\textwidth]{static_mode_read_value_height}
+\caption{Read tool to obtain height value}
+\label{fig:read_tool}
+\end{subfigure}
+\caption{3D plot of the calibration sample's border}
+\label{fig:3d_and_read_value}
 \end{figure}
 
-The previous pictures have been processed using Gwyddion software. First of all we used some masks to eliminate automatically some imperfections, as for instance orizontal tears caused by abrupt movements of the tip. Secondly, we adjusted the high scale in which the shade of colors had to variate. Finally, we chose 4 different colour scales in order to better distinguish the 4 pictures.
+The previous pictures have been processed using Gwyddion software. First of all we used some masks to eliminate automatically some imperfections, as for instance orizontal tears caused by abrupt movements of the tip. Secondly, we adjusted the high scale in which the shade of colors had to variate. Finally, we chose four different colour scales in order to better distinguish the four pictures.
 
 We can notice that the lenght scale of the pictures on the top and on the sides. Additionally, a 3D image from the data taken in the border can be seen in Figure \ref{fig: cal sam border}.
 
 \subsubsection{Sample 1}
-The first sample was labelled as \texttt{Cr \SI{2}{\nano m}, Al \SI{20}{\nano m}}. {\color{red}We took the measurements moving the tip in 2 different directions that were oriented by $\pi /4$ between them}. We can observe this fact in the following pictures:
+The first sample was labelled as \texttt{Cr \SI{2}{\nano m}, Al \SI{20}{\nano m}}. We were able to make one measurement in the dark part of the sample before having some issues doing the approach (see Figure \ref{fig:sample1_first_tip}). We decided to change the tip but the next measurement (Figure \ref{fig:sample1_second_tip}) suffered from an distorsion, an artifact probably due to a certain angle between the tip and the sample's surface as shown previoulsy in Figure \ref{fig:artifacts_scanner_2}.
 
 \begin{figure}[H]
 \centering
 \begin{subfigure}[b]{0.45\textwidth}
 \includegraphics[width=\textwidth]{sm_sample1}
-\caption{Sample 1: first direction}
-\label{fig:}
+\caption{Sample 1 with first tip}
+\label{fig:sample1_first_tip}
 \end{subfigure}
 \begin{subfigure}[b]{0.45\textwidth}
 \includegraphics[width=\textwidth]{sm_sample1_dir2}
-\caption{Sample 1: second direction}
-\label{fig:}
+\caption{Clear artifact with the same sample 1}
+\label{fig:sample1_second_tip}
 \end{subfigure}\\\vspace{.2cm}
 \begin{subfigure}[b]{0.45\textwidth}
 \includegraphics[width=\textwidth]{sm_sample1_3D}
-\caption{Sample 1: first direction, 3D plot}
+\caption{3D plot of the first measurement}
 \label{fig:}
 \end{subfigure}
 \begin{subfigure}[b]{0.45\textwidth}
 \includegraphics[width=\textwidth]{sm_sample1_dir2_3D}
-\caption{Sample 1: second direction, 3D plot}
+\caption{3D plot of the second measurement}
 \label{fig:}
 \end{subfigure}
 \caption{Sample 1}
 \end{figure}
 
-We can see from the pictures that the 2 directions give us a exagonal beehive plot. The second direction makes the exagons more stratched.%, but the highness is approximatively the same ($\Delta V_{dir1} \simeq \Delta V_{dir2}$).
+We can see from the two measurements that we have some kind of honeycomb structure with spheres of height $\sim\SI{0.5}{\micro m}$.
 
 \subsubsection{Sample 2}
-The second sample is BOH. We can see from Figure~\ref{fig:sample2_set} that the surface of this material was scratched and full of imperfections.
+We did not have enough time to measure sample 2 in the static mode. Results for this sample are shown in the tapping mode section.
+
+\subsubsection{Sample 3}
+The third sample contained gold particles in silicon dioxide. We can see from Figure \ref{fig:sample_3_static} that the surface of this material was scratched and with some imperfections.
 
 \begin{figure}[ht]
 \centering
 \includegraphics[scale=0.4]{sm_sample2_set.JPG}
-\caption{Picture of sample 2 from the camera installed in Nanosurf NaioAFM}
-\label{fig:sample2_set}
+\caption{Picture of sample 3 from the camera installed in Nanosurf NaioAFM}
+\label{fig:sample_3_static}
 \end{figure}
 
-{\color{red} We have have notice that the only part of the material which has a plot is the light green part (actually, this seems not true standing to your words)} (Figure~\ref{fig:sample2_set}). Therefore we have decided to take measurments inside the plot and in the border (the position of the tip is shown in Figure~\ref{fig:sample2_set}).
+We noticed two distinguishable parts in the sample: light and dark green. We first decide to measure in the dark green areas and in the frontier between dark and green as shown in Figure \ref{fig:sample_3_static}.
 
 \begin{figure}[H]
 \centering
 \begin{subfigure}[b]{0.45\textwidth}
 \includegraphics[width=\textwidth]{sm_sample2}
 \caption{Sample 2: inside the plot}
-\label{fig:}
+\label{fig:sample2}
 \end{subfigure}
 \begin{subfigure}[b]{0.45\textwidth}
 \includegraphics[width=\textwidth]{sm_sample2_border}
@@ -378,36 +391,30 @@ The second sample is BOH. We can see from Figure~\ref{fig:sample2_set} that the 
 \caption{Sample 2}
 \end{figure}
 
-We can observe that the plot reminds a set of stars. Moreover, we can see that the surface outside this plot is flat compared to the edges of the star.
+We can observe that the plot reminds a set of stars. Moreover, we can see that the surface outside this plot is flat compared to the edges of the star. This triangle patterns may be an artifact due to the fact that the tip is as big as the feature in the surface we are trying to observe. We think that this corresponds to the golden particles.
 
-\subsubsection{Sample 3}
-As we can notice from the following picture (Figure~\ref{fig:sample3_set}), even the third sample was characterized by scratches and imperfections.
+Then we decide to measure only in the lighter part. We took only one measurement in the center of the light green part as shown in Figure \ref{fig:sample3_light_green_cam}. In this measurement (see Figure \ref{fig:sample3_light_green}) we can notice a hilly surface, but without the interesting pattern found in the dark areas of the sample.
 
 \begin{figure}[ht]
 \centering
 \includegraphics[scale=0.4]{sm_sample3_set}
 \caption{Picture of sample 3 from the camera installed in Nanosurf NaioAFM}
-\label{fig:sample3_set}
+\label{fig:sample3_light_green_cam}
 \end{figure}
-
-This time we took only one measurement in the center of the light green part as shown below:
 
 \begin{figure}[H]
 \centering
 \begin{subfigure}[b]{0.45\textwidth}
 \includegraphics[width=\textwidth]{sm_sample3}
 \caption{Sample 3: inside the plot}
-\label{fig:}
 \end{subfigure}
 \begin{subfigure}[b]{0.45\textwidth}
 \includegraphics[width=\textwidth]{sm_sample3_3D_improved}
 \caption{Sample 3: 3D plot}
-\label{fig:}
 \end{subfigure}
 \caption{Sample 3}
+\label{fig:sample3_light_green}
 \end{figure}
-
-In this last sample we can notice a hilly surface.
 
 \subsection{Tapping mode}
 After changing the tip, from the \texttt{PPP-CONTR-20} to the \texttt{Tap190Al-G}, the first thing we had to do was find the frequency of the cantilever. This was done automatically by the NaioAFM software with the \emph{Frequency Sweep} procedure.
