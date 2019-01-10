@@ -52,14 +52,104 @@ What you explained in the colloquium but don't forget to mention that the reason
 
 \subsection{Holography (together?)}
 
-\section{Experimental procedure (Iyán)}
+\section{Experimental procedure}
+\paragraph{Optical setup}
+The first thing we had to do was adjust the optical bench. Almost everything was already set up but we did have to align the objective and the spatial filter for the reference beam. These optical elements are placed just after the beam splitter in the path of the reference beam (see Figure \ref{fig:optical_bench_1}). First we aligned the backside of the objective with the help of a small paper sheet. Then we put the spatial filter just after it and use the screws to align it at exactly where the beam was focused. Transversal alignment was done by trying to find the maximum of light through the spatial filter. Once we did that, we move the spatial filter in the longitudinal direction till the Airy pattern due to diffraction from the optical system's aperture disappeared and we had a clear Gaussian beam.
 
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.8\textwidth]{Optical_bench_1}
+\caption{The BS divides the laser in two beams: the reference and the object beam. Reference beam goes through an objective and a spatial filter in order to obtain a Gaussian beam, which is reflected by a mirror to the photosensitive plate.}
+\label{fig:optical_bench_1}
+\end{figure}
+
+\paragraph{Mixing of chemicals}
+In order to observe the hologram, we needed to protect the photosensitive material from light once we exposed it to the desired object. This was done by using a negative developer and a rapid fixer. We prepared two solutions using the the chemicals produced by \href{https://www.tetenal.com/}{Tetenal} shown in Figure \ref{fig:chemicals}. We prepared \SI{1}{\litre} of developer by mixing \SI{200}{\milli\litre} of the ultrafin with \SI{800}{\milli\litre} of water. We also prepared \SI{1}{\litre} of fixer with \SI{150}{\milli\litre} of the superfix plus and \SI{850}{\milli\litre} of water.
+
+The procedure to expose, develop and fix the photosensitive plate was the following: \SI{90}{\second} of exposure to the object and reference beams, \SI{2}{\min} bath in the developer dilution, \SI{10}{\second} bath in water, \SI{4}{\min} bath in the fixer dilution, and finally \SI{2}{\min} bath in water. After this, the plates were put to dry next to a fan.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.3\textwidth]{Chemicals}
+\caption{The negative developer and the rapid fixer used to prepare the two dilutions.}
+\label{fig:chemicals}
+\end{figure}
+
+\paragraph{}
+An object is illuminated by the object beam and the reflected light reaches the photosensitive plate. Simultaneously, the reference beam illuminates directly the photosensitive plate in order to obtain an interference pattern. {\color{red}Complete when formulas are written in the Theory section.} For creating the hologram, the beam splitter is put in the 95-5 position, so 5\% of the intensity of the light goes to the reference path and 95\% illuminates the object.
+
+\paragraph{Holography interferometry}
+In order to see interference fringes in the hologram, instead of the long single \SI{90}{\second} exposure mentioned before, we used two \SI{45}{\second} exposures, and we moved the object, by either a very small distance or an angle, after the first exposure.
+
+Number of fringes were obtained using \href{https://imagej.net/}{ImageJ}. Images were first desaturated and then the profile of a line crossing all the fringes was plotted. By counting the peaks we determined the number of fringes.
 
 
 \section{Results and conclusions (Michele)}
 
+\begin{figure}[ht]
+\centering
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{car_knight}
+\caption{Object}
+\label{fig:car_knight}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{Off-axis_hologram}
+\caption{Hologram}
+\label{fig:off_axis_hologram}
+\end{subfigure}
+\caption{Off-axis exposure of a car with a knight chess piece on the bonnet. On the left, a picture of the original object. On the right, a picture of the obtained hologram.}
+\label{fig:off-axis_exposure}
+\end{figure}
 
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.6\textwidth]{Holographic_interferometry_position}
+\caption{Picture of an hologram with an interference pattern caused by the movement of the metallic piece $\approx\SI{14}{\micro \m}$ between exposures.}
+\label{fig:holographic_interferometry_position}
+\end{figure}
 
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{Holographic_interferometry_position_fringes}
+\caption{Profile along the vertical direction (yellow line). Peaks correspond to constructive interference and by counting them we get the number of fringes.}
+\label{fig:holographic_interferometry_position_fringes}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.6\textwidth]{Holographic_interferometry_angle}
+\caption{Picture of an hologram with an interference pattern caused by the rotation of the metallic piece $\approx (1/72)^\circ$ between exposures.}
+\label{fig:holographic_interferometry_angle}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{Holographic_interferometry_angle_fringes}
+\caption{Profile along the horizontal direction (yellow line).}
+\label{fig:holographic_interferometry_angle_fringes}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{car_double_exposure_1}
+\caption{Position first exposure}
+\label{fig:car_knight}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{car_double_exposure_2}
+\caption{Position second exposure}
+\label{fig:off_axis_hologram}
+\end{subfigure}\\\vspace{.2cm}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{car_double_exposure_hologram}
+\caption{Picture of the obtained hologram}
+\label{fig:car_knight}
+\end{subfigure}
+\caption{Setup and hologram of a double \SI{45}{\second} exposure in which we moved and rotated the car between exposures.}
+\label{fig:experiment_double_exposure}
+\end{figure}
 
 \nocite{*}
 \bibliographystyle{unsrt}
