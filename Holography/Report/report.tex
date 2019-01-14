@@ -116,24 +116,33 @@ If we suppose that the wave is propagating only along z, we have:
 \vb{B}(z,t) &=\vb{B_0}e^{i(kz-\omega t+\phi_0)}\\
 \vb{E}(z,t) &=\vb{E_0}e^{i(kz-\omega t+\phi_0)}
 \end{align}
-
+Using equation (\ref{eq:maxwell__wo_1}) and (\ref{eq:maxwell_wo_3}), we can see that the z-component of the fields is zero. Moreover, using equation (\ref{eq:maxwell_wo_2}), we easily notice that magnetic and electric field have to be orthogonal.
 \subsection{Superposition principle (Michele)}
 What you explained in the colloquium but don't forget to mention that the reason for this is because Maxwell equations are linear.
 
-Let us suppose that we have 2 waves of the form (\ref{elec})\footnote{We call $\phi_{1,2}\equiv\vb{k_{1,2}} \cdot \vb{r}-\omega_{1,2} t+\phi_0$}. We will see what an observer would measure looking at the superposition between the two waves. What we are going to measure in a laboratory is the intensity of light, where $I\propto \abs{\vb{E}}^2$.
+Let us suppose that we have 2 waves of the form (\ref{elec})\footnote{We call $\phi_{1,2}(t)\equiv\vb{k_{1,2}} \cdot \vb{r}-\omega_{1,2} t+\phi_0$}. We will see what an observer would measure looking at the superposition between the two waves. What we are going to measure in a laboratory is the intensity of light, where $I\propto \abs{\vb{E}}^2$.
 
 In our case:
 \begin{align*}
-I_{TOT}\propto \abs{\vb{E_1}+\vb{E_2}}^2 &=\abs{\vb{E_{0,1}}e^{i\phi_1}+\vb{E_{0,2}}e^{i\phi_2}}^2\\
-&=\abs{\vb{E_{0,1}}}^2+\abs{\vb{E_{0,2}}}^2+\vb{E_{0,1}}\cdot \vb{E_{0,2}}e^{i\phi_1}e^{-i\phi_2}+\vb{E_{0,2}}\cdot \vb{E_{0,1}}e^{i\phi_2}e^{-i\phi_1}
+I_{TOT}\propto \abs{\vb{E_1}+\vb{E_2}}^2 &=\abs{\vb{E_{0,1}}e^{i\phi_1}+\vb{E_{0,2}}e^{i\phi_2(t)}}^2\\
+&=\abs{\vb{E_{0,1}}}^2+\abs{\vb{E_{0,2}}}^2+\vb{E_{0,1}}\cdot \vb{E_{0,2}}e^{i\phi_1}e^{-i\phi_2(t)}+\vb{E_{0,2}}\cdot \vb{E_{0,1}}e^{i\phi_2(t)}e^{-i\phi_1(t)}
 \end{align*}
 Finally, using Euler's formulae we get:
 \begin{equation}
-I_{TOT}\propto I_1+I_2+2\vb{E_{0,1}}\cdot \vb{E_{0,2}}cos(\phi_1-\phi_2)
+I_{TOT}(t)\propto I_1+I_2+2\vb{E_{0,1}}\cdot \vb{E_{0,2}}cos(\phi_1(t)-\phi_2(t))
 \end{equation}
+We can notice that there is a superposition term in the result. This term is responsible of the so called \emph{interference}, i.e. constructive (when $cos(\Delta\phi)>0$) or distructive (when $cos(\Delta\phi)<0$) superposition of the two waves.  Anyway, it is really hard to observe this term because, during an experiment, we measure the avarage of the intensity over a certain interval of time:
+\begin{align*}
+I_{AV} &= \frac{1}{t_{max}}\int_0^{t_{max}}I(t)dt\\ &\propto I_1+I_2+ 2\vb{E_{0,1}}\cdot \vb{E_{0,2}} \frac{1}{t_{max}} \int_0^{t_{max}} cos(\phi_1(\vb{r},t)-\phi_2(\vb{r},t)) dt\xrightarrow{t_{max}\rightarrow \infty} I_1+I_2
+\end{align*}
+
 
 \subsection{Coherence (Michele)}
-
+When we speak about \emph{coherence of light}, we are referring to two or more waves whose phase difference $\Delta\phi(\vb{r},t)\equiv \phi_1(\vb{r},t)-\phi_2(\vb{r},t)$ is constant in space and time:
+\begin{equation}
+\Delta\phi(\vb{r},t)=\Delta\phi_0
+\end{equation}
+A second reason why we do not observe interference in everyday life is the fact that the superposition term varies too fastly because of the non-coherence of light coming from natural sources.
 \subsection{Physics of lasers (Iyán)}
 
 \subsection{Holography (together?)}
