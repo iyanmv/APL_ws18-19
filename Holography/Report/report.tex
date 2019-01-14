@@ -76,8 +76,61 @@ If we accept Maxwell's equations, and we should since no one has ever found an e
 \subsection{Wave equation (Michele)}
 What you did in the colloquium and put some solutions (plane and spherical waves, and Gaussian beams for example)
 
+By means of the Maxwell equations, it is possible to describe the propagation of light as the propagation of a wave called electromagnetic wave. It is not hard to imagine that light does not carry charge, hence we will suppose $\rho=0$ and $\textbf{j}=0$.
+
+In this conditions, Maxwell's equations read:
+\begin{subequations}\label{eq:maxwell_equations_wo_charge}
+\begin{align}
+&\div\vb{E}=0\label{eq:maxwell__wo_1}\\
+&\curl\vb{E}=-\pdv{\vb{B}}{t}\label{eq:maxwell_wo_2}\\
+&\div\vb{B}=0\label{eq:maxwell_wo_3}\\
+&\curl\vb{B}=\frac{1}{c^2}\qty(\pdv{\vb{E}}{t})\label{eq:maxwell_wo_4}
+\end{align}
+\end{subequations}
+
+We can decouple the previous equations using the following rule:
+\begin{equation}
+\curl \curl \vb{F}=\nabla (\div \vb{F})- \nabla^2\vb{F}\label{rule}
+\end{equation}
+where $\vb{F}$ is a generic field. Let us apply for instance equation (\ref{eq:maxwell_wo_3}) and (\ref{eq:maxwell_wo_4}) to (\ref{rule}) to get:
+\begin{align*}
+\curl \curl \vb{B} &=\nabla (\div \vb{B})- \nabla^2\vb{B} \\
+\curl \frac{1}{c^2}\qty(\pdv{\vb{E}}{t}) &=0-\nabla^2\vb{B} \\
+\frac{1}{c^2}\qty(\pdv{\curl \vb{E}}{t}) &=-\nabla^2\vb{B}
+\end{align*}
+Finally, using (\ref{eq:maxwell_wo_2}):
+\begin{equation}
+\nabla^2\vb{B}=\frac{1}{c^2}\pdv{^2 \vb{B}}{t^2}
+\end{equation}
+Analogously for the electric field, we obtain:
+\begin{equation}
+\nabla^2\vb{E}=\frac{1}{c^2}\pdv{^2 \vb{E}}{t^2}
+\end{equation}
+We have obtained two three-dimensional wave equations. The general solution is of the form:
+\begin{align}
+\vb{B}(\vb{r},t) &=\vb{B_0}e^{i(\vb{k} \cdot \vb{r}-\omega t+\phi_0)}\\
+\vb{E}(\vb{r},t) &=\vb{E_0}e^{i(\vb{k} \cdot \vb{r}-\omega t+\phi_0)}\label{elec}
+\end{align}
+If we suppose that the wave is propagating only along z, we have:
+\begin{align}
+\vb{B}(z,t) &=\vb{B_0}e^{i(kz-\omega t+\phi_0)}\\
+\vb{E}(z,t) &=\vb{E_0}e^{i(kz-\omega t+\phi_0)}
+\end{align}
+
 \subsection{Superposition principle (Michele)}
 What you explained in the colloquium but don't forget to mention that the reason for this is because Maxwell equations are linear.
+
+Let us suppose that we have 2 waves of the form (\ref{elec})\footnote{We call $\phi_{1,2}\equiv\vb{k_{1,2}} \cdot \vb{r}-\omega_{1,2} t+\phi_0$}. We will see what an observer would measure looking at the superposition between the two waves. What we are going to measure in a laboratory is the intensity of light, where $I\propto \abs{\vb{E}}^2$.
+
+In our case:
+\begin{align*}
+I_{TOT}\propto \abs{\vb{E_1}+\vb{E_2}}^2 &=\abs{\vb{E_{0,1}}e^{i\phi_1}+\vb{E_{0,2}}e^{i\phi_2}}^2\\
+&=\abs{\vb{E_{0,1}}}^2+\abs{\vb{E_{0,2}}}^2+\vb{E_{0,1}}\cdot \vb{E_{0,2}}e^{i\phi_1}e^{-i\phi_2}+\vb{E_{0,2}}\cdot \vb{E_{0,1}}e^{i\phi_2}e^{-i\phi_1}
+\end{align*}
+Finally, using Euler's formulae we get:
+\begin{equation}
+I_{TOT}\propto I_1+I_2+2\vb{E_{0,1}}\cdot \vb{E_{0,2}}cos(\phi_1-\phi_2)
+\end{equation}
 
 \subsection{Coherence (Michele)}
 
