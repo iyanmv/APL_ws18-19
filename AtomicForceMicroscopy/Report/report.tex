@@ -124,7 +124,9 @@ The NaioAFM by Nanosurf \cite{NaioAFM} is the AFM used in this experiment. As th
 
 NaioAFM saves the data obtained by the samples in \texttt{.nid} files. These files contain 3-dimensional data of the sample: to every point in the (x,y) plane there is an associated height. The height is shown in 2-dimensional heatmaps using a gray colormap. The lighter the gray, the higher the z point is (see Figure \ref{fig:heatmap_rawdata}.)
 
-Thanks to the Gwyddion software, it is possible to partially correct the noisy parts of the pictures manually or by means of some automatic tools. Moreover, the software allow us to model the colour scale by selecting the height range (Figure~\ref{fig:scale_selection}) and to set the 0 of the z-axis.
+Thanks to the Gwyddion software, it is possible to partially correct the noisy parts of the pictures manually or by means of some automatic tools. The data can be levelled by subtracting the mean plane; this corrects situations like the one shown in Figure~\ref{fig:artifacts_processing_1}. Secondly, it is possible to align the raws horizontally or vertically evaluating the median of the differences between them (the error that this tool is able to correct is shown in Figure~\ref{fig:artifacts_processing_2}). A third tool often used is the correction of the horizontal scars.
+
+Moreover, the software allow us to model the colour scale by selecting the height range (Figure~\ref{fig:scale_selection}) and to set the 0 of the z-axis.
 
 \begin{figure}[ht]
 \centering
@@ -273,7 +275,7 @@ Once we had chosen the surface which we wanted to analyse, by using the software
 
 The key parameter we tried to optimize was the setpoint. In the static mode, the deflection of the cantilever is used as the error signal for the Z-controller feedback mechanism. In the software, the setpoint is express in \si{\nano N} and it is calculated by multiplying the deflection with the spring constant of the selected cantilever, which we had to choose before doing anything. A setpoint too high may damage the tip. We did 8 measurements with setpoints from \SI{2}{\nano N} to \SI{20}{\nano N}. We did not have time to optimize the PID values so we used the default and suggested ones: $\text{I-Gain}=1000$ and $\text{P-Gain}=1000$.
 
-In the following pictures, it is possible to see three different shapes captured from our calibration sample. The obtained height of the patterns was between \SI{107}{\nano m} and \SI{110}{\nano n} after some processing using the read value tool for some random positions of the pictures (see screenshot \ref{fig:read_tool}).
+In the following pictures, it is possible to see three different shapes captured from our calibration sample. The obtained height of the patterns was between \SI{107}{\nano m} and \SI{110}{\nano n} after some processing using the read value tool for some random positions of the pictures (see screenshot \ref{fig:read_tool}). It is possible to observe the x-scale on the top of the pictures, the y-scale on the left and the height colour scale on the right.
 
 \begin{figure}[H]
 \centering
@@ -457,11 +459,12 @@ With the calibration grid we tried setpoints of 45\%, 50\%, 65\% and 75\%. We fi
 \caption{Squares surface, 3D plot}
 \label{fig:sm_border}
 \end{subfigure}
-\caption{Some pictures of the calibration sample}
+\caption{Some pictures of the calibration sample}\label{fig:: tm cal}
 \end{figure}
+As we can see, the data obtained is in agreement with the ones picked up with static mode. The height of the plots are in both modes around $16\mu m$. The corners are a bit less rounded in this mode, we can notice this fact comparing Figure~\ref{fig:3d_and_read_value} with the 3-dimensional plot in Figure~\ref{fig:: tm cal}.
 
 \subsubsection{Sample 1}
-
+In the following picture we can see the picture resulting from the data got about the first sample.
 \begin{figure}[H]
 \centering
 \begin{subfigure}[b]{0.45\textwidth}
@@ -475,7 +478,10 @@ With the calibration grid we tried setpoints of 45\%, 50\%, 65\% and 75\%. We fi
 \label{fig:}
 \end{subfigure}
 \end{figure}
+
+In this case the height is not perfectly in agreement with the one obtained by means of the static mode. With the tapping mode we can measure $43\mu m$ while with the static mode we have $56\mu m$. Anyway the plot that we can observe is in accordance in both the modes.
 \subsubsection{Sample 2}
+Here we have the data from the second sample.
 \begin{figure}[H]
 \centering
 \begin{subfigure}[b]{0.45\textwidth}
@@ -490,8 +496,10 @@ With the calibration grid we tried setpoints of 45\%, 50\%, 65\% and 75\%. We fi
 \end{subfigure}
 \end{figure}
 
-\subsubsection{Sample 3}
+The plot reminds even in this case a set of stars. The difference of height of the corners of the stars is in this case of only $2\mu m$ ($19\mu m$ in the static mode and $17\mu m$ in the tapping one); we can conclude the agreement between the 2 sets of data.
 
+\subsubsection{Sample 3}
+Finally we can see the pictures obtained from the third sample.
 \begin{figure}[H]
 \centering
 \begin{subfigure}[b]{0.45\textwidth}
@@ -506,6 +514,17 @@ With the calibration grid we tried setpoints of 45\%, 50\%, 65\% and 75\%. We fi
 \end{subfigure}
 \end{figure}
 
+In this case we can state that the plot of the material is not very regular. In fact, we probably measured 2 differents part of the sample with the 2 modes. The resulting data have a difference of the maximum height really relevant: $9.4nm$ in static mode versus $44nm$ in tapping mode.
+
+In conclusion we attach a table of the heights measured thanks to Gwyddion (as far as the 3 samples are concerned we will write the maximum height).
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[scale=0.4]{table.png}
+\end{center}
+\end{figure}
+
+Comparing the table with the pictures, we can see that it is not always clear from the images to extimate the height. Actually, even the data reported here are not very precise because of the peaks and hills; it is not always clear from which 2 points to measure the z-distance because the surfaces are often not regular.
 \section{Conclusions}
 We have studied and understand the working principle of AFM, as well as the two most common operation modes: static or contact mode, and tapping or dynamic mode. We have read about and recognize the most common artifacts in AFM images. Finally, we have used the compact NaioAFM both in static and tapping mode to measure three different samples, after optimizing the PID values using a calibration sample. Better results were obtained in the tapping mode, probably due to the fact that we had some issues with the contact mode tip. The Naiosurf software provided with the AFM was used to captured the raw data, and the open source software Gwyddion was utilized to process the images (filtering, background correction, coloring...) and obtain the final ones presented in the report.
 
