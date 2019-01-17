@@ -516,7 +516,7 @@ Finally we can see the pictures obtained from the third sample.
 
 In this case we can state that the plot of the material is not very regular. In fact, we probably measured 2 differents part of the sample with the 2 modes. The resulting data have a difference of the maximum height really relevant: $9.4nm$ in static mode versus $44nm$ in tapping mode.
 
-In conclusion we attach a table of the heights measured thanks to Gwyddion (as far as the 3 samples are concerned we will write the maximum height).
+At this point we attach a table of the heights measured thanks to Gwyddion (as far as the 3 samples are concerned we will write the maximum height).
 
 \begin{figure}[ht]
 \begin{center}
@@ -525,6 +525,22 @@ In conclusion we attach a table of the heights measured thanks to Gwyddion (as f
 \end{figure}
 
 Comparing the table with the pictures, we can see that it is not always clear from the images to extimate the height. Actually, even the data reported here are not very precise because of the peaks and hills; it is not always clear from which 2 points to measure the z-distance because the surfaces are often not regular.
+
+In conclusion, we show the distance between the centers of the cells measured from the data got in both the modes. As we can see, the values are in good agreement between them.
+\begin{table}[ht]
+\begin{center}
+    \caption{Distances between centers}
+    \label{tab:table2}
+    \begin{tabular}{l|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+      \textbf{Mode} & \textbf{Sample 1} & \textbf{Sample 2}\\
+       & distances in $\mu m$ & distances in $\mu m$ \\
+      \hline
+      Static & 1.018 & 1.126\\
+      Tapping & 1.040 & 1.0598\\
+      
+    \end{tabular}
+  \end{center}
+\end{table}
 \section{Conclusions}
 We have studied and understand the working principle of AFM, as well as the two most common operation modes: static or contact mode, and tapping or dynamic mode. We have read about and recognize the most common artifacts in AFM images. Finally, we have used the compact NaioAFM both in static and tapping mode to measure three different samples, after optimizing the PID values using a calibration sample. Better results were obtained in the tapping mode, probably due to the fact that we had some issues with the contact mode tip. The Naiosurf software provided with the AFM was used to captured the raw data, and the open source software Gwyddion was utilized to process the images (filtering, background correction, coloring...) and obtain the final ones presented in the report.
 
