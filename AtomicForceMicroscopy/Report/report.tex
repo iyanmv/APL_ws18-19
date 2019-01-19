@@ -28,7 +28,7 @@ Iyán Méndez Veiga\\ \small\texttt{\href{mailto:iyan.mendez-veiga@uni-ulm.de}{i
 \maketitle
 
 \begin{abstract}
-A compact Atomic Force Microscopy (AFM) from Nanosurf company (\href{https://www.nanosurf.com/en/products/naioafm-the-leading-compact-afm}{NaioAFM}) was used to perform measurements of the surface of three samples. Two different operation modes were used: static and tapping mode. Open source software \href{http://gwyddion.net/}{Gwyddion} was used to process the raw data.
+A compact Atomic Force Microscopy (AFM) from Nanosurf company (\href{https://www.nanosurf.com/en/products/naioafm-the-leading-compact-afm}{NaioAFM}) was used to perform measurements of the surface of three samples. Two different operation modes were used: static and tapping mode. Open source software \href{http://gwyddion.net/}{Gwyddion} was used to process the raw data.\\{\color{red} Add Motivation and finings}
 \end{abstract}
 
 \vspace{1.5cm}
@@ -39,13 +39,11 @@ Since it was first developed in 1985 by \emph{Binning} et al., the Atomic Force 
 
 In this report, we will first describe the AFM technique, the two different operation modes that we tried (static and tapping or dynamic mode) and comment the issues we faced. And secondly, we will describe the processing of raw data obtained from the device using the open source software Gwyddion, as well as a general overview of AFM image artifacts, i.e., features which appear in the images that are not present in the original probed object.
 
-\section{Materials and methods}
+\subsection{Theory of AFM}
 
-\subsection{AFM}
+AFM is quite similar to Scanning Tunneling Microscope (STM). The idea is to get 3D images of sample surfaces by using a scanning technique. Main difference between AFM and STM is that AFM can also measure insulators and it is not limited to conductors because the scanning technique does not make use of tunneling currents. Instead, AFM is able to obtain the height by measuring the ultrasmall forces that arise when the tip and the sample surface get very close to each other.
 
-AFM relies on the same idea of Scanning Tunneling Microscope (STM), i.e., using a scanning technique to produce very high resolution, 3D images of sample surfaces. The difference is that instead of measuring tunneling currents, in AFM we measure ultrasmall forces between the tip surface and the sample surface to get the proximity of the tip to the sample, i.e., the height. This allows AFM to measure both conductors and insulators surfaces on an atomic scale.
-
-By ultrasmall forces we mean forces of less than \SI{1}{\nano\N}. How this forces are measured is one of the key aspects of AFM because finding a relation between them and the distance between the tip and the surface will allow us to get a profile of the measured samples. However, this depends on the operation mode.
+The order of magnitude of these forces is less than \SI{1}{\nano\N}. A fixed relation between these forces and the distance between the tip and the sample allows to get the profile of the surface. However, this depends on the operation mode.
 
 \begin{figure}[ht]
 \centering
@@ -92,60 +90,15 @@ Feedback mechanisms and feedback parameters are ubiquitous in our life \cite{nan
 \label{fig:feedback}
 \end{figure}
 
-In our AFM experiment, the feedback parameter that serves as the setpoint in contact mode is the the cantilever deflection. In the tapping mode, it is the cantilever oscillation amplitude. The NaioAFM continuously tries to keep this feedback parameter constant at its setpoint by adjusting the z-piezo to move the cantilever probe up and down. And the resulting z-piezo movements provide the hegight information to create the surface topography.
+The feedback parameter that serves as the setpoint in contact mode is the the cantilever deflection. In the tapping mode, it is the cantilever oscillation amplitude.
 
-The feedback loop is controlled through the proportion-integral-derivative control, also referred as the PID gains. These different gains refer to differences in how the feedback loop adjusts to deviations from the setpoint value, i.e. the error signal. In this experiment, the integral gain is the most important one and can have a dramatic effect on the image quality. The proportional gain might provide slight improvement only after the integral gain has been optimized. And the derivative gain is mainly for samples with tall edges. A diagram of the feedback mechanism of the Z-controller can be seen in Figure .
-
-\begin{figure}[hbt]
-\centering
-\includegraphics[width=0.8\textwidth]{Feedback_NaioAFM}
-\caption{Diagram of the Z-controller of the NaioAFM from the instrument's manual.}
-\label{fig:feedback_z-controller}
-\end{figure}
+The feedback mechanism is a continuous loop, the so-called feedback loop, which is controlled through the proportion-integral-derivative control, also referred as the PID gains. These different gains refer to differences in how the feedback loop adjusts to deviations from the setpoint value, i.e. the error signal. 
 
 If gains are set too low, the PID loop is not able to keep the setpoint accurately. Contrary, if gains are chosen too high, the result will be electrical noise in the image interference from the feedback (see Figure \ref{fig:feedback}). This is due to the fact that compensation for a deviation from the setpoint is larger than the error itself.
 
 Nevertheless, gains are not the only parameters that affect the feedback mechanism. The scan rate and, of course, the setpoint value are very important, too. If the scan rate is too fast, the PID loop will not have sufficient time to adjust the feedback parameter to its setpoint value and the height calculated from the z-piezo movement will deviate from the true topography at slopes and near edges. Very slow rates do not affect the quality of the obtained topography since they are not an issue for the PID loop, but they lead to long acquisition times.
 
 Optimization of both scan rate and PID gains are necessary in order to optimize the feedback loop.
-
-\subsection{NaioAFM}
-
-The NaioAFM by Nanosurf \cite{NaioAFM} is the AFM used in this experiment. As the successor of the Easyscan 2, the NaioAFM is a compact AFM designed for new and inexperienced AFM users. It has a closed scanner compartment that helps with acoustic and air current isolation, stage positioners to adjust your sample. The different parts of the scan head including the spot for the cantilever are shown in the Figure \ref{fig:naioafm}. The NaioAFM was placed on an isolation platform to avoid vibration disturbances.
-
-\begin{figure}[hbt]
-\centering
-\includegraphics[width=0.9\textwidth]{naioafm2}
-\caption{Different parts of the scan head of the NaioAFM instrument \cite{NaioAFM}.}
-\label{fig:naioafm}
-\end{figure}
-
-\subsection{Gwyddion}
-
-NaioAFM saves the data obtained by the samples in \texttt{.nid} files. These files contain 3-dimensional data of the sample: to every point in the (x,y) plane there is an associated height. The height is shown in 2-dimensional heatmaps using a gray colormap. The lighter the gray, the higher the z point is (see Figure \ref{fig:heatmap_rawdata}.)
-
-Thanks to the Gwyddion software, it is possible to partially correct the noisy parts of the pictures manually or by means of some automatic tools. The data can be levelled by subtracting the mean plane; this corrects situations like the one shown in Figure~\ref{fig:artifacts_processing_1}. Secondly, it is possible to align the raws horizontally or vertically evaluating the median of the differences between them (the error that this tool is able to correct is shown in Figure~\ref{fig:artifacts_processing_2}). A third tool often used is the correction of the horizontal scars.
-
-Moreover, the software allow us to model the colour scale by selecting the height range (Figure~\ref{fig:scale_selection}) and to set the 0 of the z-axis.
-
-\begin{figure}[ht]
-\centering
-\begin{subfigure}[b]{0.45\textwidth}
-\includegraphics[width=\textwidth]{heatmap_rawdata}
-\caption{Raw heatmap shown in Gwyddion after importing raw data from NaioAFM without any processing.}
-\label{fig:heatmap_rawdata}
-\end{subfigure}
-\begin{subfigure}[b]{0.45\textwidth}
-\centering
-\includegraphics[width=0.7\textwidth]{scale_selection}
-\caption{Selection of the highnesses interval}
-\label{fig:scale_selection}
-\end{subfigure}
-\caption{Some screenshots of Gwyddion.}
-\label{fig:gwyddion}
-\end{figure}
-
-Finally, Gwyddion allows us to improve the aesthetics of the images, making them more intuitive. First of all, we can select the colour scale which labels the height of the picture. Secondly, the software is able to generate a 3-dimensional pictures of the sample, as we will see in the following section.
 
 \subsection{AFM artifacts}
 When using an AFM, as well as in many other experiments, we may find features which appear in the obtained images that are not present in the observed sample. These are called artifacts \cite{artifacts} and there are four primary sources of artifacts in images measured with AFMs: probes, scanners, image processing and vibrations.
@@ -247,20 +200,78 @@ Vibrations caused by sound waves can also cause artifacts. Even though the NaioA
 \label{fig:artifacts_others}
 \end{figure}
 
-\newpage
-\section{Results and discussion}
-In this section we will describe the analysis of the 3 samples using static and tapping mode. We use two different types of tips, both made of Silicon nitride (Si$_3$N$_4$): \texttt{PPP-CONTR-20} for the static mode and \texttt{Tap190Al-G} for tapping mode.
+\section{Materials and methods}
 
-\subsection{Static mode}
-\subsubsection{Calibration}
-First, we used a \emph{calibration sample} with a known surface in order to test the tip and the software used to obtain our data. This sample was the Calibration Standard \texttt{HS-100MG} and it had 6 different surfaces (see Figure \ref{fig:HS-100MG}).
+\subsection{NaioAFM}
+
+The NaioAFM by Nanosurf \cite{NaioAFM} is the AFM used in this experiment. As the successor of the Easyscan 2, the NaioAFM is a compact AFM designed for new and inexperienced AFM users. It has a closed scanner compartment that helps with acoustic and air current isolation, stage positioners to adjust your sample. The different parts of the scan head including the spot for the cantilever are shown in the Figure \ref{fig:naioafm}. The NaioAFM was placed on an isolation platform to avoid vibration disturbances.
+
+\begin{figure}[hbt]
+\centering
+\includegraphics[width=0.9\textwidth]{naioafm2}
+\caption{Different parts of the scan head of the NaioAFM instrument \cite{NaioAFM}.}
+\label{fig:naioafm}
+\end{figure}
+
+A diagram of the specific feedback mechanism of the Z-controller that the NaioAFM implements can be seen in Figure \ref{fig:feedback_z-controller}.
+
+\begin{figure}[hbt]
+\centering
+\includegraphics[width=0.8\textwidth]{Feedback_NaioAFM}
+\caption{Diagram of the Z-controller of the NaioAFM from the instrument's manual.}
+\label{fig:feedback_z-controller}
+\end{figure}
+
+Using this loop, the NaioAFM continuously tries to keep this feedback parameter constant at its setpoint by adjusting the z-piezo to move the cantilever probe up and down. And the resulting z-piezo movements provide the height information to create the surface topography.
+
+According to the owner's manual from Nanosurf, the integral gain is the most important gain value and can have a dramatic effect on the image quality. The proportional gain might provide slight improvement only after the integral gain has been optimized. And the derivative gain is mainly for samples with tall edges.
+
+Regarding the tips, we use two different types, both made of Silicon nitride (Si$_3$N$_4$): \texttt{PPP-CONTR-20} for the static mode and \texttt{Tap190Al-G} for tapping mode.
+
+\subsection{Calibration sample}
+
+Thes sample used to test and optimize parameters of the NaioAFM was the Calibration Standard \texttt{HS-100MG}, whcih has six different surfaces (see Figure \ref{fig:HS-100MG}).
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.3\textwidth]{HS-100MG}
+\includegraphics[width=0.4\textwidth]{HS-100MG}
 \caption{Dimensions of the calibration sample HS-100MG.}
 \label{fig:HS-100MG}
 \end{figure}
+
+\subsection{Gwyddion}
+
+NaioAFM saves the data obtained by the samples in \texttt{.nid} files. These files contain 3-dimensional data of the sample: to every point in the (x,y) plane there is an associated height. The height is shown in 2-dimensional heatmaps using a gray colormap. The lighter the gray, the higher the z point is (see Figure \ref{fig:heatmap_rawdata}.)
+
+It is possible to partially correct the noisy parts of the pictures manually or by means of some automatic tools. The data can be levelled by subtracting the mean plane; this corrects situations like the one shown in Figure~\ref{fig:artifacts_processing_1}. Secondly, it is possible to align the raws horizontally or vertically evaluating the median of the differences between them (the error that this tool is able to correct is shown in Figure~\ref{fig:artifacts_processing_2}). A third tool often used is the correction of the horizontal scars.
+
+Moreover, the software allow us to model the colour scale by selecting the height range (Figure~\ref{fig:scale_selection}) and to set the 0 of the z-axis.
+
+\begin{figure}[ht]
+\centering
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{heatmap_rawdata}
+\caption{Raw heatmap shown in Gwyddion after importing raw data from NaioAFM without any processing.}
+\label{fig:heatmap_rawdata}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+\centering
+\includegraphics[width=0.7\textwidth]{scale_selection}
+\caption{Selection of the highnesses interval}
+\label{fig:scale_selection}
+\end{subfigure}
+\caption{Some screenshots of Gwyddion.}
+\label{fig:gwyddion}
+\end{figure}
+
+Finally, Gwyddion allows us to improve the aesthetics of the images, making them more intuitive. First of all, we can select the colour scale which labels the height of the picture. Secondly, the software is able to generate a 3-dimensional pictures of the sample, as we will see in the following section.
+
+\section{Results and discussion}
+In this section we will describe the analysis of the three samples using static and tapping mode. 
+
+\subsection{Static mode}
+\subsubsection{Calibration}
+First, we used the \emph{calibration sample} with a known surface in order to test the tip and the software used to obtain our data. 
 
 We fixed the sample in the centre of the AFM and used the camera installed inside our Nanosurf NaioAFM equipment to place the tip in the different surfaces (shown in Figure~\ref{fig:cal_sam}).
 
@@ -273,9 +284,9 @@ We fixed the sample in the centre of the AFM and used the camera installed insid
 
 Once we had chosen the surface which we wanted to analyse, by using the software, we moved the tip as close as possible to the sample, without making them contact. Then, using the \emph{approach mode}, we brought the tip in contact with the surface. This mode uses the setpoint and the feedback mechanism to very slowly put the tip in contact minimizing the risk of breaking the tip.
 
-The key parameter we tried to optimize was the setpoint. In the static mode, the deflection of the cantilever is used as the error signal for the Z-controller feedback mechanism. In the software, the setpoint is express in \si{\nano N} and it is calculated by multiplying the deflection with the spring constant of the selected cantilever, which we had to choose before doing anything. A setpoint too high may damage the tip. We did 8 measurements with setpoints from \SI{2}{\nano N} to \SI{20}{\nano N}. We did not have time to optimize the PID values so we used the default and suggested ones: $\text{I-Gain}=1000$ and $\text{P-Gain}=1000$.
+The key parameter we tried to optimize was the setpoint. In the software, the setpoint is express in \si{\nano N} and it is calculated by multiplying the deflection with the spring constant of the selected cantilever, which we had to choose before doing anything. A setpoint too high may damage the tip. We did eight measurements with setpoints from \SI{2}{\nano N} to \SI{20}{\nano N}. We did not have time to optimize the PID values so we used the default and suggested ones: $\text{I-Gain}=1000$ and $\text{P-Gain}=1000$.
 
-In the following pictures, it is possible to see three different shapes captured from our calibration sample. The obtained height of the patterns was between \SI{107}{\nano m} and \SI{110}{\nano n} after some processing using the read value tool for some random positions of the pictures (see screenshot \ref{fig:read_tool}). It is possible to observe the x-scale on the top of the pictures, the y-scale on the left and the height colour scale on the right.
+In the Figure \ref{fig:static_calibration_grid}, three different shapes captured from our calibration sample are shown. The obtained height of the patterns was between \SI{107}{\nano m} and \SI{110}{\nano n} after some processing using the read value tool for some random positions of the pictures (see screenshot \ref{fig:read_tool}). It is possible to observe the x-scale on the top of the pictures, the y-scale on the left and the height colour scale on the right.
 
 \begin{figure}[H]
 \centering
@@ -300,6 +311,7 @@ In the following pictures, it is possible to see three different shapes captured
 \label{fig:sm_border}
 \end{subfigure}
 \caption{Some pictures of the calibration sample}
+\label{fig:static_calibration_grid}
 \end{figure}
 
 \begin{figure}[H]
@@ -419,7 +431,7 @@ Then we decide to measure only in the lighter part. We took only one measurement
 \end{figure}
 
 \subsection{Tapping mode}
-After changing the tip, from the \texttt{PPP-CONTR-20} to the \texttt{Tap190Al-G}, the first thing we had to do was find the frequency of the cantilever. This was done automatically by the NaioAFM software with the \emph{Frequency Sweep} procedure.
+After changing the tip, the first thing we had to do was find the frequency of the cantilever. This was done automatically by the NaioAFM software with the \emph{Frequency Sweep} procedure.
 
 \subsubsection{Calibration}
 Once again, the first step was the measurement of the calibration sample. For the default gain values ($\text{P-Gain}=1000$ and $\text{I-Gain}=1000$), we did several measurements with different values of the setpoint. In this case, it is not a force (in \si{\nano N}) anymore like in the static mode, but a percentage that represents the threshold in the reduction of the oscillation's amplitude. For example, a setpoint of 60\% means that the Z-controller will move the tip closer to the sample until the vibration amplitude has decreased to 60\% of the vibration amplitude when it is far away from the sample.
