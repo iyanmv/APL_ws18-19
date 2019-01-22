@@ -14,6 +14,7 @@
 \usepackage{mathtools}
 \usepackage[separate-uncertainty=true]{siunitx}
 \usepackage{booktabs}
+\usepackage[title]{appendix}
 %\usepackage{amsmath}
 %\usepackage{amssymb}
 %\usepackage{amsthm}
@@ -286,28 +287,7 @@ V'=\SI{-3.39\pm0.03}{\num{e-5}.\radian/\mA}
 
 We measured the Cotton-Mouton effect by finding the rotation in the polarisation plane of the light (using the Faraday compensator) which minimised the intensity at the analyser. As explained before, the Cotton-Mouton effect produces an optical retardation, an optical phase given by equation (\ref{eq:CME}) that makes our polarisation of the light no longer aligned with the quarter-wave plate. The result is an elliptical polarisation, whose different components will travel at different speeds in the birefringent material.
 
-Experimentally, we measured the current intensity in the Faraday compensator at which we found the minimum for different values of current in the solenoid, in steps of \SI{2}{\mA} both increasing the current and decreasing it. When we got to the maximum possible current in the solenoid for which we were able to compensate using the Faraday effect, we reduce the current \SI{1}{\mA} and then again in steps of \SI{2}{\mA}, so we obtained measurements for every \si{\mA} as shown in the following figures.
-
-\begin{figure}[H]
-\centering
-\begin{subfigure}[b]{0.45\textwidth}
-\includegraphics[width=\textwidth]{sample3}
-\caption{Carbon disulfide (CS$_2$)}
-\label{fig:CME_sample3}
-\end{subfigure}
-\begin{subfigure}[b]{0.45\textwidth}
-\includegraphics[width=\textwidth]{sample2}
-\caption{Mesitylene (C$_9$H$_{12}$)}
-\label{fig:CME_sample2}
-\end{subfigure}\\\vspace{.2cm}
-\begin{subfigure}[b]{0.45\textwidth}
-\includegraphics[width=\textwidth]{sample1}
-\caption{Toluene (C$_7$H$_8$)}
-\label{fig:CME_sample1}
-\end{subfigure}
-\caption{CME measured for three different samples. Current intensity of the Faraday compensator is plotted against the current in the solenoid where the sample is placed.}
-\label{fig:CME}
-\end{figure}
+Experimentally, we measured the current intensity in the Faraday compensator at which we found the minimum for different values of current in the solenoid, in steps of \SI{2}{\mA} both increasing the current and decreasing it. When we got to the maximum possible current in the solenoid for which we were able to compensate using the Faraday effect, we reduce the current \SI{1}{\mA} and then again in steps of \SI{2}{\mA}, so we obtained measurements for every \si{\mA}. Experimental data is shown in Appendix \ref{app:experimental_data}.
 
 The Cotton-Mouton constants for the three samples can be obtained by plotting $\Delta n$ against the square of the magnetic field applied to the sample, and doing a linear regression to find the slope, which will be $C\lambda$ as shown in (\ref{eq:Delta_n}). $\Delta n$ can be obtained from the measured current in the Faraday compensator using (\ref{eq:optical_phase}) and (\ref{eq:rel_optical_phase_angle}), and the square of the magnetic field from the current measured in the solenoid and the interpolation done in (fig \ref{fig:BvsI}) during the characterising of the field.
 
@@ -334,18 +314,18 @@ Sample & $C$ (\si{10^{-3}.\tesla^{-2}.\m^{-1}}) & $\delta C$ (\si{10^{-3}.\tesla
 \midrule
 Toluene & 3.5 & 0.5 \\
 Mesitylene & 4.54 & 0.06 \\
-Carbon disulfide & -3.48 & 0.04 \\
+Carbon disulfide & 3.48 & 0.04 \\
 \bottomrule
 \end{tabular}
 \caption{Values obtained experimentally for the Cotton-Mouton constant for the three samples: Toluene (C$_7$H$_8$), Mesitylene (C$_9$H$_{12}$) and Carbon disulfide (CS$_2$).}
-\label{table:verdet}
+\label{table:CM}
 \end{table}
 
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.9\textwidth]{CM_consts.eps}
-\caption{Magnetic field as a function of current for the two circulating directions with the probe fixed in the middle of the solenoid.}
+\caption{$\Delta n$ plotted against the square of the magnetic field applied to the sample. $\Delta n$ is obtained from the measured current in the Faraday compensator using eqs.~\eqref{eq:optical_phase} and \eqref{eq:rel_optical_phase_angle}. $B^2$ is obtained interpolating (see Figure \ref{fig:BvsI}) from the measured current in the solenoid. The negative slope for the Carbon disulfide is due to the fact that we change the direction of the current (as shown in Appendix \ref{app:experimental_data}). It was not modified to avoid overlapping with experimental points from Toluene. From eq.~\eqref{eq:Delta_n} we can see that the slope is proportional to the Cotton-Mouton constant. Experimental obtained values are shown in Table \ref{table:CM}.}
 \label{fig:CM_const}
 \end{figure}
 
@@ -355,13 +335,36 @@ As expected, the Cotton-Mouton constant is negative for the carbon disulfide and
 
 Toluene sample was the most difficult sample to measure because it is the less active sample and also due to some variance in the signal generator for the lock-in amplifier during the measurement, which led to a measurement an order of magnitude worse than the other two samples by checking $\delta C/C$.
 
-
-
-
-\newpage
+\vfill
 {\color{white}\cite{wilson1997simple}\cite{note19923}\cite{montarou2004two}\cite{freiser1968survey}}
 \bibliographystyle{unsrt}
 \bibliography{references}
 
+\newpage
+\begin{appendices}
+\section{Experimental data}\label{app:experimental_data}
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}[b]{0.55\textwidth}
+\includegraphics[width=\textwidth]{sample3}
+\caption{Carbon disulfide (CS$_2$)}
+\label{fig:CME_sample3}
+\end{subfigure}\\\vspace{.2cm}
+\begin{subfigure}[b]{0.55\textwidth}
+\includegraphics[width=\textwidth]{sample2}
+\caption{Mesitylene (C$_9$H$_{12}$)}
+\label{fig:CME_sample2}
+\end{subfigure}\\\vspace{.2cm}
+\begin{subfigure}[b]{0.55\textwidth}
+\includegraphics[width=\textwidth]{sample1}
+\caption{Toluene (C$_7$H$_8$)}
+\label{fig:CME_sample1}
+\end{subfigure}
+\caption{CME measured for three different samples. Current intensity of the Faraday compensator is plotted against the current in the solenoid where the sample is placed.}
+\label{fig:CME}
+\end{figure}
+
+\end{appendices}
 
 \end{document}
