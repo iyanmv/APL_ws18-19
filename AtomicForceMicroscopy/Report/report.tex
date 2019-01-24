@@ -41,7 +41,7 @@ In this report, we will first describe the AFM technique, the two different oper
 
 \subsection{Theory of AFM}
 
-AFM is quite similar to Scanning Tunneling Microscope (STM). The idea is to get 3D images of sample surfaces by using a scanning technique. Main difference between AFM and STM is that AFM can also measure insulators and it is not limited to conductors because the scanning technique does not make use of tunneling currents. Instead, AFM is able to obtain the height by measuring the ultrasmall forces that arise when the tip and the sample surface get very close to each other.
+AFM is quite similar to Scanning Tunneling Microscope (STM). The idea is to get 3D images of sample surfaces by using a scanning technique. The main difference between AFM and STM is that AFM can also measure insulators and it is not limited to conductors because the scanning technique does not make use of tunneling currents. Instead, AFM is able to obtain the height by measuring the ultrasmall forces that arise when the tip and the sample surface get very close to each other.
 
 The order of magnitude of these forces is less than \SI{1}{\nano\N}. A fixed relation between these forces and the distance between the tip and the sample allows to get the profile of the surface. However, this depends on the operation mode.
 
@@ -52,9 +52,14 @@ The order of magnitude of these forces is less than \SI{1}{\nano\N}. A fixed rel
 \label{fig:AFM_modes}
 \end{figure}
 
-Basically, we can say that AFM can be used in two main modes or regimes (see Figure \ref{fig:AFM_modes}): static, repulsive or contact mode, and dynamic or tapping mode.
+Basically, we can say that AFM can be used in two main modes or regimes (see Figure \ref{fig:AFM_modes}): static, repulsive or contact mode, and dynamic or tapping mode. That curve for the force that the tip feels at different distances can be model using the Lennard-Jones potential:
 
-In the static mode, a sharp tip is brought into contact with the surface of the sample. The tip is placed at the end of a flexible (only in the normal direction) cantilever, which can deflect depending on the force that the tip ``feels''. The repulsive forces are due to electronic orbital overlap between the atoms of the tip and those in the surface of the sample. By measuring the deflection of the cantilever using tunneling, capacitive or optical detectors (see Figure \ref{fig:Deflection_measurement}), we can get a measure of the force if the cantilever spring constant is known.
+\begin{equation}\label{eq:LJ}
+V(r)=V_0\left[\left(\frac{r_0}{r}\right)^{12}-2\left(\frac{r_0}{r}\right)^6\right]\,,
+\end{equation}
+which has a repulsive term ($\sim1/r^{12}$) and an attractive one $(\sim1/r^6$). $V_0$ is the depth of the potential well and $r_0$ is the distance at which $V'(r)=0$.
+
+The most fragile part of the AFM, and also the most important part in order to do good measurements is the cantilever, where a sharp tip is placed almost at one of its ends. The cantilever has to be very flexible in the normal direction so it can deflect depending on the force that the tip "feel". In the static mode, the tip is in contact with the surface of the sample and it is repulsed by it due to the electronic overlap between the atoms of the tip and the ones in the sample (due to the $1/r^{12}$ part in the Lennard-Jones potential from eq.~\eqref{eq:LJ}). If the cantilever spring constant is known, then by measuring its deflection we can obtain the forces affecting the tip. There are many methods to measure this deflection such as using tunneling, capacitive or optical detectors with lasers (see Figure \ref{fig:Deflection_measurement}).
 
 \begin{figure}[ht]
 \centering
@@ -65,9 +70,9 @@ In the static mode, a sharp tip is brought into contact with the surface of the 
 
 The deflection can be measured to within \SI{0.02}{\nm}, so for a typical cantilever spring constant of \SI{10}{\N/\m}, forces as low as \SI{0.2}{\nano\N} can be measured.
 
-Typically, the deflection of the cantilever is used as the signal for a feedback mechanism, so whenever due to the profile of the surface there is a change in this deflection, the distance $r$ between the tip and the surface of the sample is modified accordingly using a piezo material. The force that causes this aimed deflection is called \emph{setpoint} and we will see later that it is a key parameter when measuring in this mode. In order to get the profile of the whole surface, either the tip or the sample has to be translated using a piezoelectric scanner.
+However, it is not usual to measure the height of the sample directly from the deflection. Typically, this signal is used as the input for a feedback mechanism. Whenever there is a change in the force affecting the tip, and therefore a change in the deflection, the distance $r$ between the tip and the sample will be move accordingly to keep this deflection constant. This is achieved using piezo materials and the force that keeps the desired deflection of the cantilever is called \emph{setpoint}. Moreover, in order to get a profile of the whole surface, either the tip or the sample has to be translated. More details about the feedback mechanism can be read in section \ref{sec:feedback}.
 
-When we are on the right of the equilibrium (see Figure \ref{fig:AFM_modes}), the attractive forces on the tip are very weak van der Waals forces. Tapping mode can work on this regime but we do not measure the force anymore, but the force gradient. The cantilever is deliberately vibrated in either amplitude modulation (AM) or frequency modulation (FM) at its resonant frequency $\omega_0$ given by the spring constant and the force derivative is determined by measuring the shift in this resonant frequency due to the interaction with the sample.
+When we are on the right of the equilibrium (Figure \ref{fig:AFM_modes}), the attractive forces on the tip are very weak van der Waals forces (due to the $1/r^6$ part in the Lennard-Jones potential from eq.~\eqref{eq:LJ}). Tapping mode can work on this regime but we do not measure the force anymore, but the force gradient. The cantilever is deliberately vibrated in either amplitude modulation (AM) or frequency modulation (FM) at its resonant frequency $\omega_0$ given by the spring constant and the force derivative is determined by measuring the shift in this resonant frequency due to the interaction with the sample.
 
 \begin{figure}[ht]
 \centering
@@ -78,7 +83,7 @@ When we are on the right of the equilibrium (see Figure \ref{fig:AFM_modes}), th
 
 Similarly to the static mode, we can directly measure the force gradient or use this as a signal for a feedback mechanism that acts on the distance $r$ to keep constant the resonant frequency. An schematic draw is shown in Figure \ref{fig:Deflection_measurement}.
 
-\subsection{Feedback mechanism}
+\subsection{Feedback mechanism}\label{sec:feedback}
 We have mentioned in the previous section that the AFM can be used with or without a feedback mechanism, but since in the experiment we used it both for static and tapping modes, we will describe this technique very briefly.
 
 Feedback mechanisms and feedback parameters are ubiquitous in our life \cite{nanosurf}. For example, when we use a thermostat, the temperature is the feedback parameter, which is set to a a desired one (\emph{setpoint}) and as the temperature in the room changes, it is compared with the temperature setpoint so that a feedback mechanism (e.g. an air conditioner) can act to keep the temperature at the desired value. Mathematically, all these mechanisms are applications of the control theory developed during the 19th century.
@@ -139,11 +144,6 @@ Artifacts may also arise due to the motion of the scanner in the X, Y and Z dire
 \includegraphics[width=\textwidth]{artifacts_scanner_2}
 \caption{Artifact due to the probe sample angle}
 \label{fig:artifacts_scanner_2}
-\end{subfigure}\\\vspace{.2cm}
-\begin{subfigure}[b]{0.45\textwidth}
-\includegraphics[width=\textwidth]{artifacts_scanner_3}
-\caption{Artifact due to overshoot at the leading and trailing edge}
-\label{fig:artifacts_scanner_3}
 \end{subfigure}
 \caption{Some examples of scanner-generated artifacts \cite{artifacts}.}
 \label{fig:artifacts_scanner}
@@ -167,38 +167,12 @@ Processing images is a must when dealing with AFM, but additional artifacts can 
 \includegraphics[width=\textwidth]{artifacts_processing_3}
 \caption{Particles excluded from the background subtraction}
 \label{fig:artifacts_processing_3}
-\end{subfigure}\\\vspace{.2cm}
-\begin{subfigure}[b]{0.6\textwidth}
-\includegraphics[width=\textwidth]{artifacts_processing_4}
-\caption{Artifact due to overshoot at the leading and trailing edge}
-\label{fig:artifacts_processing_4}
 \end{subfigure}
 \caption{Some examples of processing-generated artifacts \cite{artifacts}.}
 \label{fig:artifacts_processing}
 \end{figure}
 
-Vibrations caused by sound waves can also cause artifacts. Even though the NaioAFM has an isolated compartment to avoid that, even noise derived from a person talking in the same room as the AFM can be observed (see Figure \ref{fig:artifacts_vibrations}). Additionally, surface contamination on the sample (see Figure \ref{fig:artifacts_contamination})or electronic noise (see Figure \ref{fig:artifacts_electronics}) among others can also cause artefacts.
-
-\begin{figure}[H]
-\centering
-\begin{subfigure}[b]{0.45\textwidth}
-\includegraphics[width=\textwidth]{artifacts_vibrations}
-\caption{Without noise (left) and with noise (right)}
-\label{fig:artifacts_vibrations}
-\end{subfigure}
-\begin{subfigure}[b]{0.45\textwidth}
-\includegraphics[width=\textwidth]{artifacts_contamination}
-\caption{Sample contamination shown in a SEM image (left) and in an AFM one (right)}
-\label{fig:artifacts_contamination}
-\end{subfigure}\\\vspace{.2cm}
-\begin{subfigure}[b]{0.45\textwidth}
-\includegraphics[width=\textwidth]{artifacts_electronics}
-\caption{Electronic noise}
-\label{fig:artifacts_electronics}
-\end{subfigure}
-\caption{Some examples of artifacts caused by sound noise, contamination and electronic noise \cite{artifacts}.}
-\label{fig:artifacts_others}
-\end{figure}
+Of course, there are many other artifacts but these are the most relevant for our experimental setup with the NaioAFM.
 
 \section{Materials and methods}
 
@@ -208,7 +182,7 @@ The NaioAFM by Nanosurf \cite{NaioAFM} is the AFM used in this experiment. As th
 
 \begin{figure}[hbt]
 \centering
-\includegraphics[width=0.9\textwidth]{naioafm2}
+\includegraphics[width=0.7\textwidth]{naioafm2}
 \caption{Different parts of the scan head of the NaioAFM instrument \cite{NaioAFM}.}
 \label{fig:naioafm}
 \end{figure}
@@ -217,12 +191,14 @@ A diagram of the specific feedback mechanism of the Z-controller that the NaioAF
 
 \begin{figure}[hbt]
 \centering
-\includegraphics[width=0.8\textwidth]{Feedback_NaioAFM}
+\includegraphics[width=0.6\textwidth]{Feedback_NaioAFM}
 \caption{Diagram of the Z-controller of the NaioAFM from the instrument's manual.}
 \label{fig:feedback_z-controller}
 \end{figure}
 
 Using this loop, the NaioAFM continuously tries to keep this feedback parameter constant at its setpoint by adjusting the z-piezo to move the cantilever probe up and down. And the resulting z-piezo movements provide the height information to create the surface topography.
+
+In the static mode, the setpoint is the force (in \si{\nano \N}) affecting the tip, In the tapping mode it is a percentage that represents the threshold in the reduction of the oscillation's amplitude. For example, a setpoint of 60\% means that the Z-controller will move the tip closer to the sample until the vibration amplitude has decreased to 60\% of the vibration amplitude when it is far away from the sample.
 
 According to the owner's manual from Nanosurf, the integral gain is the most important gain value and can have a dramatic effect on the image quality. The proportional gain might provide slight improvement only after the integral gain has been optimized. And the derivative gain is mainly for samples with tall edges.
 
@@ -234,7 +210,7 @@ Thes sample used to test and optimize parameters of the NaioAFM was the Calibrat
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.4\textwidth]{HS-100MG}
+\includegraphics[width=0.34\textwidth]{HS-100MG}
 \caption{Dimensions of the calibration sample HS-100MG.}
 \label{fig:HS-100MG}
 \end{figure}
@@ -266,6 +242,7 @@ Moreover, the software allow us to model the colour scale by selecting the heigh
 
 Finally, Gwyddion allows us to improve the aesthetics of the images, making them more intuitive. First of all, we can select the colour scale which labels the height of the picture. Secondly, the software is able to generate a 3-dimensional pictures of the sample, as we will see in the following section.
 
+\newpage
 \section{Results and discussion}
 In this section we will describe the analysis of the three samples using static and tapping mode. 
 
@@ -275,7 +252,7 @@ First, we used the \emph{calibration sample} with a known surface in order to te
 
 We fixed the sample in the centre of the AFM and used the camera installed inside our Nanosurf NaioAFM equipment to place the tip in the different surfaces (shown in Figure~\ref{fig:cal_sam}).
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
 \includegraphics[scale=0.4]{calibration_sample}
 \caption{Calibration sample view from the camera installed in Nanosurf NaioAFM}
@@ -365,13 +342,14 @@ The first sample was labelled as \texttt{Cr \SI{2}{\nano m}, Al \SI{20}{\nano m}
 
 We can see from the two measurements that we have some kind of honeycomb structure with spheres of height $\sim\SI{0.5}{\micro m}$.
 
-\subsubsection{Sample 2}
-We did not have enough time to measure sample 2 in the static mode. Results for this sample are shown in the tapping mode section.
-
+\newpage
 \subsubsection{Sample 3}
+We did not have enough time to measure sample 3 in the static mode. Results for this sample are shown in the tapping mode section.
+
+\subsubsection{Sample 2}
 The third sample contained gold particles in silicon dioxide. We can see from Figure \ref{fig:sample_3_static} that the surface of this material was scratched and with some imperfections.
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
 \includegraphics[scale=0.4]{sm_sample2_set.JPG}
 \caption{Picture of sample 3 from the camera installed in Nanosurf NaioAFM}
@@ -409,7 +387,7 @@ We can observe that the plot reminds a set of stars. Moreover, we can see that t
 
 Then we decide to measure only in the lighter part. We took only one measurement in the center of the light green part as shown in Figure \ref{fig:sample3_light_green_cam}. In this measurement (see Figure \ref{fig:sample3_light_green}) we can notice a hilly surface, but without the interesting pattern found in the dark areas of the sample.
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
 \includegraphics[scale=0.4]{sm_sample3_set}
 \caption{Picture of sample 3 from the camera installed in Nanosurf NaioAFM}
@@ -430,11 +408,12 @@ Then we decide to measure only in the lighter part. We took only one measurement
 \label{fig:sample3_light_green}
 \end{figure}
 
+\newpage
 \subsection{Tapping mode}
 After changing the tip, the first thing we had to do was find the frequency of the cantilever. This was done automatically by the NaioAFM software with the \emph{Frequency Sweep} procedure.
 
 \subsubsection{Calibration}
-Once again, the first step was the measurement of the calibration sample. For the default gain values ($\text{P-Gain}=1000$ and $\text{I-Gain}=1000$), we did several measurements with different values of the setpoint. In this case, it is not a force (in \si{\nano N}) anymore like in the static mode, but a percentage that represents the threshold in the reduction of the oscillation's amplitude. For example, a setpoint of 60\% means that the Z-controller will move the tip closer to the sample until the vibration amplitude has decreased to 60\% of the vibration amplitude when it is far away from the sample.
+Once again, the first step was the measurement of the calibration sample. For the default gain values ($\text{P-Gain}=1000$ and $\text{I-Gain}=1000$), we did several measurements with different values of the setpoint.
 
 With the calibration grid we tried setpoints of 45\%, 50\%, 65\% and 75\%. We fixed the setpoint at 45\% and then we tried to optimize the PID values. We only noticed differences by varying the I-Gain value.
 
@@ -473,10 +452,11 @@ With the calibration grid we tried setpoints of 45\%, 50\%, 65\% and 75\%. We fi
 \end{subfigure}
 \caption{Some pictures of the calibration sample}\label{fig:: tm cal}
 \end{figure}
-As we can see, the data obtained is in agreement with the ones picked up with static mode. The height of the plots are in both modes around $16\mu m$. The corners are a bit less rounded in this mode, we can notice this fact comparing Figure~\ref{fig:3d_and_read_value} with the 3-dimensional plot in Figure~\ref{fig:: tm cal}.
+As we can see, the data obtained is in agreement with the ones picked up with static mode. The height of the plots are in both modes around \SI{16}{\micro\m}. The corners are a bit less rounded in this mode, we can notice this fact comparing Figure~\ref{fig:3d_and_read_value} with the 3-dimensional plot in Figure~\ref{fig:: tm cal}.
 
 \subsubsection{Sample 1}
-In the following picture we can see the picture resulting from the data got about the first sample.
+In Figure \ref{fig:tapping_sample1} we can see the picture resulting from the data got about the first sample.
+
 \begin{figure}[H]
 \centering
 \begin{subfigure}[b]{0.45\textwidth}
@@ -487,13 +467,16 @@ In the following picture we can see the picture resulting from the data got abou
 \begin{subfigure}[b]{0.45\textwidth}
 \includegraphics[width=\textwidth]{tm_sample1_3D}
 \caption{Sample 1 in tapping mode, 3D plot}
-\label{fig:}
+\label{fig:tapping_sample1}
 \end{subfigure}
 \end{figure}
 
-In this case the height is not perfectly in agreement with the one obtained by means of the static mode. With the tapping mode we can measure $43\mu m$ while with the static mode we have $56\mu m$. Anyway the plot that we can observe is in accordance in both the modes.
-\subsubsection{Sample 2}
-Here we have the data from the second sample.
+In this case the height is not perfectly in agreement with the one obtained by means of the static mode. With the tapping mode we can measure \SI{43}{\micro\m} while with the static mode we have \SI{56}{\micro\m}. Anyway the plot that we can observe is in accordance in both the modes.
+
+\subsubsection{Sample 3}
+
+In Figure \ref{fig:tapping_sample2} we show the obtained images for the third sample.
+
 \begin{figure}[H]
 \centering
 \begin{subfigure}[b]{0.45\textwidth}
@@ -504,14 +487,16 @@ Here we have the data from the second sample.
 \begin{subfigure}[b]{0.45\textwidth}
 \includegraphics[width=\textwidth]{tm_sample2_3D}
 \caption{Sample 2 in tapping mode, 3D plot}
-\label{fig:}
+\label{fig:tapping_sample2}
 \end{subfigure}
 \end{figure}
 
 The plot reminds even in this case a set of stars. The difference of height of the corners of the stars is in this case of only $2\mu m$ ($19\mu m$ in the static mode and $17\mu m$ in the tapping one); we can conclude the agreement between the 2 sets of data.
 
-\subsubsection{Sample 3}
-Finally we can see the pictures obtained from the third sample.
+\subsubsection{Sample 2}
+
+Finally, in Figure \ref{fig:tapping_sample3} we can see the pictures obtained for the second sample.
+
 \begin{figure}[H]
 \centering
 \begin{subfigure}[b]{0.45\textwidth}
@@ -522,37 +507,51 @@ Finally we can see the pictures obtained from the third sample.
 \begin{subfigure}[b]{0.45\textwidth}
 \includegraphics[width=\textwidth]{tm_sample3_3D}
 \caption{Sample 3 in tapping mode, 3D plot}
-\label{fig:}
+\label{fig:tapping_sample3}
 \end{subfigure}
 \end{figure}
 
-In this case we can state that the plot of the material is not very regular. In fact, we probably measured 2 differents part of the sample with the 2 modes. The resulting data have a difference of the maximum height really relevant: $9.4nm$ in static mode versus $44nm$ in tapping mode.
+In this case we can state that the plot of the material is not very regular. The resulting data have a difference of the maximum height really relevant: \SI{9.4}{\nano\m} in static mode versus \SI{44}{\nano\m} in tapping mode. Most probably because we measured two different parts of the sample in the two different modes.
 
-At this point we attach a table of the heights measured thanks to Gwyddion (as far as the 3 samples are concerned we will write the maximum height).
+At this point we attach a table of the maximum heights measured thanks to Gwyddion (as far as the 3 samples are concerned we will write the maximum height).
 
-\begin{figure}[ht]
-\begin{center}
-\includegraphics[scale=0.4]{table.png}
-\end{center}
-\end{figure}
+\begin{table}[H]
+\centering
+\begin{tabular}{l c c}
+\toprule
+& Static mode (\si{\nano\m}) & Tapping mode (\si{\nano\m})\\
+\midrule
+Points   & 180 & 180 \\
+Raws     & 121 & 150 \\
+Squares  & 114 & 128 \\
+Sample 1 & 560 & 430 \\
+Sample 2 & 9.4 & 44 \\
+Sample 3 & -- & 170 \\
+\bottomrule
+\end{tabular}
+\caption{Table comparing the heights obtained both in static mode and in tapping mode for different parts of the calibration sample and for the features observed in the three samples.}
+\label{table:comparison}
+\end{table}
 
-Comparing the table with the pictures, we can see that it is not always clear from the images to extimate the height. Actually, even the data reported here are not very precise because of the peaks and hills; it is not always clear from which 2 points to measure the z-distance because the surfaces are often not regular.
+Comparing the table with the pictures, we can see that it is not always clear from the images to extimate the height. Actually, even the data reported here are not very precise because of the peaks and hills; it is not always clear from which two points to measure the z-distance because the surfaces are often not regular.
 
 In conclusion, we show the distance between the centers of the cells measured from the data got in both the modes. As we can see, the values are in good agreement between them.
-\begin{table}[ht]
-\begin{center}
-    \caption{Distances between centers}
-    \label{tab:table2}
-    \begin{tabular}{l|c|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
-      \textbf{Mode} & \textbf{Sample 1} & \textbf{Sample 2}\\
-       & distances in $\mu m$ & distances in $\mu m$ \\
-      \hline
-      Static & 1.018 & 1.126\\
-      Tapping & 1.040 & 1.0598\\
-      
-    \end{tabular}
-  \end{center}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l c c}
+\toprule
+Mode & Sample 1 (\si{\micro\m}) & Sample 3 (\si{\micro\m}) \\
+\midrule
+Static & 1.018 & 1.126 \\
+Tapping & 1.040 & 1.060 \\
+\bottomrule
+\end{tabular}
+\caption{Table comparing the distances between centers of the features.}
+\label{table:comparison2}
 \end{table}
+
+\newpage
 \section{Conclusions}
 We have studied and understand the working principle of AFM, as well as the two most common operation modes: static or contact mode, and tapping or dynamic mode. We have read about and recognize the most common artifacts in AFM images. Finally, we have used the compact NaioAFM both in static and tapping mode to measure three different samples, after optimizing the PID values using a calibration sample. Better results were obtained in the tapping mode, probably due to the fact that we had some issues with the contact mode tip. The Naiosurf software provided with the AFM was used to captured the raw data, and the open source software Gwyddion was utilized to process the images (filtering, background correction, coloring...) and obtain the final ones presented in the report.
 
