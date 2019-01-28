@@ -15,9 +15,7 @@
 \usepackage[separate-uncertainty=true]{siunitx}
 \usepackage{booktabs}
 \usepackage[title]{appendix}
-%\usepackage{amsmath}
-%\usepackage{amssymb}
-%\usepackage{amsthm}
+\usepackage{physics}
 
 
 \title{\bfseries\textsc{Measurement of Cotton-Mouton effect}}
@@ -75,31 +73,42 @@ C_m(\lambda, T)=4\pi\varepsilon_0\,\frac{2\lambda nm}{3d(n^2+2)^2}\,C(\lambda,T)
 \end{equation}
 where $n$ is the refractive index of the liquid in the absence of magnetic field, $m$ is the molar mass, $d$ its the density and $\varepsilon_0$ the vacuum permittivity.
 
-We can also describe the molar Cotton-Mouton constant in terms of the tensor components of the frequency dependent electric dipole polarizability ($\alpha(\lambda)$), those of the magnetizability ($\xi$) and the anisotropy of the frequency dependent mixed electric and magnetic hypermagnetizability ($\eta(\lambda)$):
-\begin{equation}
-C_m(\lambda, T)=\frac{2\pi N_A}{27}(\Delta\eta(\lambda)+\frac{1}{15k_BT}(3\alpha_{\alpha\beta}(\lambda)\xi_{\alpha\beta}-\alpha_{\alpha\alpha}\xi_{\beta\beta}))
+These previous expressions are the ones we will utilize during the experiment, but if we want to understand microscopically the origin of these effects, we need to consider Maxwell's equations. In particular, we need to understand the relations between the two curl equations
+\begin{align}\label{eq:maxwell1}
+\curl{\vec{E}}&=-\pdv{\vec{B}}{t}=-\mu_0\pdv{\vec{H}}{t}\\\label{eq:maxwell2}
+\curl{\vec{H}}&=\epsilon_0\pdv{\vec{E}}{t}+\vec{J}\,,
+\end{align}
+where the current density is given by
+\begin{equation}\label{eq:current_density}
+\vec{J}=\pmb{\chi}\pdv{E}{t}\,,
 \end{equation}
+and $\pmb{\chi}$ is the polarizability tensor. The first equality in \eqref{eq:maxwell1} is true when the relative permeability $\mu/\mu_0\approx1$ and we can write $\vec{B}=\mu_0\vec{H}$. After this considerations, \eqref{eq:maxwell2} can be written in terms of the polarizability tensor
+\begin{equation}\label{eq:maxwell2_tensor}
+\curl{\vec{H}}=\epsilon_0(\pmb{1}+\pmb{\chi})\pdv{\vec{E}}{t}
+\end{equation}
+And it is precisely the non-scalar character of this expression, due to $\pmb{\chi
+}$, which makes magneto-optical effects appear under certain applied magnetic fields or the magnetic state of the material.
 
 In the following we will suppose a constant temperature corresponding to the room temperature (~$300K$) and a constant wavelenght since we are using a laser beam.
 
 \begin{figure}[H]
 \centering
-\begin{subfigure}[b]{0.45\textwidth}
+\begin{subfigure}[b]{0.4\textwidth}
 \includegraphics[width=\textwidth]{laser_polariser}
 \caption{He-Ne laser and the first polariser}
 \label{fig:exp_setup_laser}
 \end{subfigure}
-\begin{subfigure}[b]{0.45\textwidth}
+\begin{subfigure}[b]{0.4\textwidth}
 \includegraphics[width=\textwidth]{Faraday_compensator_quarter_plate}
 \caption{Faraday compensator and quarter-wave plate}
 \label{fig:exp_setup_faraday}
 \end{subfigure}\\\vspace{.2cm}
-\begin{subfigure}[b]{0.45\textwidth}
+\begin{subfigure}[b]{0.4\textwidth}
 \includegraphics[width=\textwidth]{solenoid}
 \caption{Solenoid}
 \label{fig:exp_setup_solenoid}
 \end{subfigure}
-\begin{subfigure}[b]{0.45\textwidth}
+\begin{subfigure}[b]{0.4\textwidth}
 \includegraphics[width=\textwidth]{lock-in}
 \caption{Lock-in amplifier}
 \label{fig:exp_setup_lockin}
