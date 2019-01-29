@@ -12,7 +12,7 @@
 \usepackage[plainpages=false,pdfpagelabels,hypertexnames=false]{hyperref}
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{mathtools}
-\usepackage[separate-uncertainty=true]{siunitx}
+\usepackage[separate-uncertainty=true, multi-part-units=single]{siunitx}
 \usepackage{booktabs}
 \usepackage{physics}
 \usepackage[bottom]{footmisc}
@@ -38,8 +38,7 @@ In this experiment we created four holograms. Holography is briefly explained th
 
 In conventional imaging techniques, such as photography, what is recorded is merely the intensity distribution in the original scene. As a result, all information about the optical paths to different parts of the scene is lost.
 
-The unique characteristic of holography is the idea of recording both the phase and the amplitude of the light waves from an object but since all recording materials respond only to the intensity in the image, it is necessary to convert
-the phase information into variations of intensity.
+The unique characteristic of holography is the idea of recording both the phase and the amplitude of the light waves from an object. But since all recording materials respond only to the intensity in the image, it is necessary to convert the phase information into variations of intensity.
 
 The purpose of this report is to show, both theoretical and experimentally, how this can be achieved using coherent light.
 
@@ -235,46 +234,51 @@ To sum up, four requirements are needed to build a laser: an active material or,
 
 \paragraph{Properties of lasers} All this effort is justified by the unique properties of laser radiation. Laser light is characterized by an extremely high degree of monochromaticity,  coherence, directionality, and brightness. Moreover, although perhaps a less fundamental property, it is possible to produce very short light pulses, very important for some scientific applications and out of reach for other light sources.
 
+\subsection{Holography}\label{sec:Holo}
 
-
-
-\subsection{Holography (together?)}\label{sec:Holo}
+As it was advanced in the introduction, holography is a technique to capture in a photosensitive material, the amplitude and phase of the light, in order to produce 3D images. This gain in information when we compare to photography is not free of cost: both creating (Figure \ref{fig:hologram_recording}) and observing (Figure \ref{fig:hologram_reconstruction}) holograms involve a more complex setup than traditional cameras, and also the use of coherent light like the one produced by lasers.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.8\textwidth]{Hologram_recording}
-\caption{Diagram of the hologram recording setup. The interference pattern produced by the reference wave and the object wave is recorded.\cite{hariharan_2002}}
+\begin{subfigure}[b]{0.48\textwidth}
+\includegraphics[width=\textwidth]{Hologram_recording}
+\caption{}
 \label{fig:hologram_recording}
-\end{figure}
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=0.8\textwidth]{Hologram_image_reconstruction}
-\caption{Diagram of the image reconstruction. Light diffracted by the hologram reconstructs the original object wave.\cite{hariharan_2002}}
+\end{subfigure}
+\begin{subfigure}[b]{0.48\textwidth}
+\includegraphics[width=\textwidth]{Hologram_image_reconstruction}
+\caption{}
 \label{fig:hologram_reconstruction}
+\end{subfigure}
+\caption{In \ref{fig:hologram_recording}, a diagram of the hologram recording setup. The interference pattern produced by the reference wave and the object wave is recorded. In \ref{fig:hologram_reconstruction}, Diagram of the image reconstruction. Light diffracted by the hologram reconstructs the original object wave.\cite{hariharan_2002}}
+\label{fig:holograms}
 \end{figure}
 
-Moreover, thanks to holography, it is possibole to get information about the optical path of the light. As we have said, an holographic image contains also information about the phase of light; knowing the phase difference of two coherent beams we can derive the optical path. In fact, when the wavelenght id constant, we can express the phase difference as:
+Holography was first demonstrated by Gabor in 1948 with a collimated beam of monochromatic light (not a laser). With the invention of lasers, which provided a new source of coherent light, holography has evolve a lot. Many variations of the original idea appeared in the following years, such as holographic interferometry, holographic microscopy, holographic tomography, etc.
+
+
+\paragraph{Holographic interferometry}
+Moreover, thanks to holography, it is possibole to get information about the optical path of the light. As we have said, an hologram contains also information about the phase of light. If we know the phase difference of two coherent beams, we can derive the optical path. In fact, when the wavelength is constant, we can express the phase difference as:
 \begin{equation}
 \Delta \phi=kD=\frac{2\pi}{\lambda}D\label{eq:Delphi}
 \end{equation}
 where $D$ is the difference of the optical path between the first and the second beam.
 
-Let us suppose that in our experiment we move the reflecting object of a distance $d$. If the distance from the photographic plate and the object is much greater than $d$, then we can consider the angle between the incoming and outgoing beam unchanged. Let $\theta_1$ and $\theta_2$ be the angles between the incoming (1) and outgoing (2) beam and the normal to the object surface, then: 
+Let us suppose that in our experiment we move the reflecting object of a distance $d$. If the distance from the photosensitive plate and the object is much greater than $d$, then we can consider the angle between the incoming and outgoing beam unchanged. Let $\theta_1$ and $\theta_2$ be the angles between the incoming (1) and outgoing (2) beam and the normal to the object surface, then: 
 \begin{equation}
 D\simeq d(cos\theta_1+cos\theta_2)\label{eq:D}
 \end{equation}
 
-Exposing the photographic plate two times (one before the movement of the object and one after), we will observe a certain number $N$ of interference fringes on the moved object. Knowing $\Delta \phi=2\pi N$, equating it with equation (\ref{eq:Delphi}) and using equation~(\ref{eq:D}), we get:
+By exposing the photosensitive plate two times, before and after the movement of the object, we will observe a certain number $N$ of interference fringes on the moved object. Knowing $\Delta \phi=2\pi N$, equating it with equation (\ref{eq:Delphi}) and using equation~(\ref{eq:D}), we get:
 \begin{equation}
 d\simeq\frac{N\lambda}{cos\theta_1+cos\theta_2}\label{eq:d}
 \end{equation}
 
-If, instead of moving the object, we rotate it of a small angle $\alpha$, we can state that
+If, instead of moving the object, we rotate it a small angle $\alpha$, we can state that
 \begin{equation}
 d\simeq R\alpha
 \end{equation}
-where $R$ is the radius of the rotation. Therefore, we can extimate the angle alpha with good precision:
+where $R$ is the radius of the rotation. Therefore, we can extimate the angle $\alpha$ with good precision
 \begin{equation}
 \alpha\simeq \frac{N\lambda}{R(cos\theta_1+cos\theta_2)}\label{eq:alp}
 \end{equation}
@@ -311,10 +315,10 @@ In order to see interference fringes in the hologram, instead of the long single
 
 Number of fringes were obtained using \href{https://imagej.net/}{ImageJ}. Images were first desaturated and then the profile of a line crossing all the fringes was plotted. By counting the peaks we determined the number of fringes.
 
-
+\newpage
 \section{Results and conclusions}
 
-The holograms that we have peformed are 3. In the first one, we reproduced the figure of a car with a chess piece on the bonnet. Following the procedure explained in the previous section, we got the image shown in Figure~\ref{fig:off_axis_hologram1}.
+We created three holograms. In the first one, we reproduced the figure of a car with a chess piece on the bonnet. Following the procedure explained in the previous section, we got the image shown in Figure~\ref{fig:off_axis_hologram1}.
 \begin{figure}[ht]
 \centering
 \begin{subfigure}[b]{0.45\textwidth}
@@ -331,44 +335,46 @@ The holograms that we have peformed are 3. In the first one, we reproduced the f
 \label{fig:off-axis_exposure}
 \end{figure}
 
-The second exposion that we have done was a double exposion of a metallic piece in 2 different positions. As explained in subsection~\ref{sec:Holo}, we are able to extimate with good precision the distance between the 2 positions. 
-
-Knowing the wavelenght of the laser ($\lambda =632.8nm$), the angles formed by the laser beam and the normal to the object ($\theta_1 =29^o \pm 5^o$ and $\theta_2 =30^o \pm 5^o$) and number of fringes ($N=48 \pm 2$, as we can see from Figure~\ref{fig:holographic_interferometry_position_fringes}), we can compute the distance $d$ using equation~(\ref{eq:d}). The result obtained is: $d \simeq 17\mu m$.
-
-In the same way, we evaluate the uncertainty of this measurement using the propagation of the propagation of uncertainty. We obtain: $\Delta d=2\mu m$.
+The second hologram (Figure \ref{fig:holographic_interferometry_position}) was made with a double exposure of a metallic piece in two different positions. As explained in subsection~\ref{sec:Holo}, we are able to extimate with good precision the distance between the two positions.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.6\textwidth]{Holographic_interferometry_position}
+\includegraphics[width=0.5\textwidth]{Holographic_interferometry_position}
 \caption{Picture of an hologram with an interference pattern caused by the movement of the metallic piece $\approx\SI{14}{\micro \m}$ between exposures.}
 \label{fig:holographic_interferometry_position}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
+\begin{subfigure}[b]{0.4\textwidth}
+\includegraphics[width=\textwidth]{Holographic_interferometry_angle_fringes}
+\caption{}
+\label{fig:holographic_interferometry_angle_fringes}
+\end{subfigure}\\\vspace{.1cm}
+\begin{subfigure}[b]{0.4\textwidth}
 \includegraphics[width=\textwidth]{Holographic_interferometry_position_fringes}
-\caption{Profile along the vertical direction (yellow line). Peaks correspond to constructive interference and by counting them we get the number of fringes.}
+\caption{}
 \label{fig:holographic_interferometry_position_fringes}
+\end{subfigure}
+\caption{In \ref{fig:holographic_interferometry_angle_fringes}, the profile along the horizontal direction (yellow line). In \ref{fig:holographic_interferometry_position_fringes}, the profile along the vertical direction (yellow line). Peaks correspond to constructive interference and by counting them we get the number of fringes.}
+\label{fig:profile_measurements}
 \end{figure}
 
-Finally, we did the double exposure of a piece of metal before and after a small rotation (of an angle $\alpha$). As explained in subsection~\ref{sec:Holo}, it is possible to extimate with good precision our $\alpha$.
+Knowing the wavelenght of the laser ($\lambda=\SI{632.8}{\nano\m}$), the angles formed by the laser beam and the normal to the object ($\theta_1 =29^\circ \pm 5^\circ$ and $\theta_2 =30^\circ \pm 5^\circ$) and number of fringes ($N=48 \pm 2$, as we can see from Figure~\ref{fig:holographic_interferometry_position_fringes}), we can compute the distance $d$ using equation~(\ref{eq:d}). The result obtained is: $d \simeq \SI{17}{\micro\m}$.
 
-Using equation~(\ref{eq:alp}) and knowing $R=7.8cm\pm 0.1$, $N=25\pm 2$ (as we observe in Figure~\ref{fig:holographic_interferometry_angle_fringes}), $\lambda=632.8nm$, $\theta_1=46^o\pm 5^o$ and $\theta_2=11^o\pm 5^o$, we get to the result: $\alpha= 0.0130^o\pm 0.0009^o$.
+In the same way, we evaluate the uncertainty of this measurement using the propagation of uncertainty. We obtain: $\Delta d=\SI{2}{\micro\m}$.
 
+Third hologram (Figure \ref{fig:holographic_interferometry_angle}) was again a double exposure of a piece of metal, but now before and after a small rotation (of an angle $\alpha$). As explained in subsection~\ref{sec:Holo}, it is possible to extimate with good precision our $\alpha$.
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.6\textwidth]{Holographic_interferometry_angle}
+\includegraphics[width=0.4\textwidth]{Holographic_interferometry_angle}
 \caption{Picture of an hologram with an interference pattern caused by the rotation of the metallic piece $\approx (1/72)^\circ$ between exposures.}
 \label{fig:holographic_interferometry_angle}
 \end{figure}
 
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\textwidth]{Holographic_interferometry_angle_fringes}
-\caption{Profile along the horizontal direction (yellow line).}
-\label{fig:holographic_interferometry_angle_fringes}
-\end{figure}
+Using equation~(\ref{eq:alp}) and knowing $R=\SI{7.8\pm0.1}{\cm}$, $N=25\pm 2$ (as we observe in Figure~\ref{fig:holographic_interferometry_angle_fringes}), $\lambda=\SI{632.8}{\nano\m}$, $\theta_1=46^o\pm 5^o$ and $\theta_2=11^o\pm 5^o$, we get to the result: $\alpha= 0.0130^o\pm 0.0009^o$.
+
 
 During the experiment, we have tried to roughly measure the distance $d$ and the angle $\alpha$. The distance was $d\sim 14\mu m$, so in good accordance with the result obtained. As far as the angle is concerned, we know that we moved the wheel a bit less then 1 step, where every step was $\frac{1}{72}^o\simeq 0.0139$; therefore we can conclude that even in this case the measurement agrees with the extimated value of the angle.
 
@@ -386,7 +392,7 @@ Finally, we tried to do a second hologram where we wanted to create the effect o
 \caption{Position second exposure}
 \label{fig:dir2}
 \end{subfigure}\\\vspace{.2cm}
-\begin{subfigure}[b]{0.45\textwidth}
+\begin{subfigure}[b]{0.35\textwidth}
 \includegraphics[width=\textwidth]{car_double_exposure_hologram}
 \caption{Picture of the obtained hologram}
 \label{fig:result}
@@ -395,8 +401,7 @@ Finally, we tried to do a second hologram where we wanted to create the effect o
 \label{fig:experiment_double_exposure}
 \end{figure}
 
-
-\newpage
+\vfill
 \nocite{*}
 \bibliographystyle{unsrt}
 \bibliography{references}
