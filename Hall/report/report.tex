@@ -30,13 +30,35 @@ Iyán Méndez Veiga\\ \small\texttt{\href{mailto:iyan.mendez-veiga@uni-ulm.de}{i
 
 
 \section{Introduction}
-In this experiment, we will determin the carrier density ($p$) and the mobility ($\mu$) of a p-type semicon-sample (Boron) as a function of the temperature, in the range $80K-300K$.
+In this experiment, we will determine the carrier density ($p$) and the mobility ($\mu$) of a p-type semiconducting sample (Boron) as a function of the temperature, in the range $80K-300K$.
 
-In order to obtain the carrier density we will use Hall-effect. To get the mobility we will measure the resistivity ($\rho$) by means of the van der Pauw method.
+In order to obtain the carrier density we will use Hall-effect. To get the mobility we will measure the resistivity ($\rho$) by means of the van der Pauw method. 
 
+Unfortunately, a semiconducting sample do not have a simple structure and the electric field depends on the position inside the material. This does not allow us to evaluate the Hall coefficient by means of a linear fit between current and voltage. We will show that considering a offset voltage, we will be able to evaluate our coefficient.
+
+Intro about mobility bla bla
 
 \section{Materials and methods}
+Let us start explaining the evaluation of the carrier density.
 
+Our sample is under the influence a constant magnetic field ($\vec{B}$). We can evaluate the drift velocity ($\vec{v}_d$) its charge carriers using the equations of motion of a particle in presence of an electric field:
+\begin{equation*}
+m\frac{d\vec{v}}{dt}+\frac{m}{\tau}\vec{v}_d=-e(\vec{E}+\vec{v}_d\times\vec{B})
+\end{equation*} where $\tau$ is called relaxation time. The steady state solution of this equation is: 
+\begin{equation}
+v_d=-\frac{e\tau}{m}(\vec{E}+\vec{v}_d\times\vec{B})\equiv -\mu (\vec{E}+\vec{v}_d\times\vec{B})
+\end{equation}Where $\mu$ is the \emph{mobility} we are looking for. %In our case the electric field will be parallel to the surface of the sample and the magnetic field orthogonal, hence we can remove the vectors.
+
+Using the definition of density of current $\vec{j}=ep\vec{v}_d$ (where $e$ is the elementar charge and $p$ is the holes density), we get the following expression for the electric field:
+\begin{equation}
+\vec{E}=\frac{1}{ep\mu}\vec{j}+\frac{1}{ep}\vec{j}\times\vec{B}\equiv \vec{E}_\parallel+\vec{E}_\perp
+\end{equation}
+
+Therefore, measuring the voltage between 2 random points P and N of the sample (as shown in figure {\tiny cite the figure}), what we are obtaining is:
+\begin{equation}
+U_{PN}=\int_P^N\vec{E}\cdot d\vec{s}=\int_P^{N'}\vec{E}_\parallel\cdot d\vec{s}+\int_{N'}^N\vec{E}_\perp\cdot d\vec{s}
+\end{equation}
+We will call the second term in the previous expression \emph{offset voltage}, while
 
 \section{Results and discussion}
 
