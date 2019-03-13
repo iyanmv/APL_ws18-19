@@ -76,9 +76,39 @@ Since in our case the charge carriers are holes, our distribution will be $1-f(E
 \begin{equation}
 p=\int_{-\infty}^{E_V}D_V(E)(1-f(E,T))dE
 \end{equation}
+The density of states can be written according to the parabolic approximation:
+\begin{equation*}
+D_V(E)=\frac{\sqrt{2}(m_{lh}^{3/2}+m_{hh}^{3/2})}{2\pi^2\hbar^3}\sqrt{E_V-E}
+\end{equation*} where $m_{lh}$ and $m_{hh}$ are the mass of light and heavy holes.
 
+Finally, defining 
+\begin{equation}
+N_V=2\frac{(m_{lh}^{3/2}+m_{hh}^{3/2})}{h^3}(2\pi k_BT)^{3/2}
+\end{equation} we can write the following formula for the carriers density:
+\begin{equation}
+p=N_V\frac{2}{\sqrt{\pi}}F_{1/2}\left(\frac{E_V-E_F}{k_BT}\right)
+\end{equation} where $F_{1/2}(y)=\int_0^\infty\frac{x^{1/2}}{1+e^{(x-y)}}dx$ is the Fermi-Dirac integral and $E_F$ is the Fermi energy. In the case $k_BT<<E_F-E_V$ the solution of the integral is:
+\begin{equation}
+p=N_Ve^{-\frac{E_F-E_V}{k_BT}}\label{eq::p}
+\end{equation}
 
+In our case the semiconductor is p-doped, i.e. a concentration $N_A$ of electrons acceptors has been artificially added to the material. We can express the concentration of ionized acceptors as:
+\begin{equation}
+N_A^-=\frac{N_A}{1+4e^{\frac{E_A-E_F}{k_BT}}}\label{eq::Na-}
+\end{equation}
+here $E_A$ is the energy of bound acceptor holes.
 
+The matierial needs to respect the neutrality of charge, i.e. $p=n+N_A^-$. The intrinsic conductivity is neglectable for a certain range of temperatures, in this case we can write the charge neutrality as $p=N_A^-$. Hence, using Eqs.~(\ref{eq::Na-}),~(\ref{eq::p}) we obtain:
+\begin{equation}
+p\simeq\frac{N_A}{1+4(p/N_V)e^{\frac{E_A-E_V}{k_BT}}}
+\end{equation}
+Solving the equation for $p$, we get:
+\begin{equation}
+p=\simeq\frac{2N_A}{1+\sqrt{1+16\frac{N_A}{N_V}e^\frac{E_A-E_V}{k_BT}}}
+\end{equation}For low temperatures ($T<<\frac{E_A-E_V}{k_B}$) we can simplify the previous expression as:
+\begin{equation}
+p\simeq \frac{1}{2}\sqrt{N_AN_V}e^{-\frac{E_A-E_V}{2K_BT}}
+\end{equation}
 \subsection{Mobility}
 At this point we will use Van der Pauw method to get the mobility. In 1958 this author (to cite) proved that if we apply a voltage putting sufficently small conctacts at the border of our sample, the sample is homogeneous in thickness ($d$) and it has no isolated holes, then the following formula holds:
 \begin{equation}
