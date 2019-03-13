@@ -36,7 +36,7 @@ In order to obtain the carrier density we will use Hall-effect. To get the mobil
 
 Unfortunately, a semiconducting sample do not have a simple structure and the electric field depends on the position inside the material. This does not allow us to evaluate the Hall coefficient by means of a linear fit between current and voltage. We will show that considering a offset voltage, we will be able to evaluate our coefficient.
 
-Intro about mobility bla bla
+In order to evaluate the mobility, we will use the Van der Pauw method. This pysicist proved that we can evaluate the specific resistivity of a sample with an arbitrary shape. Knowing the resistivity and the Hall resistance, we will be able to obtain the mobility. 
 
 \section{Materials and methods}
 \subsection{Carrier density}
@@ -68,7 +68,11 @@ Defining $R_H=\frac{1}{ep}$ as the Hall coefficient, we get the relation that wi
 U_{PN}-U_{off}=-R_H\frac{BI}{d}
 \end{equation}
 \subsection{Mobility}
-At this point we will use Van der Pauw method to get the mobility.
+At this point we will use Van der Pauw method to get the mobility. In 1958 this author (to cite) proved that if we apply a voltage putting sufficently small conctacts at the border of our sample, the sample is homogeneous in thickness ($d$) and it has no isolated holes, then the following formula holds:
+\begin{equation}
+e^{-\frac{\pi R_{AB,CD}d}{\rho}}+e^{-\frac{\pi R_{BC,DA}d}{\rho}}=1
+\end{equation}
+where $\rho$ is the resistivity, while $R_{AB,CD}$ is defined as the ratio between the voltage applied between the contact points C and D and the current measured between the points A and B and $R_{BC,DA}$ analogously.
 
 \section{Results and discussion}
 
