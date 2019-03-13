@@ -175,11 +175,13 @@ After the calibration measurements, we cooled down the sample to about \SI{80}{\
 \begin{itemize}
 \item Offset voltage $U_\text{off}$, i.e. the potential difference between contacts P and N (see Figure {\color{red}Add figure with experimental setup to change currents and measure voltages}), while applying a current of \SI{100}{\micro\ampere} between contacts M and O and without magnetic field.
 \item Transverse voltage $U_t$ between contacts P and N, i.e. the sum of Hall voltage and the offset voltage, while applying same current of \SI{100}{\micro\ampere} between M and O and with a magnetic field of \SI{0.5126}{\tesla}.
-\item The potential difference $U_\text{MN}$ between contacts M and N while applying a current of \SI{100}{\micro\ampere} between contacts O and P and with the same magnetic field as before.
-\item The potential difference $U_\text{NO}$ between contacts N and O while applying the same current between contacts P and M and under the same magnetic field.
+\item The potential difference $U_\text{OP}$ between contacts O and P while applying a current of \SI{100}{\micro\ampere} between contacts M and N and with the same magnetic field as before.
+\item The potential difference $U_\text{PM}$ between contacts P and M while applying the same current between contacts N and O and under the same magnetic field.
 \end{itemize}
 
-First two measurements are used to compute the Hall constant $R_H$ and the carrier concentration $p$ of our p-doped semiconductor. The other two are necessary to obtain the resistivity $\rho$ using the van der Pauw method \cite{vdP}. Once, $R_H$ and $\rho$ are known, it is also possible to compute the Hall mobility $\mu_H$.
+First two measurements are used to compute the Hall constant $R_H$ and the carrier concentration $p$ of our p-doped semiconductor. The other two are necessary to obtain the resistivity $\rho$ using the van der Pauw method \cite{vdP}. Once $R_H$ and $\rho$ are known, it is also possible to compute the Hall mobility $\mu_H$.
+
+We were able to measure these four values from \SI{82}{\kelvin} to \SI{200}{\kelvin}, but heating process was too slow to reach \SI{300}{\kelvin} so we were given measurements from other group. We combined theirs with ours to get the full range of temperatures (see Appendix \ref{app:dataset}).
 
 \section{Conclusions}
 
@@ -191,15 +193,24 @@ First two measurements are used to compute the Hall constant $R_H$ and the carri
 \newpage
 \begin{appendices}
 \section{Joining measurements}\label{app:dataset}
-Due to a problem with the heating mechanism in the cryostat, we could only do measurements from \SI{80}{\kelvin} to \SI{200}{\kelvin}. The complete raw data from a different group was given to us so we would have measurements in the range from \SI{80}{\kelvin} to \SI{300}{\kelvin}. In this appendix we compare our measurements at low temperatures with theirs, and we showed how he generate a combined dataset.
+Due to a problem with the heating mechanism in the cryostat, we could only do measurements from \SI{82}{\kelvin} to \SI{200}{\kelvin}. The complete raw data from a different group was given to us so we would have measurements in the range from \SI{80}{\kelvin} to \SI{300}{\kelvin}. In this appendix we compare our measurements at low temperatures with theirs, and we showed how he generate a combined dataset.
 
-In Figure \ref{fig:comparison_datasets} we summarize the comparison of both datasets.
+In Figure \ref{fig:comparison_datasets} we summarize the comparison of both datasets. There is a good enough agreement between them so we decided to join them together and use our measurements at low temperatures and theirs from \SI{200}{\kelvin} to \SI{300}{\kelvin}. The noticeable deviation at low temperatures may be due to the fact that they aligned the sample at a slightly different angle with the magnetic field. This angle was not included in the their dataset but deviation is negligible at higher temperatures.
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\textwidth]{comparison_datasets.eps}
 \caption{In a) and b) the two resistances computed from the measured voltages and in c) the Hall voltage are plotted against temperature. Blue dots represent our measurements and orage dots the values obtained by the other group. Zoomed areas are drawn around $T=\SI{200}{\kelvin}$ to better show the union between our measurements and theirs for our last recorded temperature.}
 \label{fig:comparison_datasets}
+\end{figure}
+
+Final dataset consists of 25 temperatures from our dataset and 19 from theirs and it is shown in Figure \ref{fig:final_dataset}. All the plots in the report are obtained using this dataset.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{final_dataset.eps}
+\caption{Final dataset with the combined measurements. The four measured quantities in the lab are plotted against the temperature: a) the offset voltage in absence of magnetic field, b) the total transverse voltage and c-d) the two voltages required to use the van der Pauw method.}
+\label{fig:final_dataset}
 \end{figure}
 
 \end{appendices}
