@@ -67,12 +67,33 @@ Defining $R_H=\frac{1}{ep}$ as the Hall coefficient, we get the relation that wi
 \begin{equation}
 U_{PN}-U_{off}=-R_H\frac{BI}{d}
 \end{equation}
+\subsection{Dependence of $p$ on the temperature}
+In a semiconductor, the occupation of electronic states follows the Fermi-Dirac distribution:
+\begin{equation*}
+f(E,T)=\frac{1}{1+e^{\frac{E-E_F}{k_BT}}}
+\end{equation*}
+Since in our case the charge carriers are holes, our distribution will be $1-f(E,T)$. Let us call $D_V(E)$ the density of states in the valence band and $E_V$ the valence band edge, then we can write the carriers density as:
+\begin{equation}
+p=\int_{-\infty}^{E_V}D_V(E)(1-f(E,T))dE
+\end{equation}
+
+
+
 \subsection{Mobility}
 At this point we will use Van der Pauw method to get the mobility. In 1958 this author (to cite) proved that if we apply a voltage putting sufficently small conctacts at the border of our sample, the sample is homogeneous in thickness ($d$) and it has no isolated holes, then the following formula holds:
 \begin{equation}
 e^{-\frac{\pi R_{AB,CD}d}{\rho}}+e^{-\frac{\pi R_{BC,DA}d}{\rho}}=1
 \end{equation}
 where $\rho$ is the resistivity, while $R_{AB,CD}$ is defined as the ratio between the voltage applied between the contact points C and D and the current measured between the points A and B and $R_{BC,DA}$ analogously.
+
+As shown in the paper, we can get the resistivity according to the following expression:
+\begin{equation}
+\rho=\frac{\pi d}{ln(2)}\frac{(R_{AB,CD}+R_{BC,DA})}{2}f\left(R_{AB,CD},R_{BC,DA}\right)
+\end{equation}
+where the function $f$ can be approximated as
+\begin{equation}
+f \simeq 1-\left(\frac{R_{AB,CD}-R_{BC,DA}}{R_{AB,CD}+R_{BC,DA}}\right)^2 \frac{ln(2)}{2}-\left(\frac{R_{AB,CD}-R_{BC,DA}}{R_{AB,CD}+R_{BC,DA}}\right)^4\left(\frac{ln(2)^2}{4}-\frac{ln(2)^3}{12}\right)
+\end{equation}
 
 \section{Results and discussion}
 
