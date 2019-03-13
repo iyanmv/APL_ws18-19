@@ -1,6 +1,6 @@
 # Advanced Physics Lab
 
-![](https://www.uni-ulm.de/fileadmin/website_uni_ulm/Corporate_Design/logo/CMYK/gif/logo_30_CMYK.gif)
+![](.uni_ulm_logo.gif)
 
 Reports of the group 1284 for the [Advanced Physics Lab course](https://www.uni-ulm.de/en/nawi/physics/students/studying/physics-advanced-laboratory/
 ).
