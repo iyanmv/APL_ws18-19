@@ -111,7 +111,7 @@ p\simeq \frac{1}{2}\sqrt{N_AN_V}e^{-\frac{E_A-E_V}{2K_BT}}
 \end{equation}
 
 \subsection{Mobility}
-At this point we will use Van der Pauw method to get the mobility. In 1958 this author (to cite) proved that if we apply a voltage putting sufficently small conctacts at the border of our sample, the sample is homogeneous in thickness ($d$) and it has no isolated holes, then the following formula holds:
+At this point we will use Van der Pauw method to get the mobility. In 1958 this author \cite{vdP} proved that if we apply a voltage putting sufficently small conctacts at the border of our sample, the sample is homogeneous in thickness ($d$) and it has no isolated holes, then the following formula holds:
 \begin{equation}
 e^{-\frac{\pi R_{AB,CD}d}{\rho}}+e^{-\frac{\pi R_{BC,DA}d}{\rho}}=1
 \end{equation}
@@ -128,9 +128,34 @@ f \simeq 1-\left(\frac{R_{AB,CD}-R_{BC,DA}}{R_{AB,CD}+R_{BC,DA}}\right)^2 \frac{
 
 \section{Materials and methods}
 
-\subsection{Experimental setup}
+The experimental setup consisted in a liquid nitrogen cryostat DN1710 by Oxford Instruments Ltd. surrounded at the bottom by an electromagnet Bruker Magnet B-E 10 (see Figure \ref{fig:experimental_setup_all}).
 
-The experimental setup consisted in a liquid nitrogen cryostat DN1710 by Oxford Instruments Ltd. surrounded at the bottom by an electromagnet Bruker Magnet B-E 10 (see Figure ).
+Sample was connected to a HP 34401A Digital Multimeter and a Yokogawa 7651 Programmable DC Source. In order to select to which sample contacts they were connected, device shown in Figure \ref{fig:cables} was used.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{Experimental_setup_cables}
+\caption{Device to choose where to apply current in the semiconductor sample and where to measure voltage. For example, by turning on switches M and O on the left (current), and switches P and N on the right (voltages), we can measure the transvere voltage $U_t$.}
+\label{fig:cables}
+\end{figure}
+
+For the characterization of the magnetic field, a calibrated Hall sensor (see Figure \ref{fig:Hall_sensor}) was used connected to the probe tube.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{Hall_sensor}
+\caption{Calibrated Hall sensor (\SI{0.1172}{\tesla/\milli\volt} at \SI{10}{\milli\ampere}) used to measure the magnetic field produced by the coils.}
+\label{fig:Hall_sensor}
+\end{figure}
+
+Finally, determination of the temperature close to the sample was done with a resistor connected to a device that directly show us the temperature in Kelvin (see Figure \ref{fig:temperature_device}). With the same device, we could control a heating mechanism by applying a voltage to a different resistor in the cryostat.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{temperature_device}
+\caption{Device showing that temperature close to the sample is \SI{89.3}{\kelvin}. A voltage of \SI{8}{\volt} was being used at that moment to heat the sample after closing the gas exhaust valve.}
+\label{fig:temperature_device}
+\end{figure}
 
 \begin{figure}[H]
 \centering
@@ -153,22 +178,7 @@ The experimental setup consisted in a liquid nitrogen cryostat DN1710 by Oxford 
 \label{fig:experimental_setup_all}
 \end{figure}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.6\textwidth]{Hall_sensor}
-\caption{Calibrated Hall sensor (\SI{0.1172}{\tesla/\milli\volt} at \SI{10}{\milli\ampere}) used to measure the magnetic field produced by the coils.}
-\label{fig:Hall_sensor}
-\end{figure}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.6\textwidth]{Experimental_setup_cables}
-\caption{Device to choose where to apply current in the semiconductor sample and where to measure voltage. For example, by turning on switches M and O on the left (current), and switches P and N on the right (voltages), we can measure the transvere voltage $U_t$.}
-\label{fig:cables}
-\end{figure}
-
-
-\subsection{Van der Pauw method}
 
 \section{Results and discussion}
 
