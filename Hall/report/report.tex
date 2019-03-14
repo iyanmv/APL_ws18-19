@@ -12,8 +12,9 @@
 \usepackage[plainpages=false,pdfpagelabels,hypertexnames=false]{hyperref}
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{mathtools}
-\usepackage[separate-uncertainty=true]{siunitx}
+\usepackage[separate-uncertainty=true, multi-part-units=single]{siunitx}
 \usepackage{booktabs}
+\usepackage{physics}
 \usepackage[title]{appendix}
 
 \title{\bfseries\textsc{Hall effect in semiconductors}}
@@ -38,29 +39,37 @@ Let us start explaining the evaluation of the carrier density.
 
 Our sample is under the influence a constant magnetic field ($\vec{B}$). We can evaluate the drift velocity ($\vec{v}_d$) its charge carriers using the equations of motion of a particle in presence of an electric field:
 \begin{equation*}
-m\frac{d\vec{v}}{dt}+\frac{m}{\tau}\vec{v}_d=-e(\vec{E}+\vec{v}_d\times\vec{B})
-\end{equation*} where $\tau$ is called relaxation time. The steady state solution of this equation is: 
-\begin{equation}
-v_d=-\frac{e\tau}{m}(\vec{E}+\vec{v}_d\times\vec{B})\equiv -\mu (\vec{E}+\vec{v}_d\times\vec{B})
-\end{equation}Where $\mu$ is the \emph{mobility}. %In our case the electric field will be parallel to the surface of the sample and the magnetic field orthogonal, hence we can remove the vectors.
+m\frac{d\vec{v}}{dt}+\frac{m}{\tau}\vec{v}_d=-e(\vec{E}+\vec{v}\times\vec{B})
+\end{equation*}
+where $\tau$ is called relaxation time and in a microscopic picture it describes the mean time between two successive collision. The steady state solution of this equation is: 
+\begin{equation*}
+\vec{v}_d=-\frac{e\tau}{m}(\vec{E}+\vec{v}_d\times\vec{B})\equiv -\mu (\vec{E}+\vec{v}_d\times\vec{B})\,,
+\end{equation*}
+where we have defined the \emph{mobility} $\mu$.
+%In our case the electric field will be parallel to the surface of the sample and the magnetic field orthogonal, hence we can remove the vectors.
 
-Using the definition of density of current in a p-doped matherial: $\vec{j}=ep\vec{v}_d$ (where $e$ is the elementar charge and $p$ is the holes density), we get the following expression for the electric field:
-\begin{equation}
+Using the definition of current density in a p-doped material:
+\begin{equation*}
+\vec{j}=ep\vec{v}_d\,,
+\end{equation*}
+where $e$ is the elementary charge and $p$ is the holes density, we get the following expression for the electric field:
+\begin{equation*}
 \vec{E}=\frac{1}{ep\mu}\vec{j}+\frac{1}{ep}\vec{j}\times\vec{B}\equiv \vec{E}_\parallel+\vec{E}_\perp
-\end{equation}
+\end{equation*}
 
-Therefore, measuring the voltage between 2 random points P and N of the sample (as shown in figure {\tiny cite the figure}), what we are obtaining is:
-\begin{equation}
-U_{PN}=\int_P^N\vec{E}\cdot d\vec{s}=\int_P^{N'}\vec{E}_\perp\cdot d\vec{s}+\int_{N'}^N\vec{E}_\parallel\cdot d\vec{s}
+Therefore, by measuring the voltage between two random points P and N of the sample (as shown in figure ({\color{red}Ref figure}), we obtain:
+\begin{equation}\label{eq:U_PN}
+U_\text{PN}=\int_P^N\vec{E}\cdot d\vec{s}=\int_P^{N'}\vec{E}_\perp\cdot d\vec{s}+\int_{N'}^N\vec{E}_\parallel\cdot d\vec{s}
 \end{equation}
-We will call the second term in the previous expression \emph{offset voltage} ($U_{off}$); this term can be measured in absence of magnetic field. The first term can be evaluated considering that the magnetic field is orthogonal to the sample surface:
+We call the second term in \eqref{eq:U_PN} \emph{offset voltage} ($U_\text{off}$). This term can be measured in absence of magnetic field. The first term can be evaluated considering that the magnetic field is orthogonal to the sample surface:
 \begin{equation}
 \int_P^{N'}\vec{E}_\perp\cdot d\vec{s}=-\frac{B}{ep}\int_P^{N'}j\, ds=-\frac{B}{ep}\int_P^{N'}\frac{1}{d}\frac{dI}{ds}\, ds=-\frac{B}{epd}\int_P^{N'} dI=-\frac{BI}{epd}
 \end{equation}
-Defining $R_H=\frac{1}{ep}$ as the Hall coefficient, we get the relation that will allow us to measure the carrier density:
-\begin{equation}
-U_{PN}-U_{off}=-R_H\frac{BI}{d}
+Defining $R_H\equiv\dfrac{1}{ep}$ as the Hall coefficient, we get the relation that will allow us to measure the carrier density:
+\begin{equation}\label{eq:Hall_voltage}
+U_\text{PN}-U_\text{off}=-R_H\frac{BI}{d}\,,
 \end{equation}
+when $B$ and $I$ are fixed and the sample's thickness $d$ is known.
 
 \subsection{Dependence of $p$ on the temperature}
 
