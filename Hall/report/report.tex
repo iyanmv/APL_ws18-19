@@ -23,11 +23,8 @@ Iyán Méndez Veiga\\ \small\texttt{\href{mailto:iyan.mendez-veiga@uni-ulm.de}{i
 }
 \date{\today}
 
-
 \begin{document}
 \maketitle
-
-
 
 \section{Introduction}
 In this experiment, we will determine the carrier density ($p$) and the mobility ($\mu$) of a p-type semiconducting sample (Boron) as a function of the temperature, in the range $80K-300K$.
@@ -38,7 +35,8 @@ Unfortunately, a semiconducting sample do not have a simple structure and the el
 
 In order to evaluate the mobility, we will use the Van der Pauw method. This pysicist proved that we can evaluate the specific resistivity of a sample with an arbitrary shape. Knowing the resistivity and the Hall resistance, we will be able to obtain the mobility. 
 
-\section{Materials and methods}
+\section{Theory}
+
 \subsection{Carrier density}
 Let us start explaining the evaluation of the carrier density.
 
@@ -67,7 +65,9 @@ Defining $R_H=\frac{1}{ep}$ as the Hall coefficient, we get the relation that wi
 \begin{equation}
 U_{PN}-U_{off}=-R_H\frac{BI}{d}
 \end{equation}
+
 \subsection{Dependence of $p$ on the temperature}
+
 In a semiconductor, the occupation of electronic states follows the Fermi-Dirac distribution:
 \begin{equation*}
 f(E,T)=\frac{1}{1+e^{\frac{E-E_F}{k_BT}}}
@@ -109,6 +109,7 @@ p=\simeq\frac{2N_A}{1+\sqrt{1+16\frac{N_A}{N_V}e^\frac{E_A-E_V}{k_BT}}}
 \begin{equation}
 p\simeq \frac{1}{2}\sqrt{N_AN_V}e^{-\frac{E_A-E_V}{2K_BT}}
 \end{equation}
+
 \subsection{Mobility}
 At this point we will use Van der Pauw method to get the mobility. In 1958 this author (to cite) proved that if we apply a voltage putting sufficently small conctacts at the border of our sample, the sample is homogeneous in thickness ($d$) and it has no isolated holes, then the following formula holds:
 \begin{equation}
@@ -139,24 +140,61 @@ In order to evaluate the mobility we will use the following expression:
 \mu=\frac{d}{B}\frac{R_H}{\rho}
 \end{equation}
 
-\section{Results and discussion}
+\section{Materials and methods}
 
-\subsection{Calibration of the electromagnet}
+\subsection{Experimental setup}
 
-We determined the dependence of the magnetic field strength $B$ on the current $I_B$ through the magnetic coils using a calibrated Hall sensor (see Figure \ref{fig:Hall_sensor}).
+The experimental setup consisted in a liquid nitrogen cryostat DN1710 by Oxford Instruments Ltd. surrounded at the bottom by an electromagnet Bruker Magnet B-E 10 (see Figure ).
 
-\begin{figure}[ht]
+\begin{figure}[H]
+\centering
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{Experimental_setup}
+\caption{}
+\label{fig:experimental_setup}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{cryostat}
+\caption{}
+\label{fig:cryostat}
+\end{subfigure}\\\vspace{.2cm}
+\begin{subfigure}[b]{0.6\textwidth}
+\includegraphics[width=\textwidth]{electromagnet}
+\caption{}
+\label{fig:electromagnet}
+\end{subfigure}
+\caption{Experimental setup used for this experiment. In (a) the cryostat with the bottom, where the sample is placed, enclosed by the magnetic coils. In (b) the cryostat in more detail. Transparent tube in the center is connected to a vacuum pump. Left one is the nitrogen entry port. Black valve in the center is the gas exhaust valve. By closing it, temperature starts to rise. Sample is introduced using a probe tube in the sample access port at the top centre. In both (a) and (b) probe tube is already introduced and the cables connected to sample's contacts can be seen, as well as tip to determine the angle between sample and magnetic field. In (c) the electromagnet in detail.}
+\label{fig:experimental_setup_all}
+\end{figure}
+
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.6\textwidth]{Hall_sensor}
 \caption{Calibrated Hall sensor (\SI{0.1172}{\tesla/\milli\volt} at \SI{10}{\milli\ampere}) used to measure the magnetic field produced by the coils.}
 \label{fig:Hall_sensor}
 \end{figure}
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{Experimental_setup_cables}
+\caption{Device to choose where to apply current in the semiconductor sample and where to measure voltage. For example, by turning on switches M and O on the left (current), and switches P and N on the right (voltages), we can measure the transvere voltage $U_t$.}
+\label{fig:cables}
+\end{figure}
+
+
+\subsection{Van der Pauw method}
+
+\section{Results and discussion}
+
+\subsection{Calibration of the electromagnet}
+
+We determined the dependence of the magnetic field strength $B$ on the current $I_B$ through the magnetic coils using a calibrated Hall sensor (see Figure \ref{fig:Hall_sensor}).
+
 We measured the voltage for different currents $I_B$ from \SI{0}{\ampere} to \SI{15}{\ampere} in steps of \SI{1}{\ampere} at room temperature ($\sim\SI{300}{\kelvin}$). In Figure \ref{fig:magnetic_field}, the magnetic field computed using the calibration coefficient (see caption Figure \ref{fig:Hall_sensor}) is plotted against the current $I_B$.
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{Magnetic_field_vs_current}
+\includegraphics[width=0.8\textwidth]{Magnetic_field_vs_current.eps}
 \caption{Magnetic field vs current in the magnetic coils. Solid lines show the current we fixed in the coils for the following measurements, generating a magnetic field of \SI{0.5126}{\tesla}.}
 \label{fig:magnetic_field}
 \end{figure}
@@ -165,9 +203,9 @@ We measured the voltage for different currents $I_B$ from \SI{0}{\ampere} to \SI
 
 The junction between conductors should have a linear current-voltage curve. We checked this by measuring the voltage between two points for currents from \SI{0}{\micro\ampere} to \SI{150}{\micro\ampere} in steps of \SI{10}{\micro\ampere} also at room temperature. In Figure \ref{fig:ohmic_check}, the linear behaviour is clearly showed.
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{Voltage_vs_current_ohmic_test}
+\includegraphics[width=0.8\textwidth]{Voltage_vs_current_ohmic_test.eps}
 \caption{Measured voltage vs applied current between two sample contacts. The dashed line is a linear fit of the experimental data with slope \SI{4.05}{\milli\volt/\milli\ampere}.}
 \label{fig:ohmic_check}
 \end{figure}
@@ -176,9 +214,9 @@ The junction between conductors should have a linear current-voltage curve. We c
 
 In order to align the sample perpendicular to the magnetic field generated by the coils, we measured the transverse voltage $U_t$, i.e. the Hall voltage plus the offset voltage (see {\color{red}Reference theory or figure}), with a fixed magnetic field $B=\SI{0.5126}{\tesla}$ and current $I=\SI{100}{\micro\ampere}$ for different angles between the magnetic field and the surface normal of the sample from \ang{-90} to \ang{90} in steps of \ang{10}.
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{Voltage_vs_angle}
+\includegraphics[width=0.8\textwidth]{Voltage_vs_angle.eps}
 \caption{Transverse voltage vs orientation angle of the sample with respect to the applied magnetic field. Dash line is a fit using the function $U_t(\alpha)=U_0\cos(\alpha+\phi) + U_\text{off}$. Values obtained for the fitting parameters are shown in the plot box.}
 \label{fig:orientation}
 \end{figure}
@@ -189,11 +227,13 @@ After the calibration measurements, we cooled down the sample to about \SI{80}{\
 \begin{itemize}
 \item Offset voltage $U_\text{off}$, i.e. the potential difference between contacts P and N (see Figure {\color{red}Add figure with experimental setup to change currents and measure voltages}), while applying a current of \SI{100}{\micro\ampere} between contacts M and O and without magnetic field.
 \item Transverse voltage $U_t$ between contacts P and N, i.e. the sum of Hall voltage and the offset voltage, while applying same current of \SI{100}{\micro\ampere} between M and O and with a magnetic field of \SI{0.5126}{\tesla}.
-\item The potential difference $U_\text{MN}$ between contacts M and N while applying a current of \SI{100}{\micro\ampere} between contacts O and P and with the same magnetic field as before.
-\item The potential difference $U_\text{NO}$ between contacts N and O while applying the same current between contacts P and M and under the same magnetic field.
+\item The potential difference $U_\text{OP}$ between contacts O and P while applying a current of \SI{100}{\micro\ampere} between contacts M and N and with the same magnetic field as before.
+\item The potential difference $U_\text{PM}$ between contacts P and M while applying the same current between contacts N and O and under the same magnetic field.
 \end{itemize}
 
-First two measurements are used to compute the Hall constant $R_H$ and the carrier concentration $p$ of our p-doped semiconductor. The other two are necessary to obtain the resistivity $\rho$ using the van der Pauw method \cite{vdP}. Once, $R_H$ and $\rho$ are known, it is also possible to compute the Hall mobility $\mu_H$.
+First two measurements are used to compute the Hall constant $R_H$ and the carrier concentration $p$ of our p-doped semiconductor. The other two are necessary to obtain the resistivity $\rho$ using the van der Pauw method \cite{vdP}. Once $R_H$ and $\rho$ are known, it is also possible to compute the Hall mobility $\mu_H$.
+
+We were able to measure these four values from \SI{82}{\kelvin} to \SI{200}{\kelvin}, but heating process was too slow to reach \SI{300}{\kelvin} so we were given measurements from other group. We combined theirs with ours to get the full range of temperatures (see Appendix \ref{app:dataset}).
 
 \section{Conclusions}
 
@@ -201,5 +241,30 @@ First two measurements are used to compute the Hall constant $R_H$ and the carri
 \vfill
 \bibliographystyle{unsrt}
 \bibliography{references}
+
+\newpage
+\begin{appendices}
+\section{Joining measurements}\label{app:dataset}
+Due to a problem with the heating mechanism in the cryostat, we could only do measurements from \SI{82}{\kelvin} to \SI{200}{\kelvin}. The complete raw data from a different group was given to us so we would have measurements in the range from \SI{80}{\kelvin} to \SI{300}{\kelvin}. In this appendix we compare our measurements at low temperatures with theirs, and we showed how he generate a combined dataset.
+
+In Figure \ref{fig:comparison_datasets} we summarize the comparison of both datasets. There is a good enough agreement between them so we decided to join them together and use our measurements at low temperatures and theirs from \SI{200}{\kelvin} to \SI{300}{\kelvin}. The noticeable deviation at low temperatures may be due to the fact that they aligned the sample at a slightly different angle with the magnetic field. This angle was not included in the their dataset but deviation is negligible at higher temperatures.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{comparison_datasets.eps}
+\caption{In a) and b) the two resistances computed from the measured voltages and in c) the Hall voltage are plotted against temperature. Blue dots represent our measurements and orage dots the values obtained by the other group. Zoomed areas are drawn around $T=\SI{200}{\kelvin}$ to better show the union between our measurements and theirs for our last recorded temperature.}
+\label{fig:comparison_datasets}
+\end{figure}
+
+Final dataset consists of 25 temperatures from our dataset and 19 from theirs and it is shown in Figure \ref{fig:final_dataset}. All the plots in the report are obtained using this dataset.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{final_dataset.eps}
+\caption{Final dataset with the combined measurements. The four measured quantities in the lab are plotted against the temperature: a) the offset voltage in absence of magnetic field, b) the total transverse voltage and c-d) the two voltages required to use the van der Pauw method.}
+\label{fig:final_dataset}
+\end{figure}
+
+\end{appendices}
 
 \end{document}
