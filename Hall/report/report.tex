@@ -118,11 +118,25 @@ where $\rho$ is the resistivity, while $R_{AB,CD}$ is defined as the ratio betwe
 
 As shown in the paper, we can get the resistivity according to the following expression:
 \begin{equation}
-\rho=\frac{\pi d}{ln(2)}\frac{(R_{AB,CD}+R_{BC,DA})}{2}f\left(R_{AB,CD},R_{BC,DA}\right)
+\rho=\frac{\pi d}{\ln(2)}\frac{(R_{AB,CD}+R_{BC,DA})}{2}f\left(R_{AB,CD},R_{BC,DA}\right)
 \end{equation}
 where the function $f$ can be approximated as
 \begin{equation}
-f \simeq 1-\left(\frac{R_{AB,CD}-R_{BC,DA}}{R_{AB,CD}+R_{BC,DA}}\right)^2 \frac{ln(2)}{2}-\left(\frac{R_{AB,CD}-R_{BC,DA}}{R_{AB,CD}+R_{BC,DA}}\right)^4\left(\frac{ln(2)^2}{4}-\frac{ln(2)^3}{12}\right)
+f \simeq 1-\left(\frac{R_{AB,CD}-R_{BC,DA}}{R_{AB,CD}+R_{BC,DA}}\right)^2 \frac{\ln(2)}{2}-\left(\frac{R_{AB,CD}-R_{BC,DA}}{R_{AB,CD}+R_{BC,DA}}\right)^4\left(\frac{\ln(2)^2}{4}-\frac{\ln(2)^3}{12}\right)
+\end{equation}
+
+%Now we will show how to use the resistivity in order to get the mobility. Let us consider a magnetic field $B_z$ orthogonal to the surface of our sample of thickness $d$ and largeness $L$. {\large (need a picture)} In the steady state, the force along y-direction is zero:
+%\begin{equation*}
+%e(-E_y+v_xB_z)=0 \Rightarrow v_x=E_y/B_z
+%\end{equation*}
+%In this condition the current is only along x and is given by $I=pev_xLd$. Using the definition of Hall coefficient seen before, we obtain
+%\begin{equation}
+%R_H=\frac{1}{ep}=\frac{v_xLd}{I}=\frac{E_yLd}{B_zI}
+%\end{equation}
+%Since the voltage is $V=E_yL$ we can write $R_H=\frac{Vd}{B_zI}$. Finally, using the fact that $\rho=R_H/\mu$, we obtain our expression:
+In order to evaluate the mobility we will use the following expression:
+\begin{equation}
+\mu=\frac{d}{B}\frac{R_H}{\rho}
 \end{equation}
 
 \section{Results and discussion}
