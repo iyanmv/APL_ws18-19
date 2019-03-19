@@ -28,16 +28,16 @@ Iyán Méndez Veiga\\ \small\texttt{\href{mailto:iyan.mendez-veiga@uni-ulm.de}{i
 \maketitle
 
 \section{Introduction}
-In this experiment, we determine the carrier density ($p$) and the mobility ($\mu$) of a p-type Silicon semiconducting sample doped with Boron. We determine these quantities as a function of the temperature in the range \SIrange{80}{300}{\kelvin}.
+In this experiment, we determine the carrier density $p$ and the mobility $\mu$ of a p-type Silicon semiconducting sample doped with Boron. We determine these quantities as a function of the temperature in the range \SIrange{80}{300}{\kelvin}.
 
-In order to obtain the carrier density we use the Hall effect. Once the Hall coefficient is known, mobility is computed by measuring the resistivity ($\rho$) of the sample. Since preparing a «Hall bar» is very time consuming, resistivity is measured by means of the van der Pauw method.
+In order to obtain the carrier density we use the Hall effect. Once the Hall coefficient is known, mobility is computed by measuring the resistivity $\rho$ of the sample. Since preparing a «Hall bar» is very time consuming, resistivity is measured by means of the van der Pauw method~\cite{vdP}.
 
 \section{Theory}
 
 \subsection{Carrier density}
 Let us start explaining the evaluation of the carrier density.
 
-Our sample is under the influence a constant magnetic field ($\vec{B}$). We can evaluate the drift velocity ($\vec{v}_d$) its charge carriers using the equations of motion of a particle in presence of an electric field:
+Our sample is under the influence a constant magnetic field $\vec{B}$. We can evaluate the drift velocity $\vec{v}_d$ its charge carriers using the equations of motion of a particle in presence of an electric field:
 \begin{equation*}
 m\frac{d\vec{v}}{dt}+\frac{m}{\tau}\vec{v}_d=-e(\vec{E}+\vec{v}\times\vec{B})
 \end{equation*}
@@ -57,11 +57,11 @@ where $e$ is the elementary charge and $p$ is the holes density, we get the foll
 \vec{E}=\frac{1}{ep\mu}\vec{j}+\frac{1}{ep}\vec{j}\times\vec{B}\equiv \vec{E}_\parallel+\vec{E}_\perp
 \end{equation*}
 
-Therefore, by measuring the voltage between two random points P and N of the sample (as shown in figure ({\color{red}Ref figure}), we obtain:
+Therefore, by measuring the voltage between two random points P and N of the sample (as shown in Figure {\color{red}Reference}), we obtain:
 \begin{equation}\label{eq:U_PN}
 U_\text{PN}=\int_P^N\vec{E}\cdot d\vec{s}=\int_P^{N'}\vec{E}_\perp\cdot d\vec{s}+\int_{N'}^N\vec{E}_\parallel\cdot d\vec{s}
 \end{equation}
-We call the second term in \eqref{eq:U_PN} \emph{offset voltage} ($U_\text{off}$). This term can be measured in absence of magnetic field. The first term can be evaluated considering that the magnetic field is orthogonal to the sample surface:
+We call the second term in \eqref{eq:U_PN} \emph{offset voltage} $U_\text{off}$. This term can be measured in absence of magnetic field. The first term can be evaluated considering that the magnetic field is orthogonal to the sample surface:
 \begin{equation}
 \int_P^{N'}\vec{E}_\perp\cdot d\vec{s}=-\frac{B}{ep}\int_P^{N'}j\, ds=-\frac{B}{ep}\int_P^{N'}\frac{1}{d}\frac{dI}{ds}\, ds=-\frac{B}{epd}\int_P^{N'} dI=-\frac{BI}{epd}
 \end{equation}
@@ -75,60 +75,62 @@ when $B$ and $I$ are fixed and the sample's thickness $d$ is known.
 
 In a semiconductor, the occupation of electronic states follows the Fermi-Dirac distribution:
 \begin{equation*}
-f(E,T)=\frac{1}{1+e^{\frac{E-E_F}{k_BT}}}
+f(E,T)=\frac{1}{1+\exp\left(\frac{E-E_\text{F}}{k_BT}\right)}
 \end{equation*}
 Since in our case the charge carriers are holes, our distribution will be $1-f(E,T)$. Let us call $D_V(E)$ the density of states in the valence band and $E_V$ the valence band edge, then we can write the carriers density as:
 \begin{equation}
-p=\int_{-\infty}^{E_V}D_V(E)(1-f(E,T))dE
+p=\int_{-\infty}^{E_V}D_V(E)\big[1-f(E,T)\big]\,dE
 \end{equation}
+
 The density of states can be written according to the parabolic approximation:
 \begin{equation*}
-D_V(E)=\frac{\sqrt{2}(m_{lh}^{3/2}+m_{hh}^{3/2})}{2\pi^2\hbar^3}\sqrt{E_V-E}
+D_V(E)=\frac{\sqrt{2}}{2\pi^2\hbar^3}\left(m_{lh}^{3/2}+m_{hh}^{3/2}\right)\sqrt{E_V-E}
 \end{equation*} where $m_{lh}$ and $m_{hh}$ are the mass of light and heavy holes.
 
 Finally, defining 
 \begin{equation}
-N_V=2\frac{(m_{lh}^{3/2}+m_{hh}^{3/2})}{h^3}(2\pi k_BT)^{3/2}
-\end{equation} we can write the following formula for the carriers density:
+N_V=\frac{2}{h^3}\left(m_{lh}^{3/2}+m_{hh}^{3/2}\right)(2\pi k_BT)^{3/2}
+\end{equation}
+we can write the following formula for the carriers density:
 \begin{equation}
-p=N_V\frac{2}{\sqrt{\pi}}F_{1/2}\left(\frac{E_V-E_F}{k_BT}\right)
-\end{equation} where $F_{1/2}(y)=\int_0^\infty\frac{x^{1/2}}{1+e^{(x-y)}}dx$ is the Fermi-Dirac integral and $E_F$ is the Fermi energy. In the case $k_BT<<E_F-E_V$ the solution of the integral is:
-\begin{equation}
-p=N_Ve^{-\frac{E_F-E_V}{k_BT}}\label{eq::p}
+p=\frac{2\,N_V}{\sqrt{\pi}}F_{1/2}\left(\frac{E_V-E_F}{k_BT}\right)
+\end{equation} where $F_{1/2}(y)=\int_0^\infty\frac{x^{1/2}}{1+e^{(x-y)}}dx$ is the Fermi-Dirac integral and $E_F$ is the Fermi energy. In the case $k_BT\ll E_F-E_V$ the solution of the integral is:
+\begin{equation}\label{eq::p}
+p=N_V\exp\left(-\frac{E_F-E_V}{k_BT}\right)
 \end{equation}
 
-In our case the semiconductor is p-doped, i.e. a concentration $N_A$ of electrons acceptors has been artificially added to the material. We can express the concentration of ionized acceptors as:
-\begin{equation}
-N_A^-=\frac{N_A}{1+4e^{\frac{E_A-E_F}{k_BT}}}\label{eq::Na-}
+In our case the semiconductor is p-doped. This means that a concentration $N_A^-$ of ionized acceptors has been added to the material. We can express this concentration of ionized acceptors as:
+\begin{equation}\label{eq::Na-}
+N_A^-=\frac{N_A}{1+4\exp\left(\frac{E_A-E_F}{k_BT}\right)}\,,
 \end{equation}
-here $E_A$ is the energy of bound acceptor holes.
+where $E_A$ is the energy of bound acceptor holes.
 
-The matierial needs to respect the neutrality of charge, i.e. $p=n+N_A^-$. The intrinsic conductivity is neglectable for a certain range of temperatures, in this case we can write the charge neutrality as $p=N_A^-$. Hence, using Eqs.~(\ref{eq::Na-}),~(\ref{eq::p}) we obtain:
+The material needs to respect the neutrality of charge, i.e. $p=n+N_A^-$. The intrinsic conductivity is neglectable for a certain range of temperatures, in this case we can write the charge neutrality as $p=N_A^-$. Hence, using equations \eqref{eq::p} and \eqref{eq::Na-} we obtain:
 \begin{equation}
-p\simeq\frac{N_A}{1+4(p/N_V)e^{\frac{E_A-E_V}{k_BT}}}
+p\simeq\frac{N_A}{1+4(p/N_V)\exp\left(\frac{E_A-E_V}{k_BT}\right)}
 \end{equation}
 Solving the equation for $p$, we get:
 \begin{equation}
-p=\simeq\frac{2N_A}{1+\sqrt{1+16\frac{N_A}{N_V}e^\frac{E_A-E_V}{k_BT}}}
-\end{equation}For low temperatures ($T<<\frac{E_A-E_V}{k_B}$) we can simplify the previous expression as:
+p=\simeq\frac{2N_A}{1+\sqrt{1+16\,\dfrac{N_A}{N_V}\exp\left(\dfrac{E_A-E_V}{k_BT}\right)}}
+\end{equation}For low temperatures ($T\ll\frac{E_A-E_V}{k_B}$) we can simplify the previous expression as:
 \begin{equation}
-p\simeq \frac{1}{2}\sqrt{N_AN_V}e^{-\frac{E_A-E_V}{2K_BT}}
+p\simeq \frac{1}{2}\sqrt{N_AN_V}\exp\left(-\frac{E_A-E_V}{2K_BT}\right)
 \end{equation}
 
 \subsection{Mobility}
-At this point we will use Van der Pauw method to get the mobility. In 1958 this author \cite{vdP} proved that if we apply a voltage putting sufficently small conctacts at the border of our sample, the sample is homogeneous in thickness ($d$) and it has no isolated holes, then the following formula holds:
+At this point we will use Van der Pauw method to get the mobility. In 1958, this author \cite{vdP} proved that if a voltage is applied by putting sufficiently small contacts at the border of our sample, which is homogeneous in thickness ($d$) and has no isolated holes, then the following formula holds:
 \begin{equation}
-e^{-\frac{\pi R_{AB,CD}d}{\rho}}+e^{-\frac{\pi R_{BC,DA}d}{\rho}}=1
+\exp\left(-\pi R_\text{AB,CD}\,\frac{d}{\rho}\right)+\exp\left(-\pi R_\text{BC,DA}\,\frac{d}{\rho}\right)=1
 \end{equation}
-where $\rho$ is the resistivity, while $R_{AB,CD}$ is defined as the ratio between the voltage applied between the contact points C and D and the current measured between the points A and B and $R_{BC,DA}$ analogously.
+where $\rho$ is the resistivity, and the resistance $R_{AB,CD}$ is defined as the ratio between the voltage measured between the contact points C and D and the current applied between the points A and B.
 
 As shown in the paper, we can get the resistivity according to the following expression:
 \begin{equation}
-\rho=\frac{\pi d}{\ln(2)}\frac{(R_{AB,CD}+R_{BC,DA})}{2}f\left(R_{AB,CD},R_{BC,DA}\right)
+\rho=\frac{\pi d}{\ln(2)}\frac{R_\text{AB,CD}+R_\text{BC,DA}}{2}\,f\!\left(R_\text{AB,CD},R_\text{BC,DA}\right)
 \end{equation}
 where the function $f$ can be approximated as
 \begin{equation}
-f \simeq 1-\left(\frac{R_{AB,CD}-R_{BC,DA}}{R_{AB,CD}+R_{BC,DA}}\right)^2 \frac{\ln(2)}{2}-\left(\frac{R_{AB,CD}-R_{BC,DA}}{R_{AB,CD}+R_{BC,DA}}\right)^4\left(\frac{\ln(2)^2}{4}-\frac{\ln(2)^3}{12}\right)
+f \simeq 1-\left(\frac{R_\text{AB,CD}-R_\text{BC,DA}}{R_\text{AB,CD}+R_\text{BC,DA}}\right)^2 \frac{\ln(2)}{2}-\left(\frac{R_\text{AB,CD}-R_\text{BC,DA}}{R_\text{AB,CD}+R_\text{BC,DA}}\right)^4\left(\frac{\ln(2)^2}{4}-\frac{\ln(2)^3}{12}\right)
 \end{equation}
 
 %Now we will show how to use the resistivity in order to get the mobility. Let us consider a magnetic field $B_z$ orthogonal to the surface of our sample of thickness $d$ and largeness $L$. {\large (need a picture)} In the steady state, the force along y-direction is zero:
@@ -227,7 +229,7 @@ The junction between conductors should have a linear current-voltage curve. We c
 
 \subsection{Orientation of the sample}
 
-In order to align the sample perpendicular to the magnetic field generated by the coils, we measured the transverse voltage $U_t$, i.e. the Hall voltage plus the offset voltage (see {\color{red}Reference theory or figure}), with a fixed magnetic field $B=\SI{0.5126}{\tesla}$ and current $I=\SI{100}{\micro\ampere}$ for different angles between the magnetic field and the surface normal of the sample from \ang{-90} to \ang{90} in steps of \ang{10}.
+In order to align the sample perpendicular to the magnetic field generated by the coils, we measured the transverse voltage $U_t$, i.e. the Hall voltage plus the offset voltage (see {\color{red}Reference theory or figure}), with a fixed magnetic field $B=\SI{0.5126}{\tesla}$ and a current $I=\SI{100}{\micro\ampere}$ for different angles between the magnetic field and the surface normal of the sample from \ang{-90} to \ang{90} in steps of \ang{10}.
 
 \begin{figure}[H]
 \centering
@@ -240,7 +242,7 @@ In order to align the sample perpendicular to the magnetic field generated by th
 
 After the calibration measurements, we cooled down the sample to about \SI{80}{\kelvin} using liquid nitrogen. At a temperature of \SI{82}{\kelvin} we started to do the following measurements every \SI{5}{\kelvin} while warming up the sample applying a voltage to a resistor in the cryostat. Temperature was measured by a different resistor close to the sample.
 \begin{itemize}
-\item Offset voltage $U_\text{off}$, i.e. the potential difference between contacts P and N (see Figure {\color{red}Add figure with experimental setup to change currents and measure voltages}), while applying a current of \SI{100}{\micro\ampere} between contacts M and O and without magnetic field.
+\item Offset voltage $U_\text{off}$, i.e. the potential difference between contacts P and N while applying a current of \SI{100}{\micro\ampere} between contacts M and O and without magnetic field (see Figure \ref{fig:cables}).
 \item Transverse voltage $U_t$ between contacts P and N, i.e. the sum of Hall voltage and the offset voltage, while applying same current of \SI{100}{\micro\ampere} between M and O and with a magnetic field of \SI{0.5126}{\tesla}.
 \item The potential difference $U_\text{OP}$ between contacts O and P while applying a current of \SI{100}{\micro\ampere} between contacts M and N and with the same magnetic field as before.
 \item The potential difference $U_\text{PM}$ between contacts P and M while applying the same current between contacts N and O and under the same magnetic field.
