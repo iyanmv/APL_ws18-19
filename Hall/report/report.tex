@@ -85,7 +85,8 @@ p=\int_{-\infty}^{E_V}D_V(E)\big[1-f(E,T)\big]\,dE
 The density of states can be written according to the parabolic approximation:
 \begin{equation*}
 D_V(E)=\frac{\sqrt{2}}{2\pi^2\hbar^3}\left(m_{lh}^{3/2}+m_{hh}^{3/2}\right)\sqrt{E_V-E}
-\end{equation*} where $m_{lh}$ and $m_{hh}$ are the mass of light and heavy holes.
+\end{equation*}
+where $m_{lh}$ and $m_{hh}$ are the mass of light and heavy holes (explained in the next subsection).
 
 Finally, defining 
 \begin{equation}
@@ -117,10 +118,31 @@ p=\simeq\frac{2N_A}{1+\sqrt{1+16\,\dfrac{N_A}{N_V}\exp\left(\dfrac{E_A-E_V}{k_BT
 p\simeq \frac{1}{2}\sqrt{N_AN_V}\exp\left(-\frac{E_A-E_V}{2K_BT}\right)
 \end{equation}
 
-\subsection{Mobility}
-At this point we will use Van der Pauw method to get the mobility. In 1958, this author \cite{vdP} proved that if a voltage is applied by putting sufficiently small contacts at the border of our sample, which is homogeneous in thickness ($d$) and has no isolated holes, then the following formula holds:
+\subsection{Heavy and light holes}
+
+Let us express the energy of charge carriers in our semiconductor in function of the momentum $\vec{k}$:
+
 \begin{equation}
-\exp\left(-\pi R_\text{AB,CD}\,\frac{d}{\rho}\right)+\exp\left(-\pi R_\text{BC,DA}\,\frac{d}{\rho}\right)=1
+E(\vec{k})=E(0)+\grad E|_{k=0}\cdot \vec{k}+\frac{1}{2}\vec{k}^t\cdot\frac{d^2E}{dk_idk_j}\cdot\vec{k}
+\end{equation}
+
+At this point we set $E(0)=0$ and we express the energy near to a band minimum or maximum, i.e. $\grad E=0$. If we treat the carriers as free particles, their energy is $E(\vec{k})=\frac{\hbar^2\vec{k}^2}{2m}$. Hence, we can write $\frac{\hbar^2\vec{k}^2}{2m}=\frac{1}{2}\vec{k}^t\cdot\frac{d^2E}{dk_idk_j}\cdot\vec{k}$. If we diagonalize the previous expression, we get the effective mass tensor:
+
+\begin{equation}
+\overleftrightarrow{m}_{ij}^{-1}=\frac{1}{\hbar^2}\frac{d^2E(\vec{k})}{dk_idk_j}
+\end{equation}
+
+At this point we write down the expression for the energy of holes near to the band maximum:
+\begin{equation}
+E(\vec{k})_\pm=\frac{\hbar^2}{2m_0}\left(Ak^2\pm\sqrt{B^2k^4+C^2(k_x^2k_y^2+k_y^2k_z^2+k_z^2k_x^2)}\,\right)
+\end{equation}
+We notice that the energy is double degenerate. The effective mass in the + case is called heavy hole ($m_{hh}$) mass and in the - case is called light hole mass ($m_{lh}$).
+
+\subsection{Hall Mobility}
+At this point we will use Van der Pauw method to get the mobility. In 1958, this author \cite{vdP} proved that if a voltage is applied by putting sufficiently small contacts at the border of our sample, which is homogeneous in thickness ($d$) and has no isolated holes, then the following formula holds:
+
+\begin{equation}
+\exp\left(-\pi R_\text{AB,CD}\,\frac{d}{\rho}\right)+\exp\left(-\pi R_\text{BC,DA}\,\frac{d}{\rho}\right)=1\,,
 \end{equation}
 where $\rho$ is the resistivity, and the resistance $R_{AB,CD}$ is defined as the ratio between the voltage measured between the contact points C and D and the current applied between the points A and B.
 
@@ -142,9 +164,9 @@ f \simeq 1-\left(\frac{R_\text{AB,CD}-R_\text{BC,DA}}{R_\text{AB,CD}+R_\text{BC,
 %R_H=\frac{1}{ep}=\frac{v_xLd}{I}=\frac{E_yLd}{B_zI}
 %\end{equation}
 %Since the voltage is $V=E_yL$ we can write $R_H=\frac{Vd}{B_zI}$. Finally, using the fact that $\rho=R_H/\mu$, we obtain our expression:
-In order to evaluate the mobility we will use the following expression:
+In order to evaluate Hall mobility, we will use the following expression:
 \begin{equation}
-\mu=\frac{d}{B}\frac{R_H}{\rho}
+\mu_H=\frac{|R_H|}{\rho}
 \end{equation}
 
 \section{Materials and methods}
