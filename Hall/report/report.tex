@@ -34,6 +34,90 @@ In order to obtain the carrier density we use the Hall effect. Once the Hall coe
 
 \section{Theory}
 
+Electrons in a semiconductor interact both with the positively charged atomic nuclei and with other electrons. This rather complex interaction can be condensed in an effective lattice-periodic potential $V(\vec{r})$. Hence, time-independent Schrödinger equation can be written in this way:
+
+\begin{equation}\label{eq:Schr}
+\left[-\frac{\hbar^2}{2m}\laplacian + V(\vec{r})\right]\psi(\vec{r})=E\psi(\vec{r})\,,
+\end{equation}
+where the eigenvalues $E$ are the possible energies of the electrons, and $\psi(\vec{r})$ the corresponding eigenfunctions:
+
+\begin{equation*}
+\psi(\vec{r})=\psi_{\vec{k}}(\vec{r})=u_{\vec{k}}(\vec{r})\exp\left(i\vec{k}\vdot\vec{r}\right)
+\end{equation*}
+
+These eigenfunctions are called \emph{Bloch waves}, where $u_{\vec{k}}(\vec{r})$ is a lattice-periodic function and $\vec{k}$ is a quantized wavevector, which indexes the solutions of the Schrödinger equation.
+
+The possible energies $E$ for different semiconductors are usually drawn in a band-structure plot, which shows the values of $E(\vec{k})$ in particular straight lines in the $\vec{k}$ space connecting symmetry points in the first Brillouin zone. In Figure \ref{fig:silicon_band_structure}, the band structure of Silicon is shown.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.5\textwidth]{Si_band_structure}
+\caption{Calculated band structure of Silicon. Si is an indirect semiconductor because the maximum of the valence band and the minimum of the conduction bands are located at different positions in $\vec{k}$ space.\cite{ibach2009solid}}
+\label{fig:silicon_band_structure}
+\end{figure}
+
+Semiconductors are characterized by the existence of a band gap $E_g$ between the valence and conduction band, where there are no allowed energies, and thus no electronic states exist. Semiconductors have a second property in common: at \SI{0}{\kelvin}, the valence band is completely occupied and the conduction band is completely empty.
+
+At room temperature, Silicon has a band gap of \SI{1.12}{\electronvolt}. This gap increases a bit at \SI{0}{\kelvin} becoming \SI{1.17}{\electronvolt}.
+
+In many cases, electrons in semiconductors can be treated as free particles by replacing the scalar electron mass $m$ by a tensor $\hat{m}$ called the \emph{effective mass tensor}, which includes the effect of the periodic potential $V(\vec{r})$. The components of the inverse of this tensor are given by:
+
+\begin{equation}\label{eq:mass_tensor}
+\hat{m}_{ij}^{-1}=\frac{1}{\hbar^2}\pdv[2]{E(\vec{k})}{k_i}{k_j}
+\end{equation}
+
+This definition may look artificial but it is the natural choice if we do a Taylor expansion of the energy function up to the second order:
+
+\begin{equation}\label{eq:dispersion_energy}
+E(\vec{k})=\underbrace{E(0)}_\text{=0}+\underbrace{\vec{\nabla}E|_{k=0}\vdot \vec{k}}_\text{=0}+\frac{1}{2}\vec{k}^t\cdot\pdv[2]{E}{k_i}{k_j}\cdot\vec{k}+\ldots\simeq\frac{1}{2}\vec{k}^t\cdot\pdv[2]{E}{k_i}{k_j}\cdot\vec{k}
+\end{equation}
+
+Definition \eqref{eq:mass_tensor} is even more clear if we rewrite the energy of a free particle in the following way:
+
+\begin{equation*}
+\frac{\hbar^2k^2}{2m}=\frac{\hbar^2}{2}\vec{k}^t\left(\frac{1}{m}\right)\vec{k}=\frac{\hbar^2}{2}\vec{k}^t\hat{m}^{-1}\vec{k}\,,
+\quad\text{where}\;\hat{m}^{-1}=
+\begin{pmatrix*}
+1/m & 0 & 0 \\
+0 & 1/m & 0 \\
+0 & 0 & 1/m
+\end{pmatrix*}
+\end{equation*}
+
+Around the conduction band minimum, $\hat{m}^{-1}$ can be diagonalized and the energy dispersion in parabolic approximation is given by the following expression using \eqref{eq:mass_tensor} and \eqref{eq:dispersion_energy}:
+
+\begin{equation}\label{eq:energy_dispersion}
+E(\vec{k})=\frac{\hbar^2}{2}\vec{k}^t\vdot\hat{m}_{ij}^{-1}\vdot\vec{k}=\frac{\hbar^2}{2}\left(\frac{1}{m_x}k_x^2+\frac{1}{m_y}k_y^2+\frac{1}{m_z}k_z^2\right)
+\end{equation}
+
+It is important to note that the three effective masses ($m_x$, $m_y$ and $m_z$) are, in general, different. However, in direct semiconductors such as Gallium arsenide, i.e. those whose valence band maximum and conduction band minimum are both located at the same point in $\vec{k}$ space, the masses are all equal and the constant energy surfaces are spheres as shown in Figure \ref{fig:energy_surfaces}.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.6\textwidth]{energy_surfaces}
+\caption{Shapes of constant-energy surfaces for electrons in Si and GaAs.\cite{sze2006physics}}
+\label{fig:energy_surfaces}
+\end{figure}
+
+In the case of Silicon, since it is an indirect semiconductor, the shift of the conduction minimum in $\vec{k}$ space has to be included in equation \eqref{eq:energy_dispersion} and this leads to ellipsoids as constant energy surfaces as shown in Figure \ref{fig:energy_surfaces} instead of spheres. The effective mass along the symmetry axis is called longitudinal mass $m_l$ and the one perpendicular to the symmetry axis is called transverse mass $m_t$.
+
+As mentioned before, expression \eqref{eq:energy_dispersion} is only valid in the vicinity of the conduction band minimum. The structure of the valence band maximum is more complicated than what it looks in Figure \ref{fig:silicon_band_structure}. Besides the two valence bands with different curvatures which can be seen already in that figure, there exists another valence band at point $\Gamma$, i.e. the center of the Brillouin zone, which is split off slightly from the other two as shown in Figure \ref{fig:light_heavy_holes} by $\Delta = \SI{0.044}{\electronvolt}$ in the case of the Silicon.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.4\textwidth]{light_heavy_holes}
+\caption{Qualitative band structure for Si in the vicinity of the maximum of the valence band. Valence bands of the heavy and light holes ($hh$ and $lh$) are degenerate at $\vec{k}=0=\Gamma$. There exists a third valence band shifted a bit down due to spin-orbit interactions.\cite{ibach2009solid}}
+\label{fig:light_heavy_holes}
+\end{figure}
+
+Moreover, the effective mass tensor cannot be diagonalized at this point, and therefore equation \eqref{eq:energy_dispersion} is not valid. Alternatively, a three-parameter expression can be written for the energy dispersion:
+
+\begin{equation}\label{eq:energy_dispersion_alt}
+E(\vec{k})_\pm=\frac{\hbar^2}{2m_0}\left[Ak^2\pm\sqrt{B^2k^4+C^2(k_x^2k_y^2+k_y^2k_z^2+k_z^2k_x^2)}\,\right]\,,
+\end{equation}
+where $A$, $B$ and $C$ are the parameters and $m_0$ the invariant mass of the electron.
+
+
 \subsection{Carrier density}
 Let us start explaining the evaluation of the carrier density.
 
@@ -67,7 +151,7 @@ We call the second term in \eqref{eq:U_PN} \emph{offset voltage} $U_\text{off}$.
 \end{equation}
 Defining $R_H\equiv\dfrac{1}{ep}$ as the Hall coefficient, we get the relation that will allow us to measure the carrier density:
 \begin{equation}\label{eq:Hall_voltage}
-U_\text{PN}-U_\text{off}=-R_H\frac{BI}{d}\,,
+U_\text{PN}-U_\text{off}=U_\text{Hall}=-R_H\frac{BI}{d}\,,
 \end{equation}
 when $B$ and $I$ are fixed and the sample's thickness $d$ is known.
 
@@ -118,25 +202,7 @@ p=\simeq\frac{2N_A}{1+\sqrt{1+16\,\dfrac{N_A}{N_V}\exp\left(\dfrac{E_A-E_V}{k_BT
 p\simeq \frac{1}{2}\sqrt{N_AN_V}\exp\left(-\frac{E_A-E_V}{2K_BT}\right)
 \end{equation}
 
-\subsection{Heavy and light holes}
 
-Let us express the energy of charge carriers in our semiconductor in function of the momentum $\vec{k}$:
-
-\begin{equation}
-E(\vec{k})=E(0)+\grad E|_{k=0}\cdot \vec{k}+\frac{1}{2}\vec{k}^t\cdot\frac{d^2E}{dk_idk_j}\cdot\vec{k}
-\end{equation}
-
-At this point we set $E(0)=0$ and we express the energy near to a band minimum or maximum, i.e. $\grad E=0$. If we treat the carriers as free particles, their energy is $E(\vec{k})=\frac{\hbar^2\vec{k}^2}{2m}$. Hence, we can write $\frac{\hbar^2\vec{k}^2}{2m}=\frac{1}{2}\vec{k}^t\cdot\frac{d^2E}{dk_idk_j}\cdot\vec{k}$. If we diagonalize the previous expression, we get the effective mass tensor:
-
-\begin{equation}
-\overleftrightarrow{m}_{ij}^{-1}=\frac{1}{\hbar^2}\frac{d^2E(\vec{k})}{dk_idk_j}
-\end{equation}
-
-At this point we write down the expression for the energy of holes near to the band maximum:
-\begin{equation}
-E(\vec{k})_\pm=\frac{\hbar^2}{2m_0}\left(Ak^2\pm\sqrt{B^2k^4+C^2(k_x^2k_y^2+k_y^2k_z^2+k_z^2k_x^2)}\,\right)
-\end{equation}
-We notice that the energy is double degenerate. The effective mass in the + case is called heavy hole ($m_{hh}$) mass and in the - case is called light hole mass ($m_{lh}$).
 
 \subsection{Hall Mobility}
 At this point we will use Van der Pauw method to get the mobility. In 1958, this author \cite{vdP} proved that if a voltage is applied by putting sufficiently small contacts at the border of our sample, which is homogeneous in thickness ($d$) and has no isolated holes, then the following formula holds:
@@ -273,6 +339,12 @@ After the calibration measurements, we cooled down the sample to about \SI{80}{\
 First two measurements are used to compute the Hall constant $R_H$ and the carrier concentration $p$ of our p-doped semiconductor. The other two are necessary to obtain the resistivity $\rho$ using the van der Pauw method \cite{vdP}. Once $R_H$ and $\rho$ are known, it is also possible to compute the Hall mobility $\mu_H$.
 
 We were able to measure these four values from \SI{82}{\kelvin} to \SI{200}{\kelvin}, but heating process was too slow to reach \SI{300}{\kelvin} so we were given measurements from other group. We combined theirs with ours to get the full range of temperatures (see Appendix \ref{app:dataset}).
+
+We can obtain Hall coefficient from equation \eqref{eq:Hall_voltage} but we have to be careful with units. When Hall voltage is expressed in \si{\milli\volt}, magnetic field in \si{\tesla} and current in \si{\ampere}, we have to divide by 10 as shown next in order to obtain the Hall coefficient in the desired units of \si{\centi\meter^3/\coulomb}.
+
+\begin{equation*}
+R_H=\frac{d}{BI}U_\text{Hall}\,[=]\,\frac{\si{\centi\meter}}{\si{\tesla\ampere}}\si{\milli\volt}\,[=]\,\frac{\si{\centi\meter}}{\si{\ampere}}\frac{\si{\meter^2}}{\si{\volt\second}}\si{\milli\volt}\,[=]\,\frac{10^4}{10^3}\frac{\si{\centi\meter^3}}{\si{\milli\volt\coulomb}}\si{\milli\volt}\,[=]\,10\,\frac{\si{\centi\meter^3}}{\si{\coulomb}}
+\end{equation*}
 
 \begin{figure}[H]
 \centering
