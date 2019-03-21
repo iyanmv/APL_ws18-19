@@ -130,7 +130,73 @@ There are two types of semiconductors: intrinsic and extrinsic. The number of ho
 
 The existence of the band gap $E_g$ in semiconductors makes the carrier densities $n$ (electrons) and $p$ (holes) very dependent on temperature. The occupation of electronic states is governed by the Fermi-Dirac distribution:
 
+\begin{equation}\label{eq:Fermi-Dirac}
+f(E,T)=\frac{1}{1+\exp\left(\frac{E-E_\text{F}}{k_BT}\right)}\,,
+\end{equation}
+where $E_\text{F}$ is the Fermi energy, i.e. the limiting energy that separates occupied from unoccupied states at $T=\SI{0}{\kelvin}$, and $k_B$ the Boltzmann constant. But since in our case the charge carriers are holes, our distribution will be $1-f(E,T)$.
 
+Let us call $D_V(E)$ the density of states in the valence band and $E_V$ the valence band edge. Then, we can write the hole density as:
+
+\begin{equation}\label{eq:hole_density}
+p=\int_{-\infty}^{E_V}D_V(E)\big[1-f(E,T)\big]\,dE
+\end{equation}
+
+The density of states of the valence band can be written in the parabolic approximation:
+
+\begin{equation*}
+D_V(E)=\frac{\sqrt{2}}{2\pi^2\hbar^3}\left(m_{lh}^{3/2}+m_{hh}^{3/2}\right)\sqrt{E_V-E}\equiv\frac{\sqrt{2m_{dh}^3}}{2\pi^2\hbar^3}\sqrt{E_V-E}\,,
+\end{equation*}
+where $m_{dh}=(m_{lh}^{3/2}+m_{hh}^{3/2})^{2/3}$ is the effective density-of-states mass for holes expressed in terms of the masses of heavy and light holes mentioned before.
+
+Defining the effective density of states in the valence band as:
+
+\begin{equation}\label{eq:Nv}
+N_V=\frac{2\left(2\pi\,m_{dh}\,k_BT\right)^{3/2}}{h^3}\,,
+\end{equation}
+the hole density $p$ calculated from integral \eqref{eq:hole_density} can be written:
+
+\begin{equation}\label{eq:p}
+p=\frac{2\,N_V}{\sqrt{\pi}}F_{1/2}\!\left(\frac{E_V-E_F}{k_BT}\right)\,,
+\end{equation}
+where $F_{1/2}(\frac{E_V-E_F}{k_BT})$ denotes the following Fermi-Dirac integral:
+
+\begin{equation*}
+F_{1/2}\!\left(\frac{E_V-E_F}{k_BT}\right)\equiv F_{1/2}(\eta_F)=\int_{-\infty}^{E_V}\frac{\sqrt{(E_V-E)/k_BT}}{1+\exp\left[(E_F-E)/k_BT\right]}\frac{dE}{k_BT}=\int_{-\infty}^0\frac{\sqrt{\eta}}{1+\exp(\eta-\eta_F)}d\eta\,,
+\end{equation*}
+where in the last step the following change of variables was made:
+\begin{equation*}
+\eta\equiv\frac{E_V-E}{k_BT}\quad,\quad\eta_F\equiv\frac{E_V-E_F}{k_BT}
+\end{equation*}
+
+When $k_BT\ll E-E_F$, Fermi-Dirac statistics can be replaced by Boltzmann statistics. In particular, when $k_BT\ll E_F-E_V$ equation \eqref{eq:p} simplifies to:
+
+\begin{equation}\label{eq::p}
+p=N_V\exp\left(-\frac{E_F-E_V}{k_BT}\right)
+\end{equation}
+
+As mention in the introduction, our sample is a p-type Silicon semiconductor doped with Boron. This means that a concentration $N_A^-$ of ionized acceptors has been added to the material. This concentration can be expressed as:
+
+\begin{equation}\label{eq::Na-}
+N_A^-=\frac{N_A}{1+4\exp\left(\frac{E_A-E_F}{k_BT}\right)}\,,
+\end{equation}
+where $N_A$ is the total concentration of acceptors and $E_A$ the energy of bound acceptor holes.
+
+The Fermi level adjusts itself such that the material respects the neutrality of charge, i.e. $p=n+N_A^-$. Because this shift in $E_F$ is considerate, we can neglect the intrinsic conductivity for a certain range of temperatures (our range \SIrange{80}{300}{\kelvin} satisfies this) and we can write that $p\approx N_A^-$. Hence, from equations \eqref{eq::p} and \eqref{eq::Na-} it is possible to obtain:
+
+\begin{equation*}
+p\approx\frac{N_A}{1+4(p/N_V)\exp\left(\frac{E_A-E_V}{k_BT}\right)}
+\end{equation*}
+
+And solving the equation for $p$ and defining $E_a\equiv E_A-E_V$, we get:
+
+\begin{equation}\label{eq:p_final}
+p\approx\frac{2N_A}{1+\sqrt{1+16\,\dfrac{N_A}{N_V}\exp\left(\dfrac{E_a}{k_BT}\right)}}
+\end{equation}
+
+For low temperatures ($T\ll\frac{E_A-E_V}{k_B}$) we can simplify the previous expression write it like:
+\begin{equation}\label{eq:p_final_approx}
+p\approx \frac{1}{2}\sqrt{N_AN_V}\exp\left(-\frac{E_a}{2K_BT}\right)
+\end{equation}
 
 \subsection{Carrier density}
 Let us start explaining the evaluation of the carrier density.
@@ -169,52 +235,7 @@ U_\text{PN}-U_\text{off}=U_\text{Hall}=-R_H\frac{BI}{d}\,,
 \end{equation}
 when $B$ and $I$ are fixed and the sample's thickness $d$ is known.
 
-\subsection{Dependence of $p$ on the temperature}
 
-In a semiconductor, the occupation of electronic states follows the Fermi-Dirac distribution:
-\begin{equation*}
-f(E,T)=\frac{1}{1+\exp\left(\frac{E-E_\text{F}}{k_BT}\right)}
-\end{equation*}
-Since in our case the charge carriers are holes, our distribution will be $1-f(E,T)$. Let us call $D_V(E)$ the density of states in the valence band and $E_V$ the valence band edge, then we can write the carriers density as:
-\begin{equation}
-p=\int_{-\infty}^{E_V}D_V(E)\big[1-f(E,T)\big]\,dE
-\end{equation}
-
-The density of states can be written according to the parabolic approximation:
-\begin{equation*}
-D_V(E)=\frac{\sqrt{2}}{2\pi^2\hbar^3}\left(m_{lh}^{3/2}+m_{hh}^{3/2}\right)\sqrt{E_V-E}
-\end{equation*}
-where $m_{lh}$ and $m_{hh}$ are the mass of light and heavy holes (explained in the next subsection).
-
-Finally, defining 
-\begin{equation}
-N_V=\frac{2}{h^3}\left(m_{lh}^{3/2}+m_{hh}^{3/2}\right)(2\pi k_BT)^{3/2}
-\end{equation}
-we can write the following formula for the carriers density:
-\begin{equation}
-p=\frac{2\,N_V}{\sqrt{\pi}}F_{1/2}\left(\frac{E_V-E_F}{k_BT}\right)
-\end{equation} where $F_{1/2}(y)=\int_0^\infty\frac{x^{1/2}}{1+e^{(x-y)}}dx$ is the Fermi-Dirac integral and $E_F$ is the Fermi energy. In the case $k_BT\ll E_F-E_V$ the solution of the integral is:
-\begin{equation}\label{eq::p}
-p=N_V\exp\left(-\frac{E_F-E_V}{k_BT}\right)
-\end{equation}
-
-In our case the semiconductor is p-doped. This means that a concentration $N_A^-$ of ionized acceptors has been added to the material. We can express this concentration of ionized acceptors as:
-\begin{equation}\label{eq::Na-}
-N_A^-=\frac{N_A}{1+4\exp\left(\frac{E_A-E_F}{k_BT}\right)}\,,
-\end{equation}
-where $E_A$ is the energy of bound acceptor holes.
-
-The material needs to respect the neutrality of charge, i.e. $p=n+N_A^-$. The intrinsic conductivity is neglectable for a certain range of temperatures, in this case we can write the charge neutrality as $p=N_A^-$. Hence, using equations \eqref{eq::p} and \eqref{eq::Na-} we obtain:
-\begin{equation}
-p\simeq\frac{N_A}{1+4(p/N_V)\exp\left(\frac{E_A-E_V}{k_BT}\right)}
-\end{equation}
-Solving the equation for $p$, we get:
-\begin{equation}
-p=\simeq\frac{2N_A}{1+\sqrt{1+16\,\dfrac{N_A}{N_V}\exp\left(\dfrac{E_A-E_V}{k_BT}\right)}}
-\end{equation}For low temperatures ($T\ll\frac{E_A-E_V}{k_B}$) we can simplify the previous expression as:
-\begin{equation}
-p\simeq \frac{1}{2}\sqrt{N_AN_V}\exp\left(-\frac{E_A-E_V}{2K_BT}\right)
-\end{equation}
 
 
 \subsection{Hall Mobility}
