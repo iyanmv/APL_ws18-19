@@ -103,6 +103,8 @@ In the case of Silicon, since it is an indirect semiconductor, the shift of the 
 
 As mentioned before, expression \eqref{eq:energy_dispersion} is only valid in the vicinity of the conduction band minimum. The structure of the valence band maximum is more complicated than what it looks in Figure \ref{fig:silicon_band_structure}. Besides the two valence bands with different curvatures which can be seen already in that figure, there exists another valence band at point $\Gamma$, i.e. the center of the Brillouin zone, which is split off slightly from the other two as shown in Figure \ref{fig:light_heavy_holes} by $\Delta = \SI{0.044}{\electronvolt}$ in the case of the Silicon.
 
+In the parabolic approximation one can identify three different effective masses for the holes at $\Gamma$ which contribute to charge transport. One speaks of heavy holes and light holes with masses $m_{hh}$ or $m_{lh}$, corresponding to the different band curvatures. The holes of the split-off band are called split-off holes and their mass is denoted by $m_{soh}$.
+
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.4\textwidth]{light_heavy_holes}
@@ -115,7 +117,19 @@ Moreover, the effective mass tensor cannot be diagonalized at this point, and th
 \begin{equation}\label{eq:energy_dispersion_alt}
 E(\vec{k})_\pm=\frac{\hbar^2}{2m_0}\left[Ak^2\pm\sqrt{B^2k^4+C^2(k_x^2k_y^2+k_y^2k_z^2+k_z^2k_x^2)}\,\right]\,,
 \end{equation}
-where $A$, $B$ and $C$ are the parameters and $m_0$ the invariant mass of the electron.
+where $A$, $B$ and $C$ are the parameters and $m_0$ the invariant mass of the electron. The $E_+$ corresponds to the heavy holes and $E_-$ to the light holes.
+
+There are two types of semiconductors: intrinsic and extrinsic. The number of holes in intrinsic semiconductors is equal to the number of electrons in the conduction band. In other words, electrons in the conduction band and holes in the valence band exclusively arise from electronic transitions between the valence and the conduction band. This phenomenon can happen thermally or induced by the absorption of light. The number of electrons or holes of a semiconductor can be modified by adding electrically active impurities. These are called extrinsic semiconductors. The doping elements are deliberately chosen in such a way that either they have five electrons in their valence band, or they have just three. When impurities have one more electron than needed for the $sp^3$ binding with the semiconductor element, for example Silicon doped with Phosphor, the extrinsic semiconductor is said to be a n-doped semiconductor and the impurity to be a donor. On the other hand, when impurities have one electron less, for example Silicon doped with Boron, the extrinsic semiconductor is said to be a p-doped semiconductor and the impurity an acceptor. Figure \ref{fig:extrinsic_semiconductors} shows both types of Si extrinsic semiconductors.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.6\textwidth]{extrinsic_semiconductors}
+\caption{Schematic representation of the effect of a donor (a) and an acceptor (b) in a Silicon lattice. Note that the lattice constant and the radius of the defect center are not drawn to scale. In reality the first Bohr radius of the «impurity orbit» is about ten times as large as the lattice parameter.\cite{ibach2009solid}}
+\label{fig:extrinsic_semiconductors}
+\end{figure}
+
+The existence of the band gap $E_g$ in semiconductors makes the carrier densities $n$ (electrons) and $p$ (holes) very dependent on temperature. The occupation of electronic states is governed by the Fermi-Dirac distribution:
+
 
 
 \subsection{Carrier density}
