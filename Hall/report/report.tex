@@ -220,14 +220,73 @@ where $\mu$ is called mobility and defined as:
 
 The current density $j$ in a p-doped material is given by:
 
-\begin{equation*}
+\begin{equation}\label{eq:current_density}
 \vec{j}=ep\,\vec{v}_d\,,
-\end{equation*}
+\end{equation}
 where $e$ is the elementary charge and $p$ is the hole density.
 
-Let us see how we can use this simple model to obtain an expression that relates the voltages that can be measured experimentally and the carrier density $p$.
+Assuming that $\vec{B}$ is aligned along the $z$ direction (like it will be in the experiment), i.e. $\vec{B}=(0,0,B)$, the vector product is equal to:
 
-We begin by considering the sample drawn in Figure \ref{fig:sample}
+\begin{equation*}
+\vec{v}_d\times\vec{B}=
+\begin{vmatrix}
+\vec{i} & \vec{j} & \vec{k} \\
+v_{dx} & v_{dy} & v_{dz} \\
+0 & 0 & B
+\end{vmatrix}=B\left(v_{dy}\vec{i} - v_{dx}\vec{j}\right)
+\end{equation*}
+and the components of the drift velocity are:
+
+\begin{align}\nonumber
+v_{dx} &= -\mu\left(E_x+Bv_{dy}\right)\\ \label{eq:drift_velocity_components}
+v_{dy} &= -\mu\left(E_y - Bv_{dx}\right)\\\nonumber
+v_{dx} &= -\mu E_z
+\end{align}
+
+Using equation \eqref{eq:current_density} and solving these three equations we obtain the components of the current density:
+
+\begin{gather*}
+v_{dz} = -\mu E_z\;\rightarrow\; j_z=-ep\mu\,E_z\\
+v_{dx} = -\mu\left(E_x + B v_{dy}\right)=-\mu\left[E_x-\mu B\left(E_y-Bv_{dx}\right)\right]=-\mu E_x+\mu^2BE_y-\mu^2B^2v_{dx}\\
+\left(1+\mu^2B^2\right)v_{dx}=-\mu E_x+\mu^2BE_y\;\rightarrow\;v_{dx}=\frac{1}{1+\mu^2B^2}\left(-\mu E_x+\mu^2BE_y\right)\\
+v_{dy} = -\mu\left(E_y - B v_{dx}\right)=-\mu\left[E_y + \mu B\left(E_x + Bv_{dy}\right)\right]=-\mu E_y - \mu^2BE_x - \mu^2B^2v_{dy}\\
+\left(1+\mu^2B^2\right)v_{dy}=-\mu E_y-\mu^2BE_x\;\rightarrow\;v_{dy}=\frac{1}{1+\mu^2B^2}\left(-\mu^2B E_x - \mu E_y\right)\\
+j_x=\frac{-ep\mu}{1+\mu^2B^2}\left(E_x - \mu BE_y\right)\\
+j_y=\frac{-ep\mu}{1+\mu^2B^2}\left(\mu BE_x+E_y\right)\,,
+\end{gather*}
+which we can write in matrix form as:
+
+\begin{equation}\label{eq:current_density_components}
+\begin{pmatrix}
+j_x \\ j_y \\ j_z
+\end{pmatrix}=
+\frac{-ep\mu}{1+\mu^2B^2}
+\begin{pmatrix}
+1 & -\mu B & 0 \\
+\mu B & 1 & 0 \\
+0 & 0 & 1+\mu^2B^2
+\end{pmatrix}
+\begin{pmatrix}
+E_x \\ E_y \\ E_z
+\end{pmatrix}
+\end{equation}
+
+The components of the electric field can also be written in this form solving for $E_x$, $E_y$ and $E_z$ directly from equation \eqref{eq:drift_velocity_components} and using \eqref{eq:current_density}.
+
+\begin{equation}\label{eq:electric_field}
+\begin{pmatrix}
+E_x \\ E_y \\ E_z
+\end{pmatrix}=
+-\frac{1}{ep\mu}
+\begin{pmatrix}
+1 & \mu B & 0 \\
+-\mu B & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+j_x \\ j_y \\ j_z
+\end{pmatrix}
+\end{equation}
 
 \begin{figure}[ht]
 \centering
@@ -235,6 +294,41 @@ We begin by considering the sample drawn in Figure \ref{fig:sample}
 \caption{Schematic drawing of a semiconductor}
 \label{fig:sample}
 \end{figure}
+
+From \eqref{eq:current_density_components} and \eqref{eq:electric_field} it is very clear that in the presence of a magnetic field aligned along the $z$ direction, the conductivity $\sigma$ and the resistivity $\rho$ become tensors:
+
+\begin{equation*}
+\vec{j}=\hat{\sigma}\vec{E}\quad\text{and}\quad\vec{E}=\hat{\rho}\vec{j}\,,
+\end{equation*}
+where tensors $\hat{\sigma}$ and $\hat{\rho}$ are defined:
+
+\begin{equation}\label{eq:resistivity_tensor}
+\hat{\sigma}=
+\frac{-ep\mu}{1+\mu^2B^2}
+\begin{pmatrix}
+1 & -\mu B & 0 \\
+\mu B & 1 & 0 \\
+0 & 0 & 1+\mu^2B^2
+\end{pmatrix}\;,\quad
+\hat{\rho}=\hat{\sigma}^{-1}=
+-\frac{1}{ep\mu}
+\begin{pmatrix}
+1 & \mu B & 0 \\
+-\mu B & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+\end{equation}
+
+Let us see how we can use this simple model to obtain an expression that relates the voltages that can be measured experimentally and the carrier density $p$.
+
+We begin by considering the sample drawn in Figure \ref{fig:sample}. A current goes from point M to point O and there is a magnetic field $\vec{B}$ perpendicular to the sample. We can write the electric field $\vec{E}$ at each point in terms of a parallel and a perpendicular component with respect to $\vec{j}$:
+
+\begin{equation}\label{eq:E_field}
+\vec{E}=\frac{1}{\mu}\vec{v}_d-\vec{v}\times\vec{B}=\frac{1}{ep\mu}\vec{j}-\frac{1}{ep}\left(\vec{j}\times\vec{B}\right)\equiv\vec{E}_\parallel + \vec{E}_\perp
+\end{equation}
+
+
+
 
 \vspace{3cm}
 
