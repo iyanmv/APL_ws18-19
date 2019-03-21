@@ -346,17 +346,17 @@ U_\text{PN}-U_\text{off}=U_\text{Hall}=-R_H\frac{BI}{d}\,,
 \end{equation}
 when $B$ and $I$ are fixed and the sample's thickness $d$ is known.
 
-\vspace{3cm}
 
-\subsection{Hall Mobility}
-At this point we will use Van der Pauw method to get the mobility. In 1958, this author \cite{vdP} proved that if a voltage is applied by putting sufficiently small contacts at the border of our sample, which is homogeneous in thickness ($d$) and has no isolated holes, then the following formula holds:
+After obtaining a formal expression relating the Hall coefficient, and thus the carrier density $p$, with two voltages that can be measured experimentally on a sample not necessary rectangularly shaped, we now continue explaining a method to measure the resistivity.
+
+In 1958, Van der Pauw \cite{vdP} proved that if a voltage is applied by putting sufficiently small contacts at the border of a sample, which is homogeneous in thickness ($d$) and has no isolated holes, then the following formula holds:
 
 \begin{equation}
 \exp\left(-\pi R_\text{AB,CD}\,\frac{d}{\rho}\right)+\exp\left(-\pi R_\text{BC,DA}\,\frac{d}{\rho}\right)=1\,,
 \end{equation}
-where $\rho$ is the resistivity, and the resistance $R_{AB,CD}$ is defined as the ratio between the voltage measured between the contact points C and D and the current applied between the points A and B.
+where $\rho$ is the resistivity, and the resistance $R_{AB,CD}$ is defined as the ratio between the voltage measured between the contact points C and D and the current applied between the points A and B. Analogously, $R_\text{BC,DA}$ is the voltage between D and A over the current circulating from B to C.
 
-As shown in the paper, we can get the resistivity according to the following expression:
+As shown in the paper, the resistivity can be obtained according to the following expression:
 \begin{equation}
 \rho=\frac{\pi d}{\ln(2)}\frac{R_\text{AB,CD}+R_\text{BC,DA}}{2}\,f\!\left(R_\text{AB,CD},R_\text{BC,DA}\right)
 \end{equation}
@@ -365,9 +365,10 @@ where the function $f$ can be approximated as
 f \simeq 1-\left(\frac{R_\text{AB,CD}-R_\text{BC,DA}}{R_\text{AB,CD}+R_\text{BC,DA}}\right)^2 \frac{\ln(2)}{2}-\left(\frac{R_\text{AB,CD}-R_\text{BC,DA}}{R_\text{AB,CD}+R_\text{BC,DA}}\right)^4\left(\frac{\ln(2)^2}{4}-\frac{\ln(2)^3}{12}\right)
 \end{equation}
 
-In order to evaluate Hall mobility, we will use the following expression:
-\begin{equation}
-\mu_H=\frac{|R_H|}{\rho}
+Finally, once the Hall coefficient and the resistivity are known, mobility $\mu$ can be computed using the following expression:
+
+\begin{equation}\label{eq:mobility_exp}
+\mu=\frac{|R_H|}{\rho}
 \end{equation}
 
 \section{Materials and methods}
@@ -469,7 +470,7 @@ After the calibration measurements, we cooled down the sample to about \SI{80}{\
 \item The potential difference $U_\text{PM}$ between contacts P and M while applying the same current between contacts N and O and under the same magnetic field.
 \end{itemize}
 
-First two measurements are used to compute the Hall constant $R_H$ and the carrier concentration $p$ of our p-doped semiconductor. The other two are necessary to obtain the resistivity $\rho$ using the van der Pauw method \cite{vdP}. Once $R_H$ and $\rho$ are known, it is also possible to compute the Hall mobility $\mu_H$.
+First two measurements are used to compute the Hall coefficient $R_H$ and the carrier concentration $p$ of our p-doped semiconductor. The other two are necessary to obtain the resistivity $\rho$ using the van der Pauw method \cite{vdP}. Once $R_H$ and $\rho$ are known, it is also possible to compute the Hall mobility $\mu_H$.
 
 We were able to measure these four values from \SI{82}{\kelvin} to \SI{200}{\kelvin}, but heating process was too slow to reach \SI{300}{\kelvin} so we were given measurements from other group. We combined theirs with ours to get the full range of temperatures (see Appendix \ref{app:dataset}).
 
