@@ -198,25 +198,40 @@ For low temperatures ($T\ll\frac{E_A-E_V}{k_B}$) we can simplify the previous ex
 p\approx \frac{1}{2}\sqrt{N_AN_V}\exp\left(-\frac{E_a}{2K_BT}\right)
 \end{equation}
 
-\subsection{Carrier density}
-Let us start explaining the evaluation of the carrier density.
+We have already, very briefly, described p-type semiconductors and obtained an expression for the carrier density $p$. Let us now focus on the motion of these carriers under electric and magnetic fields.
 
-Our sample is under the influence a constant magnetic field $\vec{B}$. We can evaluate the drift velocity $\vec{v}_d$ its charge carriers using the equations of motion of a particle in presence of an electric field:
-\begin{equation*}
-m\frac{d\vec{v}}{dt}+\frac{m}{\tau}\vec{v}_d=-e(\vec{E}+\vec{v}\times\vec{B})
-\end{equation*}
-where $\tau$ is called relaxation time and in a microscopic picture it describes the mean time between two successive collision. The steady state solution of this equation is: 
-\begin{equation*}
-\vec{v}_d=-\frac{e\tau}{m}(\vec{E}+\vec{v}_d\times\vec{B})\equiv -\mu (\vec{E}+\vec{v}_d\times\vec{B})\,,
-\end{equation*}
-where we have defined the \emph{mobility} $\mu$.
-%In our case the electric field will be parallel to the surface of the sample and the magnetic field orthogonal, hence we can remove the vectors.
+By the end of the 19th century, well before the development of Quantum Mechanics and the establishment of a theory of solids, Drude was able to describe the metallic conductivity of solids by considering an ideal gas of electrons. This simple model can be applied to semiconductors. The motion of an electron under the influence of an external electric field $\vec{E}$ and a magnetic field $\vec{B}$ is given by the following classical equation of motion:
 
-Using the definition of current density in a p-doped material:
+\begin{equation}\label{eq:Drude}
+m\dv{\vec{v}}{t}+\frac{m}{\tau}\vec{v}_d=-e(\vec{E}+\vec{v}\times\vec{B})\,,
+\end{equation}
+where the retarding effect of collisions is taken into account by the introduction of a friction term $m\vec{v}_d/\tau$ and $v_d=v-v_\text{therm}$ is the so-called drift velocity. This velocity is the result of the effect of both fields on the charged particle in addition to the thermal velocity $v_\text{therm}$. When fields are switched off, the velocity $v$ decreases towards the thermal velocity with the relaxation time $\tau$, which in a microscopic picture describes the mean time between two successive collision.
+
+The steady state solution ($\dv*{\vec{v}}{t}=0$ and $\vec{v}=\vec{v}_d$) of this equation is:
+
 \begin{equation*}
-\vec{j}=ep\vec{v}_d\,,
+\vec{v}_d=-\mu (\vec{E}+\vec{v}_d\times\vec{B})\,,
 \end{equation*}
-where $e$ is the elementary charge and $p$ is the holes density, we get the following expression for the electric field:
+where $\mu$ is called mobility and defined as:
+
+\begin{equation}\label{eq:mobility}
+\mu=\frac{e\tau}{m}
+\end{equation}
+
+The current density $j$ in a p-doped material is given by:
+
+\begin{equation*}
+\vec{j}=ep\,\vec{v}_d\,,
+\end{equation*}
+where $e$ is the elementary charge and $p$ is the hole density.
+
+Let us see how we can use this simple model to obtain an expression that relates the voltages that can be measured experimentally and the carrier density $p$.
+
+We begin by considering the sample drawn in Figure \ref{fig:sample}
+
+\vspace{3cm}
+
+We get the following expression for the electric field:
 \begin{equation*}
 \vec{E}=\frac{1}{ep\mu}\vec{j}+\frac{1}{ep}\vec{j}\times\vec{B}\equiv \vec{E}_\parallel+\vec{E}_\perp
 \end{equation*}
@@ -372,7 +387,7 @@ R_H=\frac{d}{BI}U_\text{Hall}\,[=]\,\frac{\si{\centi\meter}}{\si{\tesla\ampere}}
 \begin{figure}[H]
 \centering
 \includegraphics[width=.8\textwidth]{carrier_density.eps}
-\caption{Experimentally obtained carrier density $p$ for different temperatures.}
+\caption{Experimentally obtained carrier density $p$ for different temperatures. Dots are experimental values, dashed line is a fit using equation \eqref{eq:p_final} to obtain $N_A$ and $E_a$, and dashdotted line is equation \eqref{eq:p_final_approx} plotted using obtained parameters from previous fit for this range of temperatures.}
 \label{fig:carrier_density}
 \end{figure}
 
