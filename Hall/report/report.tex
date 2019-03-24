@@ -361,11 +361,11 @@ In 1958, Van der Pauw \cite{vdP} proved that if a voltage is applied by putting 
 where $\rho$ is the resistivity, and the resistance $R_{AB,CD}$ is defined as the ratio between the voltage measured between the contact points C and D and the current applied between the points A and B. Analogously, $R_\text{BC,DA}$ is the voltage between D and A over the current circulating from B to C.
 
 As shown in the paper, the resistivity can be obtained according to the following expression:
-\begin{equation}
+\begin{equation}\label{eq:resistivity}
 \rho=\frac{\pi d}{\ln(2)}\frac{R_\text{AB,CD}+R_\text{BC,DA}}{2}\,f\!\left(R_\text{AB,CD},R_\text{BC,DA}\right)
 \end{equation}
 where the function $f$ can be approximated as
-\begin{equation}
+\begin{equation}\label{eq:resistivity_f}
 f \simeq 1-\left(\frac{R_\text{AB,CD}-R_\text{BC,DA}}{R_\text{AB,CD}+R_\text{BC,DA}}\right)^2 \frac{\ln(2)}{2}-\left(\frac{R_\text{AB,CD}-R_\text{BC,DA}}{R_\text{AB,CD}+R_\text{BC,DA}}\right)^4\left(\frac{\ln(2)^2}{4}-\frac{\ln(2)^3}{12}\right)
 \end{equation}
 
@@ -476,32 +476,42 @@ After the calibration measurements, we cooled down the sample to about \SI{80}{\
 \item The potential difference $U_\text{PM}$ between contacts P and M while applying the same current between contacts N and O and under the same magnetic field.
 \end{itemize}
 
-First two measurements are used to compute the Hall coefficient $R_H$ and the carrier concentration $p$ of our p-doped semiconductor. The other two are necessary to obtain the resistivity $\rho$ using the van der Pauw method \cite{vdP}. Once $R_H$ and $\rho$ are known, it is also possible to compute the Hall mobility $\mu_H$.
+First two measurements are used to compute the Hall coefficient $R_H$ and the carrier concentration $p$ of our p-doped semiconductor using eq.~\eqref{eq:Hall_voltage}. The other two are necessary to obtain the resistivity $\rho$ using the van der Pauw method using eqs.~\eqref{eq:resistivity} and~\eqref{eq:resistivity_f}. Once $R_H$ and $\rho$ are known, it is also possible to compute the mobility $\mu$ with eq.~\eqref{eq:mobility_exp}.
 
 We were able to measure these four values from \SI{82}{\kelvin} to \SI{200}{\kelvin}, but heating process was too slow to reach \SI{300}{\kelvin} so we were given measurements from other group. We combined theirs with ours to get the full range of temperatures (see Appendix \ref{app:dataset}).
 
-We can obtain Hall coefficient from equation \eqref{eq:Hall_voltage} but we have to be careful with units. When Hall voltage is expressed in \si{\milli\volt}, magnetic field in \si{\tesla} and current in \si{\ampere}, we have to divide by 10 as shown next in order to obtain the Hall coefficient in the desired units of \si{\centi\meter^3/\coulomb}.
+We can obtain the Hall coefficient from equation \eqref{eq:Hall_voltage} but we have to be careful with units. When Hall voltage is expressed in \si{\milli\volt}, magnetic field in \si{\tesla} and current in \si{\ampere}, we have to divide by 10 as shown next in order to obtain the Hall coefficient in the desired units of \si{\centi\meter^3/\coulomb}.
 
 \begin{equation*}
 R_H=\frac{d}{BI}U_\text{Hall}\,[=]\,\frac{\si{\centi\meter}}{\si{\tesla\ampere}}\si{\milli\volt}\,[=]\,\frac{\si{\centi\meter}}{\si{\ampere}}\frac{\si{\meter^2}}{\si{\volt\second}}\si{\milli\volt}\,[=]\,\frac{10^4}{10^3}\frac{\si{\centi\meter^3}}{\si{\milli\volt\coulomb}}\si{\milli\volt}\,[=]\,10\,\frac{\si{\centi\meter^3}}{\si{\coulomb}}
 \end{equation*}
 
+In Figure \ref{fig:carrier_density} we plot the the carrier density $p$ against the inverse of the temperature. A fit using equation~\eqref{eq:p_final} was used to determine the values of $N_A$ and $E_a$:
+
+\begin{align*}
+N_A&=\SI{1.735e18}{\centi\meter^{-3}}\\
+E_a&=\SI{4.861e-21}{\joule}=\SI{30.34}{\milli\eV}
+\end{align*}
+
 \begin{figure}[H]
 \centering
-\includegraphics[width=.7\textwidth]{carrier_density.eps}
+\includegraphics[width=.9\textwidth]{carrier_density.eps}
 \caption{Experimentally obtained carrier density $p$ for different temperatures. Dots are experimental values, solid line is a fit using equation \eqref{eq:p_final} to obtain $N_A$ and $E_a$, and dashed line is equation \eqref{eq:p_final_approx} plotted using obtained parameters from previous fit for this range of temperatures. The intrinsic carrier concentration (equation \eqref{eq:ni}) is also plotted.}
 \label{fig:carrier_density}
 \end{figure}
 
+In Figure \ref{fig:hall_mobility} we plot the mobility against the temperature. A theoretical curve $\propto T^{-3/2}$ is plotted to show that with increasing temperatures, mobility decreases following this law. This can be explained theoretically by an increasing in the number of acoustic phonons.
+
 \begin{figure}[H]
 \centering
-\includegraphics[width=.7\textwidth]{Hall_mobility.eps}
-\caption{Experimentally obtained mobility $\mu$ for different temperatures.}
+\includegraphics[width=.9\textwidth]{Hall_mobility.eps}
+\caption{Experimentally obtained mobility $\mu$ for different temperatures. Dashed line follows equation $\mu(T)=13.35 -3/2\ln(T)$.}
 \label{fig:hall_mobility}
 \end{figure}
 
 \section{Conclusions}
 
+Dependency of both carrier density $p$ and mobility $\mu$ with temperature has been observed for a Silicon semiconductor doped with Boron (p-type). Hall effect was used to obtain $p$ and $\mu$ was computed by also measuring the resistivity $\rho$ using the van der Pauw method. Our measurements from \SIrange{82}{200}{\kelvin} were combined with the ones from other group from \SIrange{200}{300}{\kelvin} (see Appendix~\ref{app:dataset}) in order to obtain the total concentration of acceptors $N_A=\SI{1.735e18}{\centi\meter^{-3}}$ and the ionization energy $E_a=\SI{30.34}{\milli\eV}$ of the sample.
 
 
 \nocite{*}
@@ -512,14 +522,14 @@ R_H=\frac{d}{BI}U_\text{Hall}\,[=]\,\frac{\si{\centi\meter}}{\si{\tesla\ampere}}
 \newpage
 \begin{appendices}
 \section{Joining measurements}\label{app:dataset}
-Due to a problem with the heating mechanism in the cryostat, we could only do measurements from \SI{82}{\kelvin} to \SI{200}{\kelvin}. The complete raw data from a different group was given to us so we would have measurements in the range from \SI{80}{\kelvin} to \SI{300}{\kelvin}. In this appendix we compare our measurements at low temperatures with theirs, and we showed how he generate a combined dataset.
+Due to a problem with the heating mechanism in the cryostat, we could only do measurements from \SI{82}{\kelvin} to \SI{200}{\kelvin}. The complete raw data from Lettner and Schüle was given to us so we would have measurements in the range from \SI{80}{\kelvin} to \SI{300}{\kelvin}. In this appendix we compare our measurements at low temperatures with theirs, and we showed how he generate a combined dataset.
 
 In Figure \ref{fig:comparison_datasets} we summarize the comparison of both datasets. There is a good enough agreement between them so we decided to join them together and use our measurements at low temperatures and theirs from \SI{200}{\kelvin} to \SI{300}{\kelvin}. The noticeable deviation at low temperatures may be due to the fact that they aligned the sample at a slightly different angle with the magnetic field. This angle was not included in the their dataset but deviation is negligible at higher temperatures.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{comparison_datasets.eps}
-\caption{In a) and b) the two resistances computed from the measured voltages and in c) the Hall voltage are plotted against temperature. Blue dots represent our measurements and orage dots the values obtained by the other group. Zoomed areas are drawn around $T=\SI{200}{\kelvin}$ to better show the union between our measurements and theirs for our last recorded temperature.}
+\caption{In a) and b) the two resistances computed from the measured voltages and in c) the Hall voltage are plotted against temperature. Blue dots represent our measurements and orange dots the values obtained by Lettner and Schüle. Zoomed areas are drawn around $T=\SI{200}{\kelvin}$ to better show the union between our measurements and theirs.}
 \label{fig:comparison_datasets}
 \end{figure}
 
