@@ -175,15 +175,19 @@ When $k_BT\ll E-E_F$, Fermi-Dirac statistics can be replaced by Boltzmann statis
 p=N_V\exp\left(-\frac{E_F-E_V}{k_BT}\right)
 \end{equation}
 
-As mention in the introduction, our sample is a p-type Silicon semiconductor doped with Boron. This means that a concentration $N_A^-$ of ionized acceptors has been added to the material. This concentration can be expressed as:
+At a given temperature $T$, the Fermi level $E_F$ adjusts so the material respects the neutrality of charge. This means that $n=p=n_i$, where $n_i$ is the intrinsic carrier concentration which is equal to:
 
+\begin{equation}\label{eq:ni}
+n_i=\sqrt{N_CN_V}\exp\left(-\frac{E_g}{2k_BT}\right)
+\end{equation}
+
+As mention in the introduction, our sample is a p-type Silicon semiconductor doped with Boron. This means that a concentration $N_A^-$ of ionized acceptors has been added to the material. This concentration can be expressed as:
 \begin{equation}\label{eq::Na-}
 N_A^-=\frac{N_A}{1+4\exp\left(\frac{E_A-E_F}{k_BT}\right)}\,,
 \end{equation}
 where $N_A$ is the total concentration of acceptors and $E_A$ the energy of bound acceptor holes.
 
-The Fermi level adjusts itself such that the material respects the neutrality of charge, i.e. $p=n+N_A^-$. Because this shift in $E_F$ is considerate, we can neglect the intrinsic conductivity for a certain range of temperatures (our range \SIrange{80}{300}{\kelvin} satisfies this) and we can write that $p\approx N_A^-$. Hence, from equations \eqref{eq::p} and \eqref{eq::Na-} it is possible to obtain:
-
+Charge neutrality now means that $p=n+N_A^-$ and because this shift in $E_F$ is considerate, we can neglect the intrinsic conductivity for a certain range of temperatures (our range \SIrange{80}{300}{\kelvin} satisfies this) and we can write that $p\approx N_A^-$. Hence, from equations \eqref{eq::p} and \eqref{eq::Na-} it is possible to obtain:
 \begin{equation*}
 p\approx\frac{N_A}{1+4(p/N_V)\exp\left(\frac{E_A-E_V}{k_BT}\right)}
 \end{equation*}
@@ -485,7 +489,7 @@ R_H=\frac{d}{BI}U_\text{Hall}\,[=]\,\frac{\si{\centi\meter}}{\si{\tesla\ampere}}
 \begin{figure}[H]
 \centering
 \includegraphics[width=.7\textwidth]{carrier_density.eps}
-\caption{Experimentally obtained carrier density $p$ for different temperatures. Dots are experimental values, dashed line is a fit using equation \eqref{eq:p_final} to obtain $N_A$ and $E_a$, and dashdotted line is equation \eqref{eq:p_final_approx} plotted using obtained parameters from previous fit for this range of temperatures.}
+\caption{Experimentally obtained carrier density $p$ for different temperatures. Dots are experimental values, solid line is a fit using equation \eqref{eq:p_final} to obtain $N_A$ and $E_a$, and dashed line is equation \eqref{eq:p_final_approx} plotted using obtained parameters from previous fit for this range of temperatures. The intrinsic carrier concentration (equation \eqref{eq:ni}) is also plotted.}
 \label{fig:carrier_density}
 \end{figure}
 
@@ -496,7 +500,9 @@ R_H=\frac{d}{BI}U_\text{Hall}\,[=]\,\frac{\si{\centi\meter}}{\si{\tesla\ampere}}
 \label{fig:hall_mobility}
 \end{figure}
 
-%\section{Conclusions}
+\section{Conclusions}
+
+
 
 \nocite{*}
 \vfill
