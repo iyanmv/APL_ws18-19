@@ -31,7 +31,7 @@ Iyán Méndez Veiga\\ \small\texttt{\href{mailto:iyan.mendez-veiga@uni-ulm.de}{i
 \section{Introduction}
 In this experiment, we determine the carrier density $p$ and the mobility $\mu$ of a p-type Silicon semiconducting sample doped with Boron. We determine these quantities as a function of the temperature in the range from \SIrange{80}{300}{\kelvin}.
 
-In order to obtain the carrier density we use the Hall effect. Once the Hall coefficient is known, mobility is computed by measuring the resistivity $\rho$ of the sample. Since preparing a «Hall bar» is very time consuming, resistivity is measured by means of the van der Pauw method~\cite{vdP}.
+In order to obtain the carrier density we use the Hall effect. Once the Hall coefficient is known, mobility is computed by measuring the resistivity $\rho$ of the sample. Since preparing a «Hall bar» is very time consuming, resistivity and Hall coefficient are measured by means of the van der Pauw method~\cite{vdP}.
 
 \section{Theory}
 
@@ -98,7 +98,7 @@ It is important to note that the three effective masses ($m_x$, $m_y$ and $m_z$)
 \label{fig:energy_surfaces}
 \end{figure}
 
-In the case of Silicon, since it is an indirect semiconductor, the shift of the conduction minimum in $\vec{k}$ space has to be included in equation \eqref{eq:energy_dispersion} and this leads to ellipsoids as constant energy surfaces as shown in Figure \ref{fig:energy_surfaces} instead of spheres. The effective mass along the symmetry axis is called longitudinal mass $m_l$ and the one perpendicular to the symmetry axis is called transverse mass $m_t$.
+In the case of Silicon, since it is an indirect semiconductor, the shift of the conduction band minimum in $\vec{k}$ space has to be included in equation \eqref{eq:energy_dispersion} and this leads to ellipsoids as constant energy surfaces as shown in Figure \ref{fig:energy_surfaces} instead of spheres. The effective mass along the symmetry axis is called longitudinal mass $m_l$ and the one perpendicular to the symmetry axis is called transverse mass $m_t$.
 
 As mentioned before, expression \eqref{eq:energy_dispersion} is only valid in the vicinity of the conduction band minimum. The structure of the valence band maximum is more complicated than what it looks in Figure \ref{fig:silicon_band_structure}. Besides the two valence bands with different curvatures which can be seen already in that figure, there exists another valence band at point $\Gamma$, i.e. the center of the Brillouin zone, which is split off slightly from the other two as shown in Figure \ref{fig:light_heavy_holes} by $\Delta = \SI{0.044}{\electronvolt}$ in the case of the Silicon.
 
@@ -120,7 +120,7 @@ where $A$, $B$ and $C$ are the parameters and $m_0$ the invariant mass of the el
 
 \subsection{Carrier density}
 
-There are two types of semiconductors: intrinsic and extrinsic. The number of holes in intrinsic semiconductors is equal to the number of electrons in the conduction band. In other words, electrons in the conduction band and holes in the valence band exclusively arise from electronic transitions between the valence and the conduction band. This phenomenon can happen thermally or induced by the absorption of light. The number of electrons or holes of a semiconductor can be modified by adding electrically active impurities. These are called extrinsic semiconductors. The doping elements are deliberately chosen in such a way that either they have five electrons in their valence band, or they have just three. When impurities have one more electron than needed for the $sp^3$ binding with the semiconductor element, for example Silicon doped with Phosphor, the extrinsic semiconductor is said to be a n-doped semiconductor and the impurity to be a donor. On the other hand, when impurities have one electron less, for example Silicon doped with Boron, the extrinsic semiconductor is said to be a p-doped semiconductor and the impurity an acceptor. Figure \ref{fig:extrinsic_semiconductors} shows both types of Si extrinsic semiconductors.
+There are two types of semiconductors: intrinsic and extrinsic. The number of holes in intrinsic semiconductors is equal to the number of electrons in the conduction band. In other words, electrons in the conduction band and holes in the valence band exclusively arise from electronic transitions between the valence and the conduction band. This phenomenon can happen thermally or induced by the absorption of light. The number of electrons or holes of a semiconductor can be modified by adding electrically active impurities. These are called extrinsic semiconductors. The doping elements are deliberately chosen in such a way that either they have one extra electron in their valence band, or they have exactly one less. In the case of Silicon, when impurities have one more electron than needed for the $sp^3$ binding, for example Si doped with Phosphor, the extrinsic semiconductor is said to be a n-doped semiconductor and the impurity to be a donor. On the other hand, when impurities have one electron less, for example Si doped with Boron, the extrinsic semiconductor is said to be a p-doped semiconductor and the impurity an acceptor. Figure \ref{fig:extrinsic_semiconductors} shows both types of Si extrinsic semiconductors.
 
 \begin{figure}[ht]
 \centering
@@ -133,7 +133,7 @@ The existence of the band gap $E_g$ in semiconductors makes the carrier densitie
 \begin{equation}\label{eq:Fermi-Dirac}
 f(E,T)=\frac{1}{1+\exp\left(\frac{E-E_\text{F}}{k_BT}\right)}\,,
 \end{equation}
-where $E_\text{F}$ is the Fermi energy, i.e. the limiting energy that separates occupied from unoccupied states, and $k_B$ the Boltzmann constant. But since in our case the charge carriers are holes, our distribution will be $1-f(E,T)$.
+where $E_\text{F}$ is the Fermi energy, i.e. the limiting energy that separates occupied from unoccupied states at $T=\SI{0}{\kelvin}$, and $k_B$ the Boltzmann constant. But since in our case the charge carriers are holes, our distribution will be $1-f(E,T)$.
 
 Let us call $D_V(E)$ the density of states in the valence band and $E_V$ the valence band edge. Then, we can write the hole density as:
 \begin{equation}\label{eq:hole_density}
@@ -198,16 +198,16 @@ p\approx \frac{1}{2}\sqrt{N_AN_V}\exp\left(-\frac{E_a}{2K_BT}\right)
 
 We have already, very briefly, described p-type semiconductors and obtained an expression for the carrier density $p$. Let us now focus on the motion of these carriers under electric and magnetic fields.
 
-By the end of the 19th century, well before the development of Quantum Mechanics and the establishment of a theory of solids, Drude was able to describe the metallic conductivity of solids by considering an ideal gas of electrons. This simple model can be applied to semiconductors. The motion of an electron under the influence of an external electric field $\vec{E}$ and a magnetic field $\vec{B}$ is given by the following classical equation of motion:
+By the end of the 19th century, well before the development of Quantum Mechanics and the establishment of a theory of solids, Drude was able to describe the metallic conductivity of solids by considering an ideal gas of electrons. This simple model can be partially applied to semiconductors. The motion of a hole under the influence of an external electric field $\vec{E}$ and a magnetic field $\vec{B}$ is given by the following classical equation of motion:
 
 \begin{equation}\label{eq:Drude}
-m\dv{\vec{v}}{t}+\frac{m}{\tau}\vec{v}_d=-e(\vec{E}+\vec{v}\times\vec{B})\,,
+m\dv{\vec{v}}{t}+\frac{m}{\tau}\vec{v}_d=e(\vec{E}+\vec{v}\times\vec{B})\,,
 \end{equation}
-where the retarding effect of collisions is taken into account by the introduction of a friction term $m\vec{v}_d/\tau$ and $v_d=v-v_\text{therm}$ is the so-called drift velocity. This velocity is the result of the effect of both fields on the charged particle in addition to the thermal velocity $v_\text{therm}$. When fields are switched off, the velocity $v$ decreases towards the thermal velocity with the relaxation time $\tau$, which in a microscopic picture describes the mean time between two successive collision.
+where the retarding effect of collisions is taken into account by the introduction of a friction term $m\vec{v}_d/\tau$ and $v_d=v-v_\text{therm}$ is the so-called drift velocity. This velocity is the result of the effect of both fields on the charged particle in addition to the thermal velocity $v_\text{therm}$. When fields are switched off, the velocity $v$ decreases towards the thermal velocity with the relaxation time $\tau$, which in a microscopic picture describes the mean time between two successive collisions.
 
 The steady state solution ($\dv*{\vec{v}}{t}=0$ and $\vec{v}=\vec{v}_d$) of this equation is:
 \begin{equation*}
-\vec{v}_d=-\mu (\vec{E}+\vec{v}_d\times\vec{B})\,,
+\vec{v}_d=\mu (\vec{E}+\vec{v}_d\times\vec{B})\,,
 \end{equation*}
 where $\mu$ is called mobility and defined as:
 \begin{equation}\label{eq:mobility}
@@ -224,37 +224,38 @@ Assuming that $\vec{B}$ is aligned along the $z$ direction (like it will be in t
 \begin{equation*}
 \vec{v}_d\times\vec{B}=
 \begin{vmatrix}
-\vec{i} & \vec{j} & \vec{k} \\
+\hat{x} & \hat{y} & \hat{z} \\
 v_{dx} & v_{dy} & v_{dz} \\
 0 & 0 & B
 \end{vmatrix}=B\left(v_{dy}, -v_{dx}, 0\right)
 \end{equation*}
 and the components of the drift velocity are:
 \begin{align}\nonumber
-v_{dx} &= -\mu\left(E_x+Bv_{dy}\right)\\ \label{eq:drift_velocity_components}
-v_{dy} &= -\mu\left(E_y - Bv_{dx}\right)\\\nonumber
-v_{dx} &= -\mu E_z
+v_{dx} &= \mu\left(E_x+Bv_{dy}\right)\\ \label{eq:drift_velocity_components}
+v_{dy} &= \mu\left(E_y - Bv_{dx}\right)\\\nonumber
+v_{dz} &= \mu E_z
 \end{align}
 
 Using equation \eqref{eq:current_density} and solving these three equations we obtain the components of the current density:
 \begin{gather*}
-v_{dz} = -\mu E_z\;\rightarrow\; j_z=-ep\mu\,E_z\\
-v_{dx} = -\mu\left(E_x + B v_{dy}\right)=-\mu\left[E_x-\mu B\left(E_y-Bv_{dx}\right)\right]=-\mu E_x+\mu^2BE_y-\mu^2B^2v_{dx}\\
-\left(1+\mu^2B^2\right)v_{dx}=-\mu E_x+\mu^2BE_y\;\rightarrow\;v_{dx}=\frac{1}{1+\mu^2B^2}\left(-\mu E_x+\mu^2BE_y\right)\\
-v_{dy} = -\mu\left(E_y - B v_{dx}\right)=-\mu\left[E_y + \mu B\left(E_x + Bv_{dy}\right)\right]=-\mu E_y - \mu^2BE_x - \mu^2B^2v_{dy}\\
-\left(1+\mu^2B^2\right)v_{dy}=-\mu E_y-\mu^2BE_x\;\rightarrow\;v_{dy}=\frac{1}{1+\mu^2B^2}\left(-\mu^2B E_x - \mu E_y\right)\\
-j_x=\frac{-ep\mu}{1+\mu^2B^2}\left(E_x - \mu BE_y\right)\\
-j_y=\frac{-ep\mu}{1+\mu^2B^2}\left(\mu BE_x+E_y\right)\,,
+v_{dz} = \mu E_z\\
+\Rightarrow\quad j_z=epv_{dz}=ep\mu\,E_z\\
+v_{dx} = \mu\left(E_x + B v_{dy}\right)=\mu\left[E_x+\mu B\left(E_y-Bv_{dx}\right)\right]=\mu E_x+\mu^2BE_y-\mu^2B^2v_{dx}\\
+\left(1+\mu^2B^2\right)v_{dx}=\mu E_x+\mu^2BE_y\;\rightarrow\;v_{dx}=\frac{1}{1+\mu^2B^2}\left(\mu E_x+\mu^2BE_y\right)\\
+\Rightarrow\quad j_x=epv_{dx}=\frac{ep\mu}{1+\mu^2B^2}\left(E_x + \mu BE_y\right)\\
+v_{dy} = \mu\left(E_y - B v_{dx}\right)=\mu\left[E_y - \mu B\left(E_x + Bv_{dy}\right)\right]=\mu E_y - \mu^2BE_x - \mu^2B^2v_{dy}\\
+\left(1+\mu^2B^2\right)v_{dy}=\mu E_y-\mu^2BE_x\;\rightarrow\;v_{dy}=\frac{1}{1+\mu^2B^2}\left(\mu E_y -\mu^2B E_x\right)\\
+\Rightarrow\quad j_y=epv_{dy}=\frac{ep\mu}{1+\mu^2B^2}\left(E_y - \mu BE_x\right)\,,
 \end{gather*}
 which we can write in matrix form as:
 \begin{equation}\label{eq:current_density_components}
 \begin{pmatrix}
 j_x \\ j_y \\ j_z
 \end{pmatrix}=
-\frac{-ep\mu}{1+\mu^2B^2}
+\frac{ep\mu}{1+\mu^2B^2}
 \begin{pmatrix}
-1 & -\mu B & 0 \\
-\mu B & 1 & 0 \\
+1 & \mu B & 0 \\
+-\mu B & 1 & 0 \\
 0 & 0 & 1+\mu^2B^2
 \end{pmatrix}
 \begin{pmatrix}
@@ -267,10 +268,10 @@ The components of the electric field can also be written in this form solving fo
 \begin{pmatrix}
 E_x \\ E_y \\ E_z
 \end{pmatrix}=
--\frac{1}{ep\mu}
+\frac{1}{ep\mu}
 \begin{pmatrix}
-1 & \mu B & 0 \\
--\mu B & 1 & 0 \\
+1 & -\mu B & 0 \\
+\mu B & 1 & 0 \\
 0 & 0 & 1
 \end{pmatrix}
 \begin{pmatrix}
@@ -285,33 +286,83 @@ From \eqref{eq:current_density_components} and \eqref{eq:electric_field} it is v
 where tensors $\hat{\sigma}$ and $\hat{\rho}$ are defined as:
 \begin{equation}\label{eq:resistivity_tensor}
 \hat{\sigma}=
-\frac{-ep\mu}{1+\mu^2B^2}
-\begin{pmatrix}
-1 & -\mu B & 0 \\
-\mu B & 1 & 0 \\
-0 & 0 & 1+\mu^2B^2
-\end{pmatrix}\;,\quad
-\hat{\rho}=\hat{\sigma}^{-1}=
--\frac{1}{ep\mu}
+\frac{ep\mu}{1+\mu^2B^2}
 \begin{pmatrix}
 1 & \mu B & 0 \\
 -\mu B & 1 & 0 \\
+0 & 0 & 1+\mu^2B^2
+\end{pmatrix}\;,\quad
+\hat{\rho}=\hat{\sigma}^{-1}=
+\frac{1}{ep\mu}
+\begin{pmatrix}
+1 & -\mu B & 0 \\
+\mu B & 1 & 0 \\
 0 & 0 & 1
 \end{pmatrix}
 \end{equation}
 
+This model can be used to obtain an expression which relates the voltages that can be measured experimentally and the carrier density $p$.
+
+Let us suppose that we have a set-up similar to the one shown in Figure \ref{fig:Hall_bar}, where a sample has been prepared in a rectangular shape («Hall bar»). Moreover, an homogeneous current flows along the $x$ direction and an external magnetic field is applied perpendicular to the sample in the $z$ direction.
+
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.9\textwidth]{Drawing.eps}
+\includegraphics[width=0.5\textwidth]{Hall_bar}
+\caption{Schematic set-up for a Hall effect measurement with an ideal «Hall bar».\cite{ibach2009solid}}
+\label{fig:Hall_bar}
+\end{figure}
+
+Using equation \eqref{eq:electric_field} for this specific case where $j_x=j$ and $j_y=j_z=0$, we obtain for a p-type semiconductor:
+
+\begin{equation}
+\begin{pmatrix}
+E_x\\ E_y\\ E_z
+\end{pmatrix}=
+\frac{1}{ep\mu}
+\begin{pmatrix}
+1 & -\mu B & 0 \\
+\mu B & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+\begin{pmatrix}
+j \\ 0 \\ 0
+\end{pmatrix}\Rightarrow
+E_y=\frac{Bj}{ep}=R_HB\frac{I}{bd}\,,
+\end{equation}
+where the Hall coefficient is defined as $R_H=1/ep$, and $b$ and $d$ are the width and thickness of the sample, respectively.
+
+This expression tells us that an electric field $E_y$, the so-called Hall field, arises when we applied a magnetic field perpendicular to the sample and the current flowing the sample, and its magnitude is proportional to the Hall coefficient.
+
+Because of this particular simple shape, we can easily relate this field with the Hall voltage:
+\begin{equation}\label{eq:Hall_voltage_simp}
+U_\text{Hall}=E_yb=R_HB\frac{I}{d}
+\end{equation}
+
+By measuring the current $I$, magnetic field $B$, thickness of the sample $d$ and the Hall voltage, we can determine experimentally the Hall coefficient and from its definition obtain the carrier density $p$.
+
+The sample in this experiment, as usual in practice, has no simple «Hall bar» structure but is of «arbitrary» shape. This means that we cannot use directly equation \eqref{eq:Hall_voltage_simp}.
+
+Let us introduce now the Van der Pauw method and the conditions under which it is applicable. As we will show later, this method will allow us to measure both the Hall coefficient and the resistivity in a sample of arbitrary shape.
+
+\subsection{Hall coefficient}
+In 1958, Van der Pauw \cite{vdP} showed that the Hall effect and the specific resistivity of a flat sample of arbitrary shape can be measured even without knowing the current pattern if the following conditions are satisfied:
+\begin{itemize}
+\item The contacts are at the circumference of the sample
+\item The contacts are sufficiently small
+\item The sample is homogeneous in thickness
+\item The surface of the sample does not have isolated holes
+\end{itemize}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.85\textwidth]{Drawing.eps}
 \caption{Schematic drawing of a semiconductor with four contacts (P, M, N, O). There is a circulating current from M to O, and an external magnetic field perpendicular to the sample pointing upwards. N' is not a physical contact but a reference point to compute the integral explained in the text.}
 \label{fig:sample}
 \end{figure}
 
-Let us see how we can use this simple model to obtain an expression that relates the voltages that can be measured experimentally and the carrier density $p$.
-
-We begin by considering the sample drawn in Figure \ref{fig:sample}. A current goes from point M to point O and there is a magnetic field $\vec{B}$ perpendicular to the sample. We can write the electric field $\vec{E}$ at each point in terms of a parallel and a perpendicular component with respect to $\vec{j}$:
+In order to obtain an expression for the Hall coefficient using this method, we begin by considering the sample drawn in Figure \ref{fig:sample}. A current flows from point M to point O and there is a magnetic field $\vec{B}$ perpendicular to the sample. We can write the electric field $\vec{E}$ at each point in terms of a parallel and a perpendicular component with respect to $\vec{j}$:
 \begin{equation}\label{eq:E_field}
-\vec{E}=\frac{1}{\mu}\vec{v}_d-\vec{v}\times\vec{B}=\frac{1}{ep\mu}\vec{j}-\frac{1}{ep}\left(\vec{j}\times\vec{B}\right)\equiv\vec{E}_\parallel + \vec{E}_\perp
+\vec{E}=\frac{1}{\mu}\vec{v}_d-\vec{v}_d\times\vec{B}=\frac{1}{ep\mu}\vec{j}-\frac{1}{ep}\left(\vec{j}\times\vec{B}\right)\equiv\vec{E}_\parallel + \vec{E}_\perp
 \end{equation}
 
 The potential difference $U_\text{PN}$ can be computed integrating the electric field from P to N. In order to calculate the integral we can exploit the fact that the electric field is a conservative vector field, and thus the line integral is path independent. In particular, we will take the path P to N' and N' to N shown in Figure \ref{fig:sample}.
@@ -320,38 +371,52 @@ The potential difference $U_\text{PN}$ can be computed integrating the electric 
 U_\text{PN}=\int_P^N\vec{E}\cdot d\vec{s}=\int_P^{N'}\vec{E}_\perp\cdot d\vec{s}+\underbrace{\int_{N'}^N\vec{E}_\parallel\cdot d\vec{s}}_{U_\text{Off}}
 \end{equation}
 
-We have called the second term in \eqref{eq:U_PN} \emph{offset voltage} $U_\text{off}$. This terms takes into account that the sample does not have a rectangularly shape (a so-called «Hall bar») and experimentally can be measured by switching off the magnetic field.
+We have called the second term in \eqref{eq:U_PN} \emph{offset voltage} $U_\text{off}$. This term takes into account that the sample does not have a rectangular shape and experimentally can be measured by switching off the magnetic field.
 
 The first integral can be evaluated taking into account that the magnetic field is orthogonal to the sample's surface, i.e. $(\vec{j}\times\vec{B})\vdot d\vec{s}=|\vec{j}\times\vec{B}|ds=jB\,ds$. Hence, we obtain:
 \begin{equation}
 \int_P^{N'}\vec{E}_\perp\cdot d\vec{s}=-\frac{B}{ep}\int_P^{N'}j\, ds=-\frac{B}{ep}\int_P^{N'}\frac{1}{d}\frac{dI}{\cancel{ds}}\, \cancel{ds}=-\frac{B}{epd}\underbrace{\int_P^{N'} dI}_I=-\frac{BI}{epd}
 \end{equation}
 
-Defining the Hall coefficient $R_H\equiv\dfrac{1}{ep}$, we get the relation that will allow us to measure the carrier density:
+Defining the Hall coefficient the same way as presented before $R_H=\dfrac{1}{ep}$, we get the relation that will allow us to measure the carrier density:
 \begin{equation}\label{eq:Hall_voltage}
 U_\text{PN}-U_\text{off}=U_\text{Hall}=-R_H\frac{BI}{d}\,,
 \end{equation}
-when $B$ and $I$ are fixed and the sample's thickness $d$ is known.
-
-\subsection{Van der Pauw method and mobility}
+where the key difference with respect to equation \eqref{eq:Hall_voltage_simp} is the extra term $U_\text{off}$.
 
 After obtaining a formal expression relating the Hall coefficient, and thus the carrier density $p$, with two voltages that can be measured experimentally on a sample not necessary rectangularly shaped, we now continue explaining a method to measure the resistivity.
 
-In 1958, Van der Pauw \cite{vdP} proved that if a voltage is applied by putting sufficiently small contacts at the border of a sample, which is homogeneous in thickness $d$ and has no isolated holes, then the following formula holds:
+\subsection{Resistivity and mobility}
 
+Van der Pauw also proved that if the conditions mention before are fulfilled, then the following formula holds:
 \begin{equation}
-\exp\left(-\pi R_\text{AB,CD}\,\frac{d}{\rho}\right)+\exp\left(-\pi R_\text{BC,DA}\,\frac{d}{\rho}\right)=1\,,
+\exp\left(-\pi R_\text{MN,OP}\,\frac{d}{\rho}\right)+\exp\left(-\pi R_\text{NO,PM}\,\frac{d}{\rho}\right)=1\,,
 \end{equation}
-where $\rho$ is the resistivity, and the resistance $R_{AB,CD}$ is defined as the ratio between the voltage measured between the contact points C and D and the current applied between the points A and B. Analogously, $R_\text{BC,DA}$ is the voltage between D and A over the current circulating from B to C.
+where $d$ is the thickness and $\rho$ the specific resistivity. The resistance $R_\text{MN,OP}$ is defined as the ratio between the voltage measured between the contact points O and P and the current applied between the points M and N. Analogously, $R_\text{NO,PM}$ is the voltage between P and M over the current circulating from N to O.
 
 As shown in the paper, the resistivity can be obtained according to the following expression:
 \begin{equation}\label{eq:resistivity}
-\rho=\frac{\pi d}{\ln(2)}\frac{R_\text{AB,CD}+R_\text{BC,DA}}{2}\,f\!\left(R_\text{AB,CD},R_\text{BC,DA}\right)
+\rho=\frac{\pi d}{\ln(2)}\frac{R_\text{MN,OP}+R_\text{NO,PM}}{2}\,f\!\left(R_\text{MN,OP},R_\text{NO,PM}\right)
 \end{equation}
-where the function $f$ can be approximated as
+where $f$ is a function of the ratio $R_\text{MN,OP}/R_\text{NO,PM}$ (see Figure \ref{fig:pdV_diagram}) and can be approximated as
 \begin{equation}\label{eq:resistivity_f}
-f \simeq 1-\left(\frac{R_\text{AB,CD}-R_\text{BC,DA}}{R_\text{AB,CD}+R_\text{BC,DA}}\right)^2 \frac{\ln(2)}{2}-\left(\frac{R_\text{AB,CD}-R_\text{BC,DA}}{R_\text{AB,CD}+R_\text{BC,DA}}\right)^4\left(\frac{\ln(2)^2}{4}-\frac{\ln(2)^3}{12}\right)
+f \simeq 1-\left(\frac{R_\text{MN,OP}-R_\text{NO,PM}}{R_\text{MN,OP}+R_\text{NO,PM}}\right)^2 \frac{\ln(2)}{2}-\left(\frac{R_\text{MN,OP}-R_\text{NO,PM}}{R_\text{MN,OP}+R_\text{NO,PM}}\right)^4\left(\frac{\ln(2)^2}{4}-\frac{\ln(2)^3}{12}\right)
 \end{equation}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.8\textwidth]{pdV_diagram}
+\caption{The function $f$ used for determining the specific resistivity of the sample, plotted as a function of $R_\text{MN,OP}/R_\text{NO,PM}$.\cite{vdP}}
+\label{fig:pdV_diagram}
+\end{figure}
+
+
+
+
+
+
+
+
 
 Finally, once the Hall coefficient and the resistivity are known, mobility $\mu$ can be computed using the following expression:
 
@@ -368,12 +433,12 @@ Sample was connected to a HP 34401A Digital Multimeter and a Yokogawa 7651 Progr
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.6\textwidth]{Experimental_setup_cables}
+\includegraphics[width=0.55\textwidth]{Experimental_setup_cables}
 \caption{Device used to choose where to apply current in the semiconductor sample and where to measure voltage. For example, by turning on switches M and O on the left (current), and switches P and N on the right (voltages), we can measure the transverse voltage $U_t$.}
 \label{fig:cables}
 \end{figure}
 
-For the characterization of the magnetic field, a calibrated Hall sensor (see Figure \ref{fig:Hall_sensor}) was used connected to the probe tube.
+For measuring of the magnetic field as a function of the current through the coils, a calibrated Hall sensor (see Figure \ref{fig:Hall_sensor}) was used connected to the probe tube.
 
 \begin{figure}[H]
 \centering
@@ -382,7 +447,7 @@ For the characterization of the magnetic field, a calibrated Hall sensor (see Fi
 \label{fig:Hall_sensor}
 \end{figure}
 
-Finally, determination of the temperature close to the sample was done with a resistor connected to a device that directly show us the temperature in Kelvin (see Figure \ref{fig:temperature_device}). With the same device, we could control a heating mechanism by applying a voltage to a different resistor in the cryostat.
+Finally, determination of the temperature close to the sample was done with a PT100 resistor connected to a device that directly show us the temperature in Kelvin (see Figure \ref{fig:temperature_device}). With the same device, we could apply a voltage to a heating resistor in the cryostat.
 
 \begin{figure}[H]
 \centering
@@ -430,12 +495,12 @@ We measured the voltage for different currents $I_B$ from \SI{0}{\ampere} to \SI
 
 \subsection{Checking ohmic behaviour}
 
-The junction between conductors should have a linear current-voltage curve. We checked this by measuring the voltage between two points for currents from \SI{0}{\micro\ampere} to \SI{150}{\micro\ampere} in steps of \SI{10}{\micro\ampere} also at room temperature. In Figure \ref{fig:ohmic_check}, the linear behaviour is clearly showed.
+The current-voltage curve between contacts should be linear (ohmic behaviour). We checked this by measuring the voltage between two contacts for currents from \SI{0}{\micro\ampere} to \SI{150}{\micro\ampere} in steps of \SI{10}{\micro\ampere} also at room temperature. In Figure \ref{fig:ohmic_check}, the linear behaviour is clearly shown.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.62\textwidth]{Voltage_vs_current_ohmic_test.eps}
-\caption{Measured voltage vs applied current between two sample contacts. The dashed line is a linear fit of the experimental data with slope \SI{4.05}{\milli\volt/\milli\ampere}.}
+\caption{Measured voltage vs applied current between two sample contacts. The dashed line is a linear fit of the experimental data with slope \SI{4.05}{\milli\volt/\micro\ampere}.}
 \label{fig:ohmic_check}
 \end{figure}
 
@@ -462,7 +527,7 @@ After the calibration measurements, we cooled down the sample to about \SI{80}{\
 
 First two measurements are used to compute the Hall coefficient $R_H$ and the carrier concentration $p$ of our p-doped semiconductor using eq.~\eqref{eq:Hall_voltage}. The other two are necessary to obtain the resistivity $\rho$ using the van der Pauw method using eqs.~\eqref{eq:resistivity} and~\eqref{eq:resistivity_f}. Once $R_H$ and $\rho$ are known, it is also possible to compute the mobility $\mu$ with eq.~\eqref{eq:mobility_exp}.
 
-We were able to measure these four values from \SI{82}{\kelvin} to \SI{200}{\kelvin}, but heating process was too slow to reach \SI{300}{\kelvin} so we were given measurements from other group. We combined theirs with ours to get the full range of temperatures (see Appendix \ref{app:dataset}).
+We were able to measure these four values from \SI{82}{\kelvin} to \SI{200}{\kelvin}, but heating process was too slow to reach \SI{300}{\kelvin} so we were given experimental data from other group. We combined theirs with ours to get the full range of temperatures (see Appendix \ref{app:dataset}).
 
 %We can obtain the Hall coefficient from equation \eqref{eq:Hall_voltage} but we have to be careful with units. When Hall voltage is expressed in \si{\milli\volt}, magnetic field in \si{\tesla} and current in \si{\ampere}, we have to divide by 10 as shown next in order to obtain the Hall coefficient in the desired units of \si{\centi\meter^3/\coulomb}.
 %
@@ -470,7 +535,7 @@ We were able to measure these four values from \SI{82}{\kelvin} to \SI{200}{\kel
 %R_H=\frac{d}{BI}U_\text{Hall}\,[=]\,\frac{\si{\centi\meter}}{\si{\tesla\ampere}}\si{\milli\volt}\,[=]\,\frac{\si{\centi\meter}}{\si{\ampere}}\frac{\si{\meter^2}}{\si{\volt\second}}\si{\milli\volt}\,[=]\,\frac{10^4}{10^3}\frac{\si{\centi\meter^3}}{\si{\milli\volt\coulomb}}\si{\milli\volt}\,[=]\,10\,\frac{\si{\centi\meter^3}}{\si{\coulomb}}
 %\end{equation*}
 
-In Figure \ref{fig:carrier_density} we plot the the carrier density $p$ against the inverse of the temperature. A fit using equation~\eqref{eq:p_final} was used to determine the values of $N_A$ and $E_a$:
+In Figure \ref{fig:carrier_density} we plot the carrier density $p$ against the inverse of the temperature. A fit using equation~\eqref{eq:p_final} was used to determine the values of $N_A$ and $E_a$:
 
 \begin{align*}
 N_A&=\SI{1.946e18}{\centi\meter^{-3}}\\
@@ -495,7 +560,7 @@ In Figure \ref{fig:hall_mobility} we plot the mobility against the temperature. 
 
 \section{Conclusions}
 
-Dependency of both carrier density $p$ and mobility $\mu$ with temperature has been observed for a Silicon semiconductor doped with Boron (p-type). Hall effect was used to obtain $p$, and $\mu$ was computed by also measuring the resistivity $\rho$ using the van der Pauw method. Our measurements from \SIrange{82}{200}{\kelvin} were combined with the ones from other group from \SIrange{200}{300}{\kelvin} (see Appendix~\ref{app:dataset}) in order to obtain the total concentration of acceptors $N_A=\SI{1.946e18}{\centi\meter^{-3}}$ and the ionization energy $E_a=\SI{32.5}{\milli\eV}$ of the sample.
+Dependency of both carrier density $p$ and mobility $\mu$ with temperature has been observed for a Silicon semiconductor doped with Boron (p-type). Hall effect was used to obtain $p$, and $\mu$ was computed by also measuring the resistivity $\rho$. Both Hall coefficient and $\rho$ were measured using the van der Pauw method. Our measurements from \SIrange{82}{200}{\kelvin} were combined with the ones from other group from \SIrange{200}{300}{\kelvin} (see Appendix~\ref{app:dataset}) in order to obtain the total concentration of acceptors $N_A=\SI{1.946e18}{\centi\meter^{-3}}$ and the ionization energy $E_a=\SI{32.5}{\milli\eV}$ of the sample.
 
 
 \nocite{*}
@@ -522,7 +587,7 @@ Final dataset consists of 25 temperatures from our dataset and 19 from theirs an
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{final_dataset.eps}
-\caption{Final dataset with the combined measurements. The four measured quantities in the lab are plotted against the temperature: a) the offset voltage in absence of magnetic field, b) the total transverse voltage and c-d) the two voltages required to use the van der Pauw method.}
+\caption{Final dataset with the combined measurements. The four measured quantities in the lab are plotted against the temperature: a) the offset voltage in absence of magnetic field, b) the total transverse voltage and c-d) the two voltages required to determine the resistivity.}
 \label{fig:final_dataset}
 \end{figure}
 
